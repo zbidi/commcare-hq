@@ -1,22 +1,22 @@
 from datetime import timedelta
 from django.utils.timesince import timesince
 from math import ceil
-from corehq.apps.es import UserES
-from corehq import Domain
-from corehq.apps.commtrack.models import StockState, CommtrackConfig
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.reports.commtrack.const import STOCK_SECTION_TYPE
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.dates import DatespanFilter
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.graph_models import Axis
+from commcarehq.apps.es import UserES
+from commcarehq import Domain
+from commcarehq.apps.commtrack.models import StockState, CommtrackConfig
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.reports.commtrack.const import STOCK_SECTION_TYPE
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.graph_models import Axis
 from custom.common import ALL_OPTION
 from custom.ewsghana.filters import ProductByProgramFilter
 from custom.ewsghana.reports import EWSData, REORDER_LEVEL, MAXIMUM_LEVEL, MultiReport, get_url, EWSLineChart
 from dimagi.utils.decorators.memoized import memoized
 from django.utils.translation import ugettext as _
-from corehq.apps.locations.models import Location, SQLLocation
-from corehq.apps.locations.models import Location
+from commcarehq.apps.locations.models import Location, SQLLocation
+from commcarehq.apps.locations.models import Location
 
 
 class StockLevelsLegend(EWSData):
@@ -209,7 +209,7 @@ class FacilitySMSUsers(EWSData):
 
     @property
     def rows(self):
-        from corehq.apps.users.views.mobile import CreateCommCareUserView
+        from commcarehq.apps.users.views.mobile import CreateCommCareUserView
 
         query = (UserES().mobile_users().domain(self.config['domain'])
                  .term("domain_membership.location_id", self.config['location_id']))

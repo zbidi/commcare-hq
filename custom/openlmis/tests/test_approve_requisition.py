@@ -1,6 +1,6 @@
-from corehq.apps.commtrack.models import CommtrackConfig
-from corehq.apps.commtrack.const import RequisitionActions
-from corehq.apps.commtrack.requisitions import create_requisition
+from commcarehq.apps.commtrack.models import CommtrackConfig
+from commcarehq.apps.commtrack.const import RequisitionActions
+from commcarehq.apps.commtrack.requisitions import create_requisition
 from custom.openlmis.commtrack import requisition_approved
 from custom.openlmis.tests.base import OpenLMISTestBase
 
@@ -8,7 +8,7 @@ from custom.openlmis.tests.base import OpenLMISTestBase
 class ApproveRequisitionTest(OpenLMISTestBase):
 
     def fixmetestApproveRequisition(self):
-        from corehq.apps.commtrack.stockreport import Requisition
+        from commcarehq.apps.commtrack.stockreport import Requisition
         requisition_cases = []
         config = CommtrackConfig.for_domain(self.domain)
         for spp in self.spps.values():

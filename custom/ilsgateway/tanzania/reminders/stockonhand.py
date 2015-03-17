@@ -2,9 +2,9 @@ import datetime
 
 from celery.schedules import crontab
 from celery.task import periodic_task
-from corehq.apps.commtrack.models import SupplyPointCase
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.sms.api import send_sms_to_verified_number
 from custom.ewsghana.utils import send_test_message
 from custom.ilsgateway.models import SupplyPointStatusValues, SupplyPointStatusTypes
 from custom.ilsgateway.tanzania.reminders import REMINDER_STOCKONHAND, update_statuses

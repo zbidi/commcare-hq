@@ -4,7 +4,7 @@ from dateutil.parser import parser
 from django.core.cache import cache
 import simplejson
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.api.es import ReportXFormES, get_report_script_field
+from commcarehq.apps.api.es import ReportXFormES, get_report_script_field
 from pact.enums import PACT_DOMAIN
 from pact.lib.quicksect import IntervalNode
 from pact.utils import get_patient_display_cache

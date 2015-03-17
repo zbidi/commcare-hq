@@ -1,14 +1,14 @@
 from couchdbkit.ext.django.schema import Document
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.reports.dont_use.fields import ReportField
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.dont_use.fields import ReportField
 from datetime import date
 from pathfinder.views import retrieve_patient_group, get_patients_by_provider
 from django.http import Http404
 from dimagi.utils.couch.database import get_db
-from corehq.apps.groups.models import Group
+from commcarehq.apps.groups.models import Group
 
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.models import CommCareUser
 from dimagi.utils.queryable_set import QueryableList
 from couchforms.models import XFormInstance
 
@@ -24,9 +24,9 @@ class PathfinderWardSummaryReport(CustomProjectReport):
     slug = "ward"
     asynchronous = False
     report_template_path = "pathfinder-reports/ward_summary.html"
-    fields = ['corehq.apps.reports.filters.select.MonthFilter',
-              'corehq.apps.reports.filters.select.YearFilter',
-              'corehq.apps.reports.filters.select.GroupFilter']
+    fields = ['commcarehq.apps.reports.filters.select.MonthFilter',
+              'commcarehq.apps.reports.filters.select.YearFilter',
+              'commcarehq.apps.reports.filters.select.GroupFilter']
     flush_layout = True
 
     @property
@@ -65,8 +65,8 @@ class PathfinderProviderReport(CustomProjectReport):
     slug = "provider"
     asynchronous = False
     report_template_path = "pathfinder-reports/provider_summary.html"
-    fields = ['corehq.apps.reports.filters.select.MonthFilter',
-              'corehq.apps.reports.filters.select.YearFilter',
+    fields = ['commcarehq.apps.reports.filters.select.MonthFilter',
+              'commcarehq.apps.reports.filters.select.YearFilter',
               'pathfinder.models.ProviderSelect']
     flush_layout = True
 
@@ -104,9 +104,9 @@ class PathfinderHBCReport(CustomProjectReport):
     slug = "hbc"
     asynchronous = False
     report_template_path = "pathfinder-reports/hbc.html"
-    fields = ['corehq.apps.reports.filters.select.MonthFilter',
-              'corehq.apps.reports.filters.select.YearFilter',
-              'corehq.apps.reports.filters.select.GroupFilter']
+    fields = ['commcarehq.apps.reports.filters.select.MonthFilter',
+              'commcarehq.apps.reports.filters.select.YearFilter',
+              'commcarehq.apps.reports.filters.select.GroupFilter']
     flush_layout = True
 
     @property

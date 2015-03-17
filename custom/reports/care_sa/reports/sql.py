@@ -1,14 +1,14 @@
 from sqlagg.columns import *
-from corehq.apps.reports.sqlreport import SqlTabularReport, DatabaseColumn
-from corehq.apps.reports.filters.fixtures import AsyncDrillableFilter
-from corehq.apps.reports.filters.select import GroupFilter
-from corehq.apps.reports.dont_use.fields import BooleanField
-from corehq.apps.reports.standard import CustomProjectReport, DatespanMixin
-from corehq.apps.reports.util import make_ctable_table_name
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn, DataTablesColumnGroup
-from corehq.apps.fixtures.models import FixtureDataItem
-from corehq.apps.groups.models import Group
+from commcarehq.apps.reports.sqlreport import SqlTabularReport, DatabaseColumn
+from commcarehq.apps.reports.filters.fixtures import AsyncDrillableFilter
+from commcarehq.apps.reports.filters.select import GroupFilter
+from commcarehq.apps.reports.dont_use.fields import BooleanField
+from commcarehq.apps.reports.standard import CustomProjectReport, DatespanMixin
+from commcarehq.apps.reports.util import make_ctable_table_name
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn, DataTablesColumnGroup
+from commcarehq.apps.fixtures.models import FixtureDataItem
+from commcarehq.apps.groups.models import Group
 from couchdbkit.exceptions import ResourceNotFound
 from copy import copy
 
@@ -42,7 +42,7 @@ class CareReport(SqlTabularReport,
     report_template_path = "care_sa/reports/grouped.html"
 
     fields = [
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
         'custom.reports.care_sa.reports.sql.ProvinceField',
         'custom.reports.care_sa.reports.sql.CBOField',
         'custom.reports.care_sa.reports.sql.ShowAgeField',

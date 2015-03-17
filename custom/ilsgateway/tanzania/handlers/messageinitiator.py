@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from corehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.sms.api import send_sms_to_verified_number
 from dimagi.utils.dates import get_business_day_of_month_before
-from corehq.apps.locations.models import Location
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.locations.models import Location
+from commcarehq.apps.users.models import CommCareUser
 from custom.ilsgateway.tanzania.handlers import get_location
 from custom.ilsgateway.tanzania.handlers.keyword import KeywordHandler
 from custom.ilsgateway.models import SupplyPointStatus, SupplyPointStatusTypes, SupplyPointStatusValues

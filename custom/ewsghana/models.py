@@ -1,7 +1,7 @@
 from couchdbkit.ext.django.schema import Document, BooleanProperty, StringProperty
 from casexml.apps.stock.models import DocDomainMapping
-from corehq.toggles import STOCK_AND_RECEIPT_SMS_HANDLER
-from corehq.toggles import NAMESPACE_DOMAIN
+from commcarehq.toggles import STOCK_AND_RECEIPT_SMS_HANDLER
+from commcarehq.toggles import NAMESPACE_DOMAIN
 from django.db import models
 
 

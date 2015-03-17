@@ -1,4 +1,4 @@
-from corehq.preindex import CouchAppsPreindexPlugin
+from commcarehq.preindex import CouchAppsPreindexPlugin
 from django.conf import settings
 
 CouchAppsPreindexPlugin.register('mvp_indicators', __file__, {

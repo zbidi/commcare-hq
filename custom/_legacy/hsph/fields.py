@@ -1,9 +1,9 @@
-from corehq.apps.reports.dont_use.fields import ReportField, ReportSelectField
-from corehq.apps.reports.dont_use.fields import SelectFilteredMobileWorkerField
-from corehq.apps.fixtures.models import FixtureDataType, FixtureDataItem
-from corehq.apps.reports.filters.base import (BaseSingleOptionFilter,
+from commcarehq.apps.reports.dont_use.fields import ReportField, ReportSelectField
+from commcarehq.apps.reports.dont_use.fields import SelectFilteredMobileWorkerField
+from commcarehq.apps.fixtures.models import FixtureDataType, FixtureDataItem
+from commcarehq.apps.reports.filters.base import (BaseSingleOptionFilter,
     BaseDrilldownOptionFilter)
-from corehq.apps.reports.filters.users import LinkedUserFilter
+from commcarehq.apps.reports.filters.users import LinkedUserFilter
 
 import hsph.const as const
 

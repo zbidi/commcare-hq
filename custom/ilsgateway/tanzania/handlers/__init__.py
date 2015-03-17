@@ -1,4 +1,4 @@
-from corehq.apps.commtrack.util import get_supply_point
+from commcarehq.apps.commtrack.util import get_supply_point
 
 
 def get_location(domain, user, site_code):

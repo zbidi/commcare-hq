@@ -1,12 +1,12 @@
 from django.db.models.query_utils import Q
-from corehq import Domain
-from corehq.apps.locations.models import SQLLocation
+from commcarehq import Domain
+from commcarehq.apps.locations.models import SQLLocation
 from datetime import timedelta, datetime
 from dateutil import rrule
 from dateutil.rrule import MO
 from django.utils import html
-from corehq.apps.sms.api import add_msg_tags
-from corehq.apps.sms.models import SMSLog, OUTGOING
+from commcarehq.apps.sms.api import add_msg_tags
+from commcarehq.apps.sms.models import SMSLog, OUTGOING
 
 
 def get_supply_points(location_id, domain):

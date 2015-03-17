@@ -3,10 +3,10 @@ from django.contrib import messages
 from django.http import HttpResponse
 from django.utils.translation import ugettext_noop
 from django.views.decorators.http import require_POST, require_GET
-from corehq.apps.domain.decorators import domain_admin_required
-from corehq.apps.sms.mixin import VerifiedNumber
-from corehq.apps.sms.util import clean_phone_number
-from corehq.apps.locations.models import SQLLocation
+from commcarehq.apps.domain.decorators import domain_admin_required
+from commcarehq.apps.sms.mixin import VerifiedNumber
+from commcarehq.apps.sms.util import clean_phone_number
+from commcarehq.apps.locations.models import SQLLocation
 from custom.ewsghana.alerts.alerts import on_going_process_user, on_going_stockout_process_user, \
     urgent_non_reporting_process_user, urgent_stockout_process_user, report_reminder_process_user
 from custom.ewsghana.api import GhanaEndpoint, EWSApi

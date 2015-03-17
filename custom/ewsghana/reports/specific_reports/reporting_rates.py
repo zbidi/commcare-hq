@@ -1,16 +1,16 @@
 from datetime import datetime
-from corehq import Domain
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.graph_models import PieChart
+from commcarehq import Domain
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.graph_models import PieChart
 from custom.ewsghana import StockLevelsReport
 from custom.ewsghana.reports import MultiReport, EWSData, ReportingRatesData
 from casexml.apps.stock.models import StockTransaction
 from custom.ewsghana.reports.stock_levels_report import FacilityReportData, StockLevelsLegend, FacilitySMSUsers, \
     FacilityUsers, FacilityInChargeUsers, InventoryManagementData, InputStock
 from custom.ewsghana.utils import calculate_last_period
-from corehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.dates import DatespanFilter
 from custom.ilsgateway.tanzania import make_url
 from custom.ilsgateway.tanzania.reports.utils import link_format
 from django.utils.translation import ugettext as _

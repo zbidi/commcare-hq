@@ -1,8 +1,8 @@
 from django.core.urlresolvers import NoReverseMatch, reverse
 from django.http import Http404
-from corehq.apps.api.es import ReportCaseES, ReportXFormES
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.api.es import ReportCaseES, ReportXFormES
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.users.models import CommCareUser
 from dimagi.utils import html
 from dimagi.utils.decorators.memoized import memoized
 from pact.enums import PACT_CASE_TYPE, PACT_DOMAIN
@@ -63,8 +63,8 @@ class PactCHWProfileReport(PactDrilldownReportMixin, PactElasticTabularReportMix
 
     def get_fields(self):
         if self.view_mode == 'submissions':
-            yield 'corehq.apps.reports.filters.users.UserTypeFilter'
-            yield 'corehq.apps.reports.filters.dates.DatespanFilter'
+            yield 'commcarehq.apps.reports.filters.users.UserTypeFilter'
+            yield 'commcarehq.apps.reports.filters.dates.DatespanFilter'
 
 
     @memoized

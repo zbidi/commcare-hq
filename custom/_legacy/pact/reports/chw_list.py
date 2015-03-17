@@ -1,9 +1,9 @@
 from django.core.urlresolvers import  NoReverseMatch
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
 from django.utils import html
-from corehq.apps.reports.util import make_form_couch_key
+from commcarehq.apps.reports.util import make_form_couch_key
 
 from couchforms.models import XFormInstance
 from pact.reports.chw import PactCHWProfileReport
@@ -14,7 +14,7 @@ class PactCHWDashboard(GenericTabularReport, ProjectReportParametersMixin, Custo
     name = "CHW Management"
     slug = "chws"
     hide_filters = True
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter', ]
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter', ]
 
     #    asynchronous = False
     @property

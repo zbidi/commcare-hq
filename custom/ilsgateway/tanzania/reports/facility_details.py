@@ -1,8 +1,8 @@
-from corehq.apps.commtrack.models import StockState
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.commtrack.models import StockState
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.users.models import CommCareUser
 from custom.ilsgateway.filters import ProductByProgramFilter
 from custom.ilsgateway.tanzania import ILSData, MultiReport
 from custom.ilsgateway.tanzania.reports.utils import decimal_format, float_format

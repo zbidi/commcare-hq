@@ -3,7 +3,7 @@ from celery.schedules import crontab
 from celery.task import periodic_task
 from dimagi.utils.couch import get_redis_client
 
-from corehq.apps.locations.models import Location
+from commcarehq.apps.locations.models import Location
 from custom.m4change.constants import NUMBER_OF_MONTHS_FOR_FIXTURES, M4CHANGE_DOMAINS, REDIS_FIXTURE_KEYS, \
     REDIS_FIXTURE_LOCK_KEYS
 from custom.m4change.fixtures.report_fixtures import get_last_n_months

@@ -1,12 +1,12 @@
 import logging
 import re
-from corehq.apps.products.models import SQLProduct
+from commcarehq.apps.products.models import SQLProduct
 from dimagi.utils.dates import force_to_datetime
 from couchdbkit.exceptions import ResourceNotFound
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.locations.models import Location
-from corehq.fluff.calculators.xform import FormPropertyFilter, IN
-from corehq.util.translation import localize
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.locations.models import Location
+from commcarehq.fluff.calculators.xform import FormPropertyFilter, IN
+from commcarehq.util.translation import localize
 from custom.intrahealth.reports.fiche_consommation_report import FicheConsommationReport
 from custom.intrahealth.reports.recap_passage_report import RecapPassageReport
 from custom.intrahealth.reports.tableu_de_board_report import TableuDeBoardReport

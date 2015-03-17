@@ -3,10 +3,10 @@ from django.utils.safestring import mark_safe
 import logging
 import numpy
 import pytz
-from corehq.apps.indicators.models import DynamicIndicatorDefinition, CombinedCouchViewIndicatorDefinition
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn, DataTablesColumnGroup
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import DatespanMixin
+from commcarehq.apps.indicators.models import DynamicIndicatorDefinition, CombinedCouchViewIndicatorDefinition
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn, DataTablesColumnGroup
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import DatespanMixin
 from dimagi.utils.decorators.memoized import memoized
 from dimagi.utils.html import format_html
 from mvp.models import MVP
@@ -19,9 +19,9 @@ class CHWManagerReport(GenericTabularReport, MVPIndicatorReport, DatespanMixin):
     report_template_path = "mvp/reports/chw_report.html"
     fix_left_col = True
     emailable = True
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter',
-              'corehq.apps.reports.filters.select.GroupFilter',
-              'corehq.apps.reports.filters.dates.DatespanFilter']
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter',
+              'commcarehq.apps.reports.filters.select.GroupFilter',
+              'commcarehq.apps.reports.filters.dates.DatespanFilter']
 
     @property
     @memoized

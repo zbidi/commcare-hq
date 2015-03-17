@@ -1,4 +1,4 @@
-from corehq.apps.locations.models import SQLLocation
+from commcarehq.apps.locations.models import SQLLocation
 from custom.ewsghana.reminders import REGISTER_MESSAGE, NO_SUPPLY_POINT_MESSAGE, REQ_SUBMITTED, \
     REQ_NOT_SUBMITTED
 from custom.ilsgateway.models import RequisitionReport

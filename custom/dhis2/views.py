@@ -1,7 +1,7 @@
 from datetime import datetime
-from corehq.apps.domain.decorators import require_superuser
-from corehq.apps.receiverwrapper.models import RepeatRecord
-from corehq.apps.receiverwrapper.tasks import process_repeater_list
+from commcarehq.apps.domain.decorators import require_superuser
+from commcarehq.apps.receiverwrapper.models import RepeatRecord
+from commcarehq.apps.receiverwrapper.tasks import process_repeater_list
 from django.http import HttpResponse
 
 

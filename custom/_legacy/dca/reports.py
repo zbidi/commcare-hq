@@ -1,11 +1,11 @@
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.reports.dont_use.fields import ReportField
-from corehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
-from corehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.dont_use.fields import ReportField
+from commcarehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
+from commcarehq.apps.reports.generic import GenericTabularReport
 from dimagi.utils.couch.database import get_db
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.groups.models import Group
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.groups.models import Group
 from dateutil.parser import parse, tz
 
 class ProjectOfficerReport(GenericTabularReport, CustomProjectReport):
@@ -16,8 +16,8 @@ class ProjectOfficerReport(GenericTabularReport, CustomProjectReport):
     """
     name = "Project Officer Portfolio"
     slug = "officer_portfolio"
-    fields = ['corehq.apps.reports.filters.select.MonthFilter',
-              'corehq.apps.reports.filters.select.YearFilter',
+    fields = ['commcarehq.apps.reports.filters.select.MonthFilter',
+              'commcarehq.apps.reports.filters.select.YearFilter',
               'dca.reports.OfficerSelectionField']
     exportable = True
 
@@ -563,9 +563,9 @@ class PortfolioComparisonReport(GenericTabularReport, CustomProjectReport):
     """
     name = "Portfolio Comparison"
     slug = "portfolio_comparison"
-    fields = ['corehq.apps.reports.filters.select.MonthFilter',
-              'corehq.apps.reports.filters.select.YearFilter',
-              'corehq.apps.reports.filters.select.GroupFilter',
+    fields = ['commcarehq.apps.reports.filters.select.MonthFilter',
+              'commcarehq.apps.reports.filters.select.YearFilter',
+              'commcarehq.apps.reports.filters.select.GroupFilter',
               'dca.reports.CurrencySelectionField']
     exportable = True
 
@@ -649,9 +649,9 @@ class PerformanceReport(GenericTabularReport, CustomProjectReport):
     slug = "project_performance"
     exportable = True
     use_datatables = False
-    fields = ['corehq.apps.reports.filters.select.MonthFilter',
-              'corehq.apps.reports.filters.select.YearFilter',
-              'corehq.apps.reports.filters.select.GroupFilter',
+    fields = ['commcarehq.apps.reports.filters.select.MonthFilter',
+              'commcarehq.apps.reports.filters.select.YearFilter',
+              'commcarehq.apps.reports.filters.select.GroupFilter',
               'dca.reports.CurrencySelectionField']
 
 
@@ -772,9 +772,9 @@ class PerformanceRatiosReport(GenericTabularReport, CustomProjectReport):
 #    template_name = "dca/performance-ratios.html"
     exportable = True
     use_datatables = False
-    fields = ['corehq.apps.reports.filters.select.MonthFilter',
-              'corehq.apps.reports.filters.select.YearFilter',
-              'corehq.apps.reports.filters.select.GroupFilter',
+    fields = ['commcarehq.apps.reports.filters.select.MonthFilter',
+              'commcarehq.apps.reports.filters.select.YearFilter',
+              'commcarehq.apps.reports.filters.select.GroupFilter',
               'dca.reports.CurrencySelectionField']
 
     _rows = [

@@ -1,10 +1,10 @@
 from couchforms.models import XFormInstance
 import fluff
-from corehq.fluff.calculators import xform as xcalculators
+from commcarehq.fluff.calculators import xform as xcalculators
 from fluff.filters import ANDFilter, NOTFilter, CustomFilter
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.fixtures.models import FixtureDataType, FixtureDataItem
-from corehq.apps.groups.models import Group
+from commcarehq.apps.fixtures.models import FixtureDataType, FixtureDataItem
+from commcarehq.apps.groups.models import Group
 from dimagi.utils.decorators.memoized import memoized
 from couchdbkit.exceptions import ResourceNotFound
 

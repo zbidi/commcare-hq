@@ -1,6 +1,6 @@
-from corehq.apps.reports.generic import GenericTabularReport, GetParamsMixin
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.toggles import PATHWAYS_PREVIEW
+from commcarehq.apps.reports.generic import GenericTabularReport, GetParamsMixin
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.toggles import PATHWAYS_PREVIEW
 from custom.care_pathways.utils import get_domain_configuration
 
 

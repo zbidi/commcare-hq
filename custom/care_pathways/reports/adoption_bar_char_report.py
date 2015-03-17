@@ -1,6 +1,6 @@
-from corehq.apps.reports.graph_models import MultiBarChart, Axis
-from corehq.apps.reports.datatables import DataTablesHeader
-from corehq.apps.reports.sqlreport import DataFormatter, TableDataFormat
+from commcarehq.apps.reports.graph_models import MultiBarChart, Axis
+from commcarehq.apps.reports.datatables import DataTablesHeader
+from commcarehq.apps.reports.sqlreport import DataFormatter, TableDataFormat
 from custom.care_pathways.filters import GeographyFilter, GenderFilter, GroupLeadershipFilter, CBTNameFilter,  GroupByFilter, PPTYearFilter, TypeFilter, ScheduleFilter
 from custom.care_pathways.reports import CareBaseReport
 from custom.care_pathways.sqldata import AdoptionBarChartReportSqlData

@@ -3,7 +3,7 @@ from django import forms
 #from the models, we have this, (couchmodels.py)
 #flipping to tuple
 from django.forms import Form
-from corehq.apps.api.es import ReportCaseES
+from commcarehq.apps.api.es import ReportCaseES
 from pact.enums import PACT_HP_CHOICES, PACT_DOT_CHOICES, PACT_REGIMEN_CHOICES, GENDER_CHOICES, PACT_RACE_CHOICES, PACT_HIV_CLINIC_CHOICES, PACT_LANGUAGE_CHOICES, CASE_NONART_REGIMEN_PROP, CASE_ART_REGIMEN_PROP, DOT_ART, DOT_NONART
 from django.forms import widgets
 from pact.regimen import regimen_dict_from_choice

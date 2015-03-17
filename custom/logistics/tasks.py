@@ -1,8 +1,8 @@
 from datetime import datetime
 from functools import partial
 import itertools
-from corehq.apps.commtrack.models import SupplyPointCase
-from corehq.apps.locations.models import SQLLocation, Location
+from commcarehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.locations.models import SQLLocation, Location
 from custom.ilsgateway import TEST
 from custom.logistics.commtrack import save_stock_data_checkpoint, synchronization
 from custom.logistics.models import StockDataCheckpoint

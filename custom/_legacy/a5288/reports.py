@@ -1,14 +1,14 @@
 from django.utils.translation import ugettext_noop
 from django.utils.translation import ugettext as _
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.sms.models import ExpectedCallbackEventLog, CALLBACK_PENDING, CALLBACK_RECEIVED, CALLBACK_MISSED
+from commcarehq.apps.sms.models import ExpectedCallbackEventLog, CALLBACK_PENDING, CALLBACK_RECEIVED, CALLBACK_MISSED
 from datetime import datetime, timedelta
 from dimagi.utils.timezones import utils as tz_utils
 from dimagi.utils.parsing import json_format_datetime
-from corehq.apps.reports.util import format_datatables_data
+from commcarehq.apps.reports.util import format_datatables_data
 import pytz
 from dateutil.parser import parse
 

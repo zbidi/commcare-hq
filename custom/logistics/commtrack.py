@@ -2,10 +2,10 @@ import itertools
 from functools import partial
 import logging
 import traceback
-from corehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.commtrack.models import SupplyPointCase
 
-from corehq.apps.locations.models import Location
-from corehq.apps.users.models import WebUser
+from commcarehq.apps.locations.models import Location
+from commcarehq.apps.users.models import WebUser
 from custom.logistics.models import MigrationCheckpoint
 from dimagi.utils.dates import force_to_datetime
 from requests.exceptions import ConnectionError

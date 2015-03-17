@@ -1,7 +1,7 @@
 from custom.ilsgateway.tanzania.handlers.keyword import KeywordHandler
 from custom.ewsghana.alerts.alerts import report_completion_check, stock_alerts
-from corehq.apps.sms.api import send_sms_to_verified_number
-from corehq.apps.commtrack.sms import *
+from commcarehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.commtrack.sms import *
 
 
 class AlertsHandler(KeywordHandler):

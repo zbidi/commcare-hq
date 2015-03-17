@@ -3,7 +3,7 @@ import datetime
 from couchdbkit.ext.django.schema import (Document, StringProperty,
     ListProperty, DictProperty, DateProperty)
 
-from corehq.apps.groups.models import Group
+from commcarehq.apps.groups.models import Group
 
 from .constants import *
 

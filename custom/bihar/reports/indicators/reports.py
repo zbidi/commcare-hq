@@ -5,8 +5,8 @@ from custom.bihar.reports.supervisor import BiharNavReport, MockEmptyReport, \
     team_member_context
 from copy import copy
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.reports.generic import GenericTabularReport, summary_context
-from corehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.generic import GenericTabularReport, summary_context
+from commcarehq.apps.reports.standard import CustomProjectReport
 from dimagi.utils.decorators.memoized import memoized
 from dimagi.utils.html import format_html
 from django.utils.translation import ugettext as _, ugettext_noop

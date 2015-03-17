@@ -2,7 +2,7 @@ from couchdbkit import ResourceNotFound
 from django.core.management import BaseCommand
 from custom.bihar.utils import get_all_calculations, get_calculation, \
     get_all_owner_ids_from_group
-from corehq.apps.groups.models import Group
+from commcarehq.apps.groups.models import Group
 
 
 class Command(BaseCommand):

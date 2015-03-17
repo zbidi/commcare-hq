@@ -4,8 +4,8 @@ from celery.task import periodic_task
 from celery.schedules import crontab
 from django.conf import settings
 
-from corehq.apps.groups.models import Group
-from corehq.apps.reports.util import make_form_couch_key
+from commcarehq.apps.groups.models import Group
+from commcarehq.apps.reports.util import make_form_couch_key
 from couchforms.models import XFormInstance
 
 from .models import LegacyWeeklyReport

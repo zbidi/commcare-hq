@@ -1,5 +1,5 @@
-from corehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
-from corehq.apps.reports.util import make_form_couch_key
+from commcarehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
+from commcarehq.apps.reports.util import make_form_couch_key
 from couchforms.models import XFormInstance
 import logging
 

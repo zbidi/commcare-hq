@@ -1,9 +1,9 @@
-from corehq.apps.locations.models import Location
-from corehq.apps.reports.filters.dates import DatespanFilter
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.graph_models import MultiBarChart, Axis
-from corehq.apps.reports.sqlreport import calculate_total_row
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, DatespanMixin
+from commcarehq.apps.locations.models import Location
+from commcarehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.graph_models import MultiBarChart, Axis
+from commcarehq.apps.reports.sqlreport import calculate_total_row
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, DatespanMixin
 from dimagi.utils.decorators.memoized import memoized
 from custom.intrahealth.filters import LocationFilter
 from custom.intrahealth.reports import IntraHealtMixin

@@ -1,6 +1,6 @@
 from django.core.management.base import NoArgsCommand
 
-from corehq.apps.api.es import ReportXFormES
+from commcarehq.apps.api.es import ReportXFormES
 from pact.enums import PACT_DOMAIN
 from pact.utils import REPORT_XFORM_MISSING_DOTS_QUERY
 

@@ -2,10 +2,10 @@ import calendar
 import json
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_noop
-from corehq.apps.locations.util import location_hierarchy_config, load_locs_json
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.filters.select import YearFilter, MonthFilter
-from corehq.util.translation import localize
+from commcarehq.apps.locations.util import location_hierarchy_config, load_locs_json
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.filters.select import YearFilter, MonthFilter
+from commcarehq.util.translation import localize
 from django.utils.translation import ugettext as _
 
 

@@ -1,14 +1,14 @@
 from collections import defaultdict
-from corehq.apps.reports.util import make_ctable_table_name
+from commcarehq.apps.reports.util import make_ctable_table_name
 from dimagi.utils.decorators.memoized import memoized
 from sqlagg.columns import *
 from django.utils.translation import ugettext as _, ugettext_noop
-from corehq.apps.fixtures.models import FixtureDataType, FixtureDataItem
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.sqlreport import DatabaseColumn, SqlData, AggregateColumn, DataFormatter, TableDataFormat
-from corehq.apps.reports.standard import CustomProjectReport, DatespanMixin
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.users.util import raw_username
+from commcarehq.apps.fixtures.models import FixtureDataType, FixtureDataItem
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.sqlreport import DatabaseColumn, SqlData, AggregateColumn, DataFormatter, TableDataFormat
+from commcarehq.apps.reports.standard import CustomProjectReport, DatespanMixin
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.util import raw_username
 from couchforms.models import XFormInstance
 from .definitions import *
 from .composed import DataProvider, ComposedTabularReport
@@ -375,7 +375,7 @@ class MCBase(ComposedTabularReport, CustomProjectReport, DatespanMixin):
     emailable = True
     report_template_path = "mc/reports/sectioned_tabular.html"
     fields = [
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
     ]
     SECTIONS = None  # override
     format_class = None  # override
@@ -415,7 +415,7 @@ class MCBase(ComposedTabularReport, CustomProjectReport, DatespanMixin):
 class HeathFacilityMonthly(MCBase):
     slug = 'hf_monthly'
     fields = [
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
         'custom.reports.mc.reports.fields.HealthFacilityField',
     ]
     name = ugettext_noop("mc_report_hf_monthly")
@@ -424,7 +424,7 @@ class HeathFacilityMonthly(MCBase):
 
 class DistrictMonthly(MCBase):
     fields = [
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
         'custom.reports.mc.reports.fields.DistrictField',
     ]
     slug = 'district_monthly'
@@ -434,7 +434,7 @@ class DistrictMonthly(MCBase):
 
 class DistrictWeekly(MCBase):
     fields = [
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
         'custom.reports.mc.reports.fields.DistrictField',
     ]
     slug = 'district_weekly'
@@ -501,7 +501,7 @@ class HealthFacilityWeekly(MCBase):
     report_template_path = "mc/reports/hf_weekly.html"
     extra_context_providers = [section_context, hf_message_content]
     fields = [
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
         'custom.reports.mc.reports.fields.HealthFacilityField',
     ]
     slug = 'hf_weekly'

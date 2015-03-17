@@ -5,23 +5,23 @@ import time
 import numbers
 
 from django.utils.datastructures import SortedDict
-from corehq.apps.reports.standard.cases.basic import CaseListReport
-from corehq.apps.reports.standard.cases.data_sources import CaseDisplay
-from corehq.pillows.base import restore_property_dict
+from commcarehq.apps.reports.standard.cases.basic import CaseListReport
+from commcarehq.apps.reports.standard.cases.data_sources import CaseDisplay
+from commcarehq.pillows.base import restore_property_dict
 
 from dimagi.utils.couch.database import get_db
 from dimagi.utils.decorators.memoized import memoized
 
-from corehq.apps.fixtures.models import FixtureDataType, FixtureDataItem
-from corehq.apps.reports.standard import ProjectReportParametersMixin, DatespanMixin, CustomProjectReport
-from corehq.apps.reports.datatables import (DataTablesColumn, NumericColumn,
+from commcarehq.apps.fixtures.models import FixtureDataType, FixtureDataItem
+from commcarehq.apps.reports.standard import ProjectReportParametersMixin, DatespanMixin, CustomProjectReport
+from commcarehq.apps.reports.datatables import (DataTablesColumn, NumericColumn,
         DataTablesHeader)
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports import util
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports import util
 
 from hsph.reports import HSPHSiteDataMixin
 from hsph.fields import AllocatedToFilter, IHForCHFField, DCTLToFIDAFilter
-from corehq.apps.api.es import ReportCaseES
+from commcarehq.apps.api.es import ReportCaseES
 from django.utils.translation import ugettext as _
 from datetime import date, timedelta
 
@@ -66,8 +66,8 @@ class FIDAPerformanceReport(GenericTabularReport, CustomProjectReport,
     slug = "hsph_fida_performance"
     
     fields = [
-        'corehq.apps.reports.filters.users.UserTypeFilter',
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.users.UserTypeFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
         'hsph.fields.DCTLToFIDAFilter',
     ]
 
@@ -214,8 +214,8 @@ class FacilityRegistrationsReport(GenericTabularReport, CustomProjectReport,
     """
     name = "Facility Registrations"
     slug = "hsph_facility_registrations"
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter',
-              'corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter',
+              'commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.DCTLToFIDAFilter',
               'hsph.fields.SiteField']
 
@@ -396,12 +396,12 @@ class CaseReport(CaseListReport, CustomProjectReport, HSPHSiteDataMixin,
     slug = 'case_report'
     
     fields = (
-        'corehq.apps.reports.filters.users.UserTypeFilter',
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.users.UserTypeFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
         'hsph.fields.SiteField',
         'hsph.fields.AllocatedToFilter',
         'hsph.fields.DCTLToFIDAFilter',
-        'corehq.apps.reports.filters.select.SelectOpenCloseFilter',
+        'commcarehq.apps.reports.filters.select.SelectOpenCloseFilter',
     )
 
     default_case_type = 'birth'
@@ -532,7 +532,7 @@ class FacilityWiseFollowUpReport(GenericTabularReport, DatespanMixin,
                                  ProjectReportParametersMixin):
     name = "Facility Wise Follow Up Report"
     slug = "hsph_facility_wise_follow_up"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.DCTLToFIDAFilter',
               'hsph.fields.SiteField']
 

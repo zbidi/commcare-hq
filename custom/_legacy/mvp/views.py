@@ -1,4 +1,4 @@
-from corehq.apps.indicators.views import IndicatorAdminCRUDFormView, BulkCopyIndicatorsView
+from commcarehq.apps.indicators.views import IndicatorAdminCRUDFormView, BulkCopyIndicatorsView
 
 
 class MVPIndicatorAdminCRUDFormView(IndicatorAdminCRUDFormView):

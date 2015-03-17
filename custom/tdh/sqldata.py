@@ -1,7 +1,7 @@
 from sqlagg.columns import SimpleColumn
 from sqlagg.filters import BETWEEN, IN, EQ
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.sqlreport import SqlData, DataFormatter, TableDataFormat, DatabaseColumn
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.sqlreport import SqlData, DataFormatter, TableDataFormat, DatabaseColumn
 from custom.tdh.reports import UNNECESSARY_FIELDS, CHILD_HEADERS_MAP, INFANT_HEADERS_MAP, NEWBORN_HEADERS_MAP
 
 

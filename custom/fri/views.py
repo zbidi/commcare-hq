@@ -2,8 +2,8 @@ from custom.fri.forms import MessageBankForm
 from custom.fri.reports.reports import MessageBankReport
 from custom.fri.api import get_message_bank
 from custom.fri.models import FRIMessageBankMessage
-from corehq.apps.reports.dispatcher import CustomProjectReportDispatcher
-from corehq.apps.domain.decorators import require_previewer, login_and_domain_required
+from commcarehq.apps.reports.dispatcher import CustomProjectReportDispatcher
+from commcarehq.apps.domain.decorators import require_previewer, login_and_domain_required
 from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.contrib import messages

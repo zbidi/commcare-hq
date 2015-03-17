@@ -11,7 +11,7 @@ from gevent.pool import Pool
 from couchdbkit.exceptions import ResourceNotFound
 from django.core.management.base import LabelCommand
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.indicators.models import CaseIndicatorDefinition, FormIndicatorDefinition, DocumentMismatchError, DocumentNotInDomainError
+from commcarehq.apps.indicators.models import CaseIndicatorDefinition, FormIndicatorDefinition, DocumentMismatchError, DocumentNotInDomainError
 from couchforms.models import XFormInstance
 from dimagi.utils.couch.database import get_db
 from dimagi.utils.management.commands import prime_views

@@ -1,4 +1,4 @@
-from corehq.apps.programs.models import Program
+from commcarehq.apps.programs.models import Program
 
 
 def ews_smsuser_extension(sms_user, user):

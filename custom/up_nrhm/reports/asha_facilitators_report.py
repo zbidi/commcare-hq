@@ -1,8 +1,8 @@
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import CustomProjectReport, DatespanMixin
-from corehq.apps.reports.filters.dates import DatespanFilter
-from corehq.apps.reports.util import format_datatables_data
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport, DatespanMixin
+from commcarehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.util import format_datatables_data
 from custom.up_nrhm.filters import DrillDownOptionFilter
 from custom.up_nrhm.sql_data import ASHAFacilitatorsData
 

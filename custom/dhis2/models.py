@@ -3,7 +3,7 @@ from datetime import date
 import json
 import logging
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.fixtures.models import FixtureDataItem, FixtureDataType, FieldList, FixtureItemField
+from commcarehq.apps.fixtures.models import FixtureDataItem, FixtureDataType, FieldList, FixtureItemField
 from couchdbkit import ResourceNotFound
 from couchdbkit.ext.django.schema import *
 from dimagi.utils.couch.cache import cache_core

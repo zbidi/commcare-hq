@@ -1,8 +1,8 @@
 from datetime import timedelta
-from corehq.fluff.calculators.xform import IntegerPropertyReference, FormPropertyFilter
+from commcarehq.fluff.calculators.xform import IntegerPropertyReference, FormPropertyFilter
 from couchforms.models import XFormInstance
 import fluff
-from corehq.fluff.calculators import xform as xcalculators
+from commcarehq.fluff.calculators import xform as xcalculators
 from fluff.filters import NOTFilter, ANDFilter, ORFilter
 from fluff.models import SimpleCalculator
 

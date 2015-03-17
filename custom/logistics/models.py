@@ -1,5 +1,5 @@
 from django.db import models
-from corehq.apps.locations.models import SQLLocation
+from commcarehq.apps.locations.models import SQLLocation
 
 
 class Checkpoint(models.Model):

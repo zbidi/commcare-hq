@@ -30,7 +30,7 @@ Extracting data from the db:
 
 ::
 
-    from corehq.apps.users.models import CommCareUser, CommCareCase from
+    from commcarehq.apps.users.models import CommCareUser, CommCareCase from
     dimagi.utils.couch.database import get_db
 
     domain_id = db.view('domain/domains', key="opm", reduce=False).one()['id']

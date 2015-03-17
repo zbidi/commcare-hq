@@ -1,5 +1,5 @@
-from corehq.apps.commtrack.models import SupplyPointCase
-from corehq.apps.locations.models import Location
+from commcarehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.locations.models import Location
 from django.core.management import BaseCommand
 
 

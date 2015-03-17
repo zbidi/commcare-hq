@@ -1,19 +1,19 @@
 # coding=utf-8
 
 from numbers import Number
-from corehq.apps.reports.basic import BasicTabularReport, Column, GenericTabularReport
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumnGroup, \
+from commcarehq.apps.reports.basic import BasicTabularReport, Column, GenericTabularReport
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumnGroup, \
     DataTablesColumn, DTSortType
-from corehq.apps.reports.standard import ProjectReportParametersMixin, CustomProjectReport, DatespanMixin
-from corehq.apps.reports.filters.dates import DatespanFilter
-from corehq.apps.groups.models import Group
+from commcarehq.apps.reports.standard import ProjectReportParametersMixin, CustomProjectReport, DatespanMixin
+from commcarehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.groups.models import Group
 from couchdbkit_aggregate import KeyView, AggregateKeyView, fn
 from dimagi.utils.couch.loosechange import map_reduce
 from dimagi.utils.decorators.memoized import memoized
 from couchdbkit_aggregate.fn import NO_VALUE
 from dimagi.utils.couch.database import get_db
-from corehq.apps.reports.util import format_datatables_data as fdd
-from corehq.apps.reports import util
+from commcarehq.apps.reports.util import format_datatables_data as fdd
+from commcarehq.apps.reports import util
 
 RELAIS_GROUP = "relais"
 
@@ -520,7 +520,7 @@ class Referrals(CareGroupReport):
 class Outcomes(GenericTabularReport, CustomProjectReport, ProjectReportParametersMixin, DatespanMixin):
     name = "Outcomes"
     slug = "cb_outcomes"
-    fields = ('corehq.apps.reports.filters.dates.DatespanFilter',)
+    fields = ('commcarehq.apps.reports.filters.dates.DatespanFilter',)
     datespan_default_days = 30
     exportable = True
 
@@ -604,7 +604,7 @@ class Outcomes(GenericTabularReport, CustomProjectReport, ProjectReportParameter
 class DangerSigns(GenericTabularReport, CustomProjectReport, ProjectReportParametersMixin, DatespanMixin):
     name = "Danger sign distribution"
     slug = "cb_danger"
-    fields = ('corehq.apps.reports.filters.dates.DatespanFilter',)
+    fields = ('commcarehq.apps.reports.filters.dates.DatespanFilter',)
     datespan_default_days = 30
     exportable = True
 

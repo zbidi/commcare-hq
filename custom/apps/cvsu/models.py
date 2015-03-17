@@ -1,12 +1,12 @@
 from fluff.filters import ANDFilter, ORFilter, NOTFilter, CustomFilter
 from dimagi.utils.decorators.memoized import memoized
-from corehq.apps.groups.models import Group
-from corehq.fluff.calculators.xform import IN_MULTISELECT, IntegerPropertyReference
+from commcarehq.apps.groups.models import Group
+from commcarehq.fluff.calculators.xform import IN_MULTISELECT, IntegerPropertyReference
 from couchforms.models import XFormInstance
 from .filters import ALL_CVSU_GROUP
 import fluff
-from corehq.fluff.calculators import xform as xcalc
-from corehq.fluff.calculators import case as ccalc
+from commcarehq.fluff.calculators import xform as xcalc
+from commcarehq.fluff.calculators import case as ccalc
 from fluff.models import SimpleCalculator
 
 REPORT_INCIDENT_XMLNS = 'http://openrosa.org/formdesigner/A12E46B1-7ED8-4DE3-B7BB-358219CC6994'

@@ -1,9 +1,9 @@
 from couchdbkit.exceptions import ResourceNotFound
 from django.core.urlresolvers import reverse
-from corehq.apps.api.es import ReportXFormES
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.search import SearchFilter
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.api.es import ReportXFormES
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.search import SearchFilter
+from commcarehq.apps.users.models import CommCareUser
 from custom.succeed.reports import SUBMISSION_SELECT_FIELDS, EMPTY_FIELD, INTERACTION_OUTPUT_DATE_FORMAT
 from custom.succeed.reports.patient_details import PatientDetailsReport
 from custom.succeed.utils import SUCCEED_DOMAIN
@@ -29,7 +29,7 @@ class PatientSubmissionReport(PatientDetailsReport):
     @property
     def fields(self):
         return ['custom.succeed.fields.PatientFormNameFilter',
-                'corehq.apps.reports.standard.cases.filters.CaseSearchFilter']
+                'commcarehq.apps.reports.standard.cases.filters.CaseSearchFilter']
 
     @property
     def headers(self):

@@ -1,8 +1,8 @@
 from sqlagg.columns import SimpleColumn
 from sqlagg.filters import IN, AND, GTE, OR
 from sqlagg.filters import EQ, BETWEEN, LTE
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.sqlreport import SqlData, DatabaseColumn, DataFormatter, TableDataFormat, calculate_total_row
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.sqlreport import SqlData, DatabaseColumn, DataFormatter, TableDataFormat, calculate_total_row
 
 
 LOCATION_HIERARCHY = {

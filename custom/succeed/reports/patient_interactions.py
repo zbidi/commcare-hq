@@ -1,7 +1,7 @@
 from couchdbkit.exceptions import ResourceNotFound
 from datetime import timedelta
 from django.utils.translation import ugettext as _, ugettext_noop
-from corehq.apps.users.models import CouchUser
+from commcarehq.apps.users.models import CouchUser
 from custom.succeed.reports import *
 from custom.succeed.reports.patient_details import PatientDetailsReport
 from dimagi.utils.decorators.memoized import memoized

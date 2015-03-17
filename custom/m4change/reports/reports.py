@@ -1,8 +1,8 @@
 from dimagi.utils.dates import DateSpan
 from dimagi.utils.decorators.memoized import memoized
 
-from corehq.apps.reports.api import ReportDataSource
-from corehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.api import ReportDataSource
+from commcarehq.apps.reports.standard import CustomProjectReport
 
 
 class M4ChangeReport(CustomProjectReport):

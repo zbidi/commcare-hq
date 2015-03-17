@@ -1,15 +1,15 @@
 import copy
 from django.http.response import HttpResponse
 from django.utils.translation import ugettext as _
-from corehq.apps.groups.models import Group
-from corehq.apps.reports.cache import request_cache
-from corehq.apps.reports.standard.cases.basic import CaseListReport
-from corehq.apps.api.es import CaseES
+from commcarehq.apps.groups.models import Group
+from commcarehq.apps.reports.cache import request_cache
+from commcarehq.apps.reports.standard.cases.basic import CaseListReport
+from commcarehq.apps.api.es import CaseES
 
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn, DataTablesColumnGroup
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn, DataTablesColumnGroup
 from dimagi.utils.decorators.memoized import memoized
-from corehq.elastic import stream_es_query, ES_URLS
+from commcarehq.elastic import stream_es_query, ES_URLS
 from custom.bihar.reports.display import MCHMotherDisplay, MCHChildDisplay
 from dimagi.utils.timezones import utils as tz_utils
 import pytz
@@ -27,8 +27,8 @@ class MCHBaseReport(CustomProjectReport, CaseListReport):
     model = None
 
     fields = [
-        'corehq.apps.reports.filters.select.GroupFilter',
-        'corehq.apps.reports.filters.select.SelectOpenCloseFilter',
+        'commcarehq.apps.reports.filters.select.GroupFilter',
+        'commcarehq.apps.reports.filters.select.SelectOpenCloseFilter',
     ]
 
     @property

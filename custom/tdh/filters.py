@@ -1,4 +1,4 @@
-from corehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.dates import DatespanFilter
 
 
 class TDHDateSpanFilter(DatespanFilter):

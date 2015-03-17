@@ -1,5 +1,5 @@
 from casexml.apps.case import get_case_updates
-from corehq.apps.receiverwrapper import submit_form_locally
+from commcarehq.apps.receiverwrapper import submit_form_locally
 from couchforms import convert_xform_to_json
 from dimagi.utils.couch.database import get_db
 from casexml.apps.case.models import CommCareCase

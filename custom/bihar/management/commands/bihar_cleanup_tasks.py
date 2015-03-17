@@ -2,7 +2,7 @@ import csv
 from datetime import datetime
 from optparse import make_option
 from django.core.management.base import BaseCommand
-from corehq.apps.hqcase.utils import get_cases_in_domain
+from commcarehq.apps.hqcase.utils import get_cases_in_domain
 from dimagi.utils.decorators.log_exception import log_exception
 
 

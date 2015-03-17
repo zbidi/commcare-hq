@@ -2,8 +2,8 @@ from datetime import datetime
 import json
 import os
 from django.test import TestCase
-from corehq.apps.commtrack.models import Product as Prod
-from corehq.apps.commtrack.tests.util import bootstrap_domain as initial_bootstrap
+from commcarehq.apps.commtrack.models import Product as Prod
+from commcarehq.apps.commtrack.tests.util import bootstrap_domain as initial_bootstrap
 from custom.ilsgateway.api import Product, ILSGatewayAPI
 from custom.logistics.commtrack import synchronization
 from custom.logistics.models import MigrationCheckpoint

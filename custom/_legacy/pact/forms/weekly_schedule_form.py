@@ -3,7 +3,7 @@ import uuid
 from django import forms
 from django.forms import widgets
 from django.contrib.auth.models import User
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.models import CommCareUser
 from dimagi.utils.decorators.memoized import memoized
 from pact.enums import PACT_DOMAIN
 

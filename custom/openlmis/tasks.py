@@ -1,8 +1,8 @@
 from datetime import timedelta
 from celery.task.base import periodic_task
 from celery.task import task
-from corehq import Domain
-from corehq.apps.commtrack.signals import send_notifications
+from commcarehq import Domain
+from commcarehq.apps.commtrack.signals import send_notifications
 from custom.openlmis.api import OpenLMISEndpoint
 from custom.openlmis.commtrack import bootstrap_domain, sync_requisition_from_openlmis
 import settings

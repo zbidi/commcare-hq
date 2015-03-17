@@ -4,7 +4,7 @@ from dimagi.utils.couch.database import iter_docs
 from django.core.management import BaseCommand
 from custom.bihar.utils import get_all_owner_ids_from_group
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.groups.models import Group
+from commcarehq.apps.groups.models import Group
 
 
 class Command(BaseCommand):

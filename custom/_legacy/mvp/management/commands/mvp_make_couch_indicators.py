@@ -1,5 +1,5 @@
 from django.core.management.base import LabelCommand
-from corehq.apps.indicators.models import (DynamicIndicatorDefinition, CouchIndicatorDef,
+from commcarehq.apps.indicators.models import (DynamicIndicatorDefinition, CouchIndicatorDef,
                                            CombinedCouchViewIndicatorDefinition,
                                            MedianCouchIndicatorDef,
                                            CountUniqueCouchIndicatorDef,

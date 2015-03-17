@@ -1,5 +1,5 @@
-from corehq.apps.reports.filters.dates import DatespanFilter
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
 from custom.ewsghana.reports import MultiReport, ProductSelectionPane
 from custom.ewsghana.reports.specific_reports.reporting_rates import ReportingRates, ReportingDetails
 from custom.ewsghana.reports.specific_reports.stock_status_report import ProductAvailabilityData

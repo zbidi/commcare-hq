@@ -1,9 +1,9 @@
 """
 Fluff IndicatorDocument definitions for the OPM reports.
 """
-from corehq.fluff.calculators.case import CasePropertyFilter
+from commcarehq.fluff.calculators.case import CasePropertyFilter
 from fluff.filters import CustomFilter
-from corehq.apps.users.models import CommCareUser, CommCareCase
+from commcarehq.apps.users.models import CommCareUser, CommCareCase
 from couchforms.models import XFormInstance
 from .constants import *
 import fluff

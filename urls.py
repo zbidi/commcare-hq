@@ -1,13 +1,13 @@
 from django.conf import settings
 from django.conf.urls import patterns, url, include
 from django.views.generic import TemplateView, RedirectView
-from corehq.apps.domain.utils import legacy_domain_re
+from commcarehq.apps.domain.utils import legacy_domain_re
 
 from django.contrib import admin
-from corehq.apps.domain.views import ProBonoStaticView
-from corehq.apps.hqwebapp.templatetags.hq_shared_tags import static
-from corehq.apps.orgs.urls import organizations_urls
-from corehq.apps.reports.urls import report_urls
+from commcarehq.apps.domain.views import ProBonoStaticView
+from commcarehq.apps.hqwebapp.templatetags.hq_shared_tags import static
+from commcarehq.apps.orgs.urls import organizations_urls
+from commcarehq.apps.reports.urls import report_urls
 
 try:
     from localsettings import LOCAL_APP_URLS
@@ -15,44 +15,44 @@ except ImportError:
     LOCAL_APP_URLS = ()
 admin.autodiscover()
 
-handler500 = 'corehq.apps.hqwebapp.views.server_error'
-handler404 = 'corehq.apps.hqwebapp.views.not_found'
-handler403 = 'corehq.apps.hqwebapp.views.no_permissions'
+handler500 = 'commcarehq.apps.hqwebapp.views.server_error'
+handler404 = 'commcarehq.apps.hqwebapp.views.not_found'
+handler403 = 'commcarehq.apps.hqwebapp.views.no_permissions'
 
-from corehq.apps.hqwebapp.urls import domain_specific as hqwebapp_domain_specific
-from corehq.apps.settings.urls import domain_specific as settings_domain_specific
-from corehq.apps.settings.urls import users_redirect, domain_redirect
-from corehq.apps.adm.urls import adm_admin_interface_urls
-from corehq.apps.sms.urls import sms_admin_interface_urls
+from commcarehq.apps.hqwebapp.urls import domain_specific as hqwebapp_domain_specific
+from commcarehq.apps.settings.urls import domain_specific as settings_domain_specific
+from commcarehq.apps.settings.urls import users_redirect, domain_redirect
+from commcarehq.apps.adm.urls import adm_admin_interface_urls
+from commcarehq.apps.sms.urls import sms_admin_interface_urls
 
 
 domain_specific = patterns('',
-    url(r'^logo.png', 'corehq.apps.domain.views.logo', name='logo'),
-    (r'^apps/', include('corehq.apps.app_manager.urls')),
-    (r'^api/', include('corehq.apps.api.urls')),
+    url(r'^logo.png', 'commcarehq.apps.domain.views.logo', name='logo'),
+    (r'^apps/', include('commcarehq.apps.app_manager.urls')),
+    (r'^api/', include('commcarehq.apps.api.urls')),
     # the receiver needs to accept posts at an endpoint that might
     # not have a slash, so don't include it at the root urlconf
-    (r'^receiver', include('corehq.apps.receiverwrapper.urls')),
+    (r'^receiver', include('commcarehq.apps.receiverwrapper.urls')),
     (r'^settings/', include(settings_domain_specific)),
     (r'^users/', include(users_redirect)),
     (r'^domain/', include(domain_redirect)),
-    (r'^groups/', include('corehq.apps.groups.urls')),
-    (r'^phone/', include('corehq.apps.ota.urls')),
-    (r'^phone/', include('corehq.apps.mobile_auth.urls')),
-    (r'^sms/', include('corehq.apps.sms.urls')),
-    (r'^commtrack/', include('corehq.apps.commtrack.urls')),
-    (r'^reminders/', include('corehq.apps.reminders.urls')),
+    (r'^groups/', include('commcarehq.apps.groups.urls')),
+    (r'^phone/', include('commcarehq.apps.ota.urls')),
+    (r'^phone/', include('commcarehq.apps.mobile_auth.urls')),
+    (r'^sms/', include('commcarehq.apps.sms.urls')),
+    (r'^commtrack/', include('commcarehq.apps.commtrack.urls')),
+    (r'^reminders/', include('commcarehq.apps.reminders.urls')),
     (r'^indicators/mvp/', include('mvp.urls')),
-    (r'^indicators/', include('corehq.apps.indicators.urls')),
-    (r'^reports/adm/', include('corehq.apps.adm.urls')),
-    (r'^reports/', include('corehq.apps.reports.urls')),
-    (r'^data/', include('corehq.apps.data_interfaces.urls')),
+    (r'^indicators/', include('commcarehq.apps.indicators.urls')),
+    (r'^reports/adm/', include('commcarehq.apps.adm.urls')),
+    (r'^reports/', include('commcarehq.apps.reports.urls')),
+    (r'^data/', include('commcarehq.apps.data_interfaces.urls')),
     (r'^', include(hqwebapp_domain_specific)),
-    (r'^case/', include('corehq.apps.hqcase.urls')),
-    (r'^cleanup/', include('corehq.apps.cleanup.urls')),
-    (r'^cloudcare/', include('corehq.apps.cloudcare.urls')),
-    (r'^fixtures/', include('corehq.apps.fixtures.urls')),
-    (r'^importer/', include('corehq.apps.importer.urls')),
+    (r'^case/', include('commcarehq.apps.hqcase.urls')),
+    (r'^cleanup/', include('commcarehq.apps.cleanup.urls')),
+    (r'^cloudcare/', include('commcarehq.apps.cloudcare.urls')),
+    (r'^fixtures/', include('commcarehq.apps.fixtures.urls')),
+    (r'^importer/', include('commcarehq.apps.importer.urls')),
     (r'^sqlextract/', include('ctable_view.urls')),
     (r'^fri/', include('custom.fri.urls')),
     (r'^ilsgateway/', include('custom.ilsgateway.urls')),
@@ -61,8 +61,8 @@ domain_specific = patterns('',
     (r'^up_nrhm/', include('custom.up_nrhm.urls')),
     (r'^', include('custom.m4change.urls')),
     (r'^', include('custom.uth.urls')),
-    (r'^dashboard/', include('corehq.apps.dashboard.urls')),
-    (r'^configurable_reports/', include('corehq.apps.userreports.urls')),
+    (r'^dashboard/', include('commcarehq.apps.dashboard.urls')),
+    (r'^configurable_reports/', include('commcarehq.apps.userreports.urls')),
 )
 
 urlpatterns = patterns('',
@@ -70,63 +70,63 @@ urlpatterns = patterns('',
         url=static('hqwebapp/img/favicon2.png'))),
     (r'^auditcare/', include('auditcare.urls')),
     (r'^admin/', include(admin.site.urls)),
-    (r'^register/', include('corehq.apps.registration.urls')),
+    (r'^register/', include('commcarehq.apps.registration.urls')),
     (r'^a/(?P<domain>%s)/' % legacy_domain_re, include(domain_specific)),
-    (r'^o/', include('corehq.apps.orgs.urls')),
+    (r'^o/', include('commcarehq.apps.orgs.urls')),
     (r'^organizations/', include(organizations_urls)),
-    (r'^account/', include('corehq.apps.settings.urls')),
+    (r'^account/', include('commcarehq.apps.settings.urls')),
     (r'^couch/', include('djangocouch.urls')),
-    (r'^project_store(.*)$', 'corehq.apps.appstore.views.rewrite_url'),
-    (r'^exchange/', include('corehq.apps.appstore.urls')),
+    (r'^project_store(.*)$', 'commcarehq.apps.appstore.views.rewrite_url'),
+    (r'^exchange/', include('commcarehq.apps.appstore.urls')),
     (r'^webforms/', include('touchforms.formplayer.urls')),
-    (r'', include('corehq.apps.hqwebapp.urls')),
-    (r'', include('corehq.apps.domain.urls')),
+    (r'', include('commcarehq.apps.hqwebapp.urls')),
+    (r'', include('commcarehq.apps.domain.urls')),
     (r'^adm/', include(adm_admin_interface_urls)),
-    (r'^announcements/', include('corehq.apps.announcements.urls')),
-    (r'^hq/accounting/', include('corehq.apps.accounting.urls')),
+    (r'^announcements/', include('commcarehq.apps.announcements.urls')),
+    (r'^hq/accounting/', include('commcarehq.apps.accounting.urls')),
     (r'^hq/sms/', include(sms_admin_interface_urls)),
-    (r'^hq/multimedia/', include('corehq.apps.hqmedia.urls')),
-    (r'^hq/admin/', include('corehq.apps.hqadmin.urls')),
+    (r'^hq/multimedia/', include('commcarehq.apps.hqmedia.urls')),
+    (r'^hq/admin/', include('commcarehq.apps.hqadmin.urls')),
     (r'^hq/reports/', include(report_urls)),
-    (r'^hq/flags/', include('corehq.apps.toggle_ui.urls')),
-    (r'^hq/pillow_errors/', include('corehq.apps.hqpillow_retry.urls')),
+    (r'^hq/flags/', include('commcarehq.apps.toggle_ui.urls')),
+    (r'^hq/pillow_errors/', include('commcarehq.apps.hqpillow_retry.urls')),
     (r'^couchlog/', include('couchlog.urls')),
     (r'^formtranslate/', include('formtranslate.urls')),
-    (r'^unicel/', include('corehq.apps.unicel.urls')),
-    (r'^tropo/', include('corehq.apps.tropo.urls')),
-    (r'^twilio/', include('corehq.apps.twilio.urls')),
-    (r'^megamobile/', include('corehq.apps.megamobile.urls')),
-    (r'^telerivet/', include('corehq.apps.telerivet.urls')),
-    (r'^kookoo/', include('corehq.apps.kookoo.urls')),
-    (r'^yo/', include('corehq.apps.yo.urls')),
-    (r'^gvi/', include('corehq.apps.grapevine.urls')),
-    (r'^sislog/', include('corehq.apps.sislog.urls')),
+    (r'^unicel/', include('commcarehq.apps.unicel.urls')),
+    (r'^tropo/', include('commcarehq.apps.tropo.urls')),
+    (r'^twilio/', include('commcarehq.apps.twilio.urls')),
+    (r'^megamobile/', include('commcarehq.apps.megamobile.urls')),
+    (r'^telerivet/', include('commcarehq.apps.telerivet.urls')),
+    (r'^kookoo/', include('commcarehq.apps.kookoo.urls')),
+    (r'^yo/', include('commcarehq.apps.yo.urls')),
+    (r'^gvi/', include('commcarehq.apps.grapevine.urls')),
+    (r'^sislog/', include('commcarehq.apps.sislog.urls')),
     (r'^langcodes/', include('langcodes.urls')),
-    (r'^builds/', include('corehq.apps.builds.urls')),
+    (r'^builds/', include('commcarehq.apps.builds.urls')),
     (r'^downloads/temp/', include('soil.urls')),
-    (r'^test/CommCare.jar', 'corehq.apps.app_manager.views.download_test_jar'),
+    (r'^test/CommCare.jar', 'commcarehq.apps.app_manager.views.download_test_jar'),
     (r'^sqlextract/', include('ctable_view.urls')),
-    (r'^styleguide/', include('corehq.apps.styleguide.urls')),
+    (r'^styleguide/', include('commcarehq.apps.styleguide.urls')),
     (r'^500/$', TemplateView.as_view(template_name='500.html')),
     (r'^404/$', TemplateView.as_view(template_name='404.html')),
     (r'^403/$', TemplateView.as_view(template_name='403.html')),
     url(r'^eula_basic/$', TemplateView.as_view(template_name='eula.html'), name='eula_basic'),
-    url(r'^eula/$', 'corehq.apps.hqwebapp.views.eula', name='eula'),
+    url(r'^eula/$', 'commcarehq.apps.hqwebapp.views.eula', name='eula'),
     url(r'^apache_license_basic/$', TemplateView.as_view(template_name='apache_license.html'), name='apache_license_basic'),
-    url(r'^apache_license/$', 'corehq.apps.hqwebapp.views.apache_license', name='apache_license'),
+    url(r'^apache_license/$', 'commcarehq.apps.hqwebapp.views.apache_license', name='apache_license'),
     url(r'^bsd_license_basic/$', TemplateView.as_view(template_name='bsd_license.html'), name='bsd_license_basic'),
-    url(r'^bsd_license/$', 'corehq.apps.hqwebapp.views.bsd_license', name='bsd_license'),
-    url(r'^product_agreement/$', 'corehq.apps.hqwebapp.views.product_agreement', name='product_agreement'),
+    url(r'^bsd_license/$', 'commcarehq.apps.hqwebapp.views.bsd_license', name='bsd_license'),
+    url(r'^product_agreement/$', 'commcarehq.apps.hqwebapp.views.product_agreement', name='product_agreement'),
     url(r'^exchange/cda_basic/$', TemplateView.as_view(template_name='cda.html'), name='cda_basic'),
-    url(r'^exchange/cda/$', 'corehq.apps.hqwebapp.views.cda', name='cda'),
-    url(r'^sms_in/$', 'corehq.apps.sms.views.sms_in', name='sms_in'),
+    url(r'^exchange/cda/$', 'commcarehq.apps.hqwebapp.views.cda', name='cda'),
+    url(r'^sms_in/$', 'commcarehq.apps.sms.views.sms_in', name='sms_in'),
     url(r'^unsubscribe/(?P<user_id>[\w-]+)/',
-        'corehq.apps.hqwebapp.views.unsubscribe', name='unsubscribe'),
+        'commcarehq.apps.hqwebapp.views.unsubscribe', name='unsubscribe'),
     (r'^wisepill/', include('custom.apps.wisepill.urls')),
     url(r'^pro_bono/$', ProBonoStaticView.as_view(),
         name=ProBonoStaticView.urlname),
-    url(r'^loadtest/', include('corehq.apps.loadtestendpoints.urls')),
-    (r'^public/', include('corehq.apps.public.urls')),
+    url(r'^loadtest/', include('commcarehq.apps.loadtestendpoints.urls')),
+    (r'^public/', include('commcarehq.apps.public.urls')),
 ) + patterns('', *LOCAL_APP_URLS)
 
 # django rosetta support if configured

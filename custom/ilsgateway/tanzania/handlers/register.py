@@ -2,10 +2,10 @@ import re
 
 from django.contrib.auth.models import User
 
-from corehq.apps.locations.models import Location
+from commcarehq.apps.locations.models import Location
 
-from corehq.apps.sms.mixin import PhoneNumberInUseException, VerifiedNumber
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.sms.mixin import PhoneNumberInUseException, VerifiedNumber
+from commcarehq.apps.users.models import CommCareUser
 from custom.ilsgateway.tanzania.handlers import get_location
 from custom.ilsgateway.tanzania.handlers.keyword import KeywordHandler
 from custom.ilsgateway.models import ILSGatewayConfig

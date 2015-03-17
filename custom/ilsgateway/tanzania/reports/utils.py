@@ -1,5 +1,5 @@
 from datetime import timedelta, datetime, time
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.models import CommCareUser
 from custom.ilsgateway.models import SupplyPointStatus, SupplyPointStatusTypes, SupplyPointStatusValues, \
     OrganizationSummary
 from django.utils import html

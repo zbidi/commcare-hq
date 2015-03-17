@@ -3,7 +3,7 @@ import re
 import os
 import json
 from jsonobject import JsonObject, StringProperty, ListProperty, DictProperty
-from corehq.apps.reports.sqlreport import DataFormatter
+from commcarehq.apps.reports.sqlreport import DataFormatter
 from dimagi.utils.decorators.memoized import memoized
 
 @memoized

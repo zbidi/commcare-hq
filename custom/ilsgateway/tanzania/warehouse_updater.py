@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta
 import logging
 import itertools
-from corehq.apps.products.models import Product
-from corehq.apps.locations.models import Location, SQLLocation
+from commcarehq.apps.products.models import Product
+from commcarehq.apps.locations.models import Location, SQLLocation
 from dimagi.utils.dates import get_business_day_of_month, add_months, months_between
 from casexml.apps.stock.models import StockReport, StockTransaction
 from custom.ilsgateway.models import SupplyPointStatus, SupplyPointStatusTypes, DeliveryGroups, \

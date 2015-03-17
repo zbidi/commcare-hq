@@ -2,8 +2,8 @@ import logging
 from django.core.urlresolvers import reverse
 from django.http import Http404
 import simplejson
-from corehq.apps.api.es import ReportXFormES
-from corehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
+from commcarehq.apps.api.es import ReportXFormES
+from commcarehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
 from dimagi.utils import html
 from pact.enums import PACT_DOMAIN
 from pact.forms.patient_form import PactPatientForm

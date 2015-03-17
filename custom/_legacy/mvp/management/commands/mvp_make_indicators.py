@@ -1,5 +1,5 @@
 from django.core.management.base import LabelCommand
-from corehq.apps.indicators.models import (CaseDataInFormIndicatorDefinition, FormDataAliasIndicatorDefinition,
+from commcarehq.apps.indicators.models import (CaseDataInFormIndicatorDefinition, FormDataAliasIndicatorDefinition,
                                            FormDataInCaseIndicatorDefinition, BaseDocumentIndicatorDefinition)
 from mvp.models import MVP
 from mvp.static_definitions.question_id_mapping import (CHILD_CLOSE_FORM_QUESTION_IDS, CHILD_VISIT_QUESTION_IDS,

@@ -2,8 +2,8 @@ from datetime import datetime
 import json
 import os
 from django.test import TestCase
-from corehq.apps.commtrack.tests.util import bootstrap_domain as initial_bootstrap
-from corehq.apps.users.models import WebUser, UserRole
+from commcarehq.apps.commtrack.tests.util import bootstrap_domain as initial_bootstrap
+from commcarehq.apps.users.models import WebUser, UserRole
 from custom.ilsgateway.api import ILSUser, ILSGatewayAPI
 from custom.ilsgateway.tests.mock_endpoint import MockEndpoint
 from custom.logistics.commtrack import synchronization

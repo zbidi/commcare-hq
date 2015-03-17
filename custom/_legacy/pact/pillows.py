@@ -1,4 +1,4 @@
-from corehq.pillows import dynamic
+from commcarehq.pillows import dynamic
 from pact.models import CDotWeeklySchedule
 
 

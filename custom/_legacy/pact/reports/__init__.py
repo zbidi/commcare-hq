@@ -1,7 +1,7 @@
 import dateutil
-from corehq.apps.reports.dispatcher import CustomProjectReportDispatcher
-from corehq.apps.reports.generic import ElasticProjectInspectionReport
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
+from commcarehq.apps.reports.dispatcher import CustomProjectReportDispatcher
+from commcarehq.apps.reports.generic import ElasticProjectInspectionReport
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
 
 
 class PactPatientDispatcher(CustomProjectReportDispatcher):

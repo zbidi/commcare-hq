@@ -1,16 +1,16 @@
 from sqlagg.columns import *
 from sqlagg.base import AliasColumn
-from corehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
-from corehq.apps.reports.sqlreport import SqlTabularReport, DatabaseColumn, SummingSqlTabularReport
-from corehq.apps.reports.standard import CustomProjectReport, DatespanMixin
-from corehq.apps.reports.util import make_ctable_table_name
+from commcarehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
+from commcarehq.apps.reports.sqlreport import SqlTabularReport, DatabaseColumn, SummingSqlTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport, DatespanMixin
+from commcarehq.apps.reports.util import make_ctable_table_name
 from psi.reports import DEMO_TYPES
 from util import get_unique_combinations
 from dimagi.utils.decorators.memoized import memoized
 
 
 class PSISQLReport(SummingSqlTabularReport, CustomProjectReport, DatespanMixin):
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.AsyncPlaceField']
 
     @classmethod
@@ -80,7 +80,7 @@ class PSISQLReport(SummingSqlTabularReport, CustomProjectReport, DatespanMixin):
 
 
 class PSISQLEventsReport(PSISQLReport):
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.StateDistrictField',
               'psi.reports.AASD',]
     name = "Event Demonstration Report (SQL)"
@@ -109,7 +109,7 @@ class PSISQLHouseholdReport(PSISQLReport):
     emailable = True
     slug = "household_demonstrations_sql"
     section_name = "household demonstrations"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.AsyncPlaceField',
               'psi.reports.DemoTypeField',
               'psi.reports.AASDBV',]
@@ -151,7 +151,7 @@ class PSISQLSensitizationReport(PSISQLReport):
     emailable = True
     slug = "sensitization_sessions_sql"
     section_name = "sensitization sessions"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.StateDistrictBlockField',
               'psi.reports.AASDB',]
     default_aggregation = 'block'
@@ -177,7 +177,7 @@ class PSISQLTrainingReport(PSISQLReport):
     emailable = True
     slug = "training_sessions_sql"
     section_name = "training sessions"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.StateDistrictField',
               'psi.reports.AASD',]
     default_aggregation = 'district'

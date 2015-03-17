@@ -3,7 +3,7 @@ from celery.task import task, periodic_task
 from casexml.apps.stock.models import StockReport, StockTransaction
 from custom.ewsghana.api import EWSApi
 
-from corehq.apps.commtrack.models import StockState, Product
+from commcarehq.apps.commtrack.models import StockState, Product
 
 from custom.ewsghana.api import GhanaEndpoint
 from custom.ewsghana.extensions import ews_location_extension, ews_smsuser_extension, ews_webuser_extension, \

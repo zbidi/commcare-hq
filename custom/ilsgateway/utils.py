@@ -1,5 +1,5 @@
 from datetime import datetime
-from corehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.commtrack.models import SupplyPointCase
 from custom.ilsgateway.models import SupplyPointStatus, ILSGatewayConfig
 from dimagi.utils.dates import get_business_day_of_month_before
 from django.db.models.aggregates import Max

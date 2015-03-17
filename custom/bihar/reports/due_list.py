@@ -9,8 +9,8 @@ from custom.bihar.reports.supervisor import (SubCenterSelectionReport, BiharNavR
                                       shared_bihar_context, team_member_context, BiharSummaryReport,
                                       url_and_params)
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.reports.generic import summary_context
-from corehq.apps.api.es import ReportCaseES
+from commcarehq.apps.reports.generic import summary_context
+from commcarehq.apps.api.es import ReportCaseES
 from datetime import datetime, timedelta
 
 BIHAR_DOMAIN = 'care-bihar' # TODO: where should this go?

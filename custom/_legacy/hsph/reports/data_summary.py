@@ -1,13 +1,13 @@
-from corehq.apps.reports.standard import DatespanMixin, ProjectReportParametersMixin, CustomProjectReport
-from corehq.apps.reports.datatables import DataTablesColumn, NumericColumn, DataTablesColumnGroup, DataTablesHeader
-from corehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import DatespanMixin, ProjectReportParametersMixin, CustomProjectReport
+from commcarehq.apps.reports.datatables import DataTablesColumn, NumericColumn, DataTablesColumnGroup, DataTablesHeader
+from commcarehq.apps.reports.generic import GenericTabularReport
 from dimagi.utils.couch.database import get_db
 from hsph.fields import IHForCHFField, SelectReferredInStatusField
 from hsph.reports import HSPHSiteDataMixin
 
 from collections import defaultdict
 import numbers
-from corehq.apps.reports import util
+from commcarehq.apps.reports import util
 
 def numeric_cell(val):
     if isinstance(val, numbers.Number):
@@ -25,7 +25,7 @@ class PrimaryOutcomeReport(GenericTabularReport, DataSummaryReport):
     """
     name = "Primary Outcome Report"
     slug = "hsph_primary_outcome"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.SelectReferredInStatusField',
               'hsph.fields.SiteField']
 
@@ -131,7 +131,7 @@ class SecondaryOutcomeReport(DataSummaryReport):
     """
     name = "Secondary Outcome Report"
     slug = "hsph_secondary_outcome"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.SiteField']
     report_template_path = 'hsph/reports/comparative_data_summary.html'
     flush_layout = True
@@ -279,7 +279,7 @@ class FADAObservationsReport(DataSummaryReport):
     name = "FADA Observations"
     slug = "fada_observations"
 
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.NameOfFADAField',
               'hsph.fields.SiteField']
 

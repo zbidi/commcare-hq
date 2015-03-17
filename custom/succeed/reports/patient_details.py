@@ -1,7 +1,7 @@
 from couchdbkit.exceptions import ResourceNotFound
-from corehq.apps.reports.generic import ElasticProjectInspectionReport
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
-from corehq.apps.cloudcare.api import get_cloudcare_app, get_cloudcare_form_url
+from commcarehq.apps.reports.generic import ElasticProjectInspectionReport
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
+from commcarehq.apps.cloudcare.api import get_cloudcare_app, get_cloudcare_form_url
 from django.utils import html
 from dimagi.utils.decorators.memoized import memoized
 from custom.succeed.utils import get_app_build, SUCCEED_CM_APPNAME, SUCCEED_PM_APPNAME, SUCCEED_CHW_APPNAME

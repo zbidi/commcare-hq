@@ -5,10 +5,10 @@ from sqlagg.columns import SimpleColumn
 
 from dimagi.utils.decorators.memoized import memoized
 
-from corehq.apps.reports.filters.select import SelectOpenCloseFilter
-from corehq.apps.reports.filters.base import (BaseSingleOptionFilter,
+from commcarehq.apps.reports.filters.select import SelectOpenCloseFilter
+from commcarehq.apps.reports.filters.base import (BaseSingleOptionFilter,
                                               BaseDrilldownOptionFilter)
-from corehq.apps.reports.sqlreport import SqlData, DatabaseColumn
+from commcarehq.apps.reports.sqlreport import SqlData, DatabaseColumn
 
 
 class HierarchySqlData(SqlData):

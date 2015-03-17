@@ -1,4 +1,4 @@
-from corehq.apps.commtrack.util import get_supply_point
+from commcarehq.apps.commtrack.util import get_supply_point
 from custom.ilsgateway.tanzania.handlers.keyword import KeywordHandler
 from custom.ilsgateway.tanzania.reminders import ARRIVED_HELP, ARRIVED_KNOWN, ARRIVED_DEFAULT
 

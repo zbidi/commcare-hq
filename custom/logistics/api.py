@@ -1,10 +1,10 @@
 import logging
-from corehq import Domain
-from corehq.apps.custom_data_fields import CustomDataFieldsDefinition
-from corehq.apps.custom_data_fields.models import CustomDataField
-from corehq.apps.locations.models import SQLLocation
+from commcarehq import Domain
+from commcarehq.apps.custom_data_fields import CustomDataFieldsDefinition
+from commcarehq.apps.custom_data_fields.models import CustomDataField
+from commcarehq.apps.locations.models import SQLLocation
 
-from corehq.apps.products.models import Product
+from commcarehq.apps.products.models import Product
 from custom.ewsghana.models import EWSGhanaConfig
 from custom.ilsgateway.models import ILSGatewayConfig
 from dimagi.utils.dates import force_to_datetime
@@ -12,10 +12,10 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 import requests
-from corehq.apps.commtrack.models import SupplyPointCase
-from corehq.apps.sms.mixin import PhoneNumberInUseException, VerifiedNumber, apply_leniency, InvalidFormatException, \
+from commcarehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.sms.mixin import PhoneNumberInUseException, VerifiedNumber, apply_leniency, InvalidFormatException, \
     MobileBackend
-from corehq.apps.users.models import CouchUser, CommCareUser, WebUser
+from commcarehq.apps.users.models import CouchUser, CommCareUser, WebUser
 from custom.api.utils import EndpointMixin, apply_updates
 from dimagi.utils.decorators.memoized import memoized
 

@@ -1,4 +1,4 @@
-from corehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.sms.api import send_sms_to_verified_number
 
 
 class KeywordHandler(object):

@@ -1,5 +1,5 @@
 from couchdbkit.ext.django.schema import *
-from corehq.apps.sms.models import SMSLog
+from commcarehq.apps.sms.models import SMSLog
 
 PROFILE_A = "A"
 PROFILE_B = "B"

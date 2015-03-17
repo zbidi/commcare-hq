@@ -1,8 +1,8 @@
 from datetime import datetime
 import logging
 from django.core.management.base import BaseCommand
-from corehq.apps.hqcase.utils import get_cases_in_domain
-from corehq.apps.receiverwrapper.models import CaseRepeater
+from commcarehq.apps.hqcase.utils import get_cases_in_domain
+from commcarehq.apps.receiverwrapper.models import CaseRepeater
 
 
 class Command(BaseCommand):

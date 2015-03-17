@@ -1,7 +1,7 @@
-from corehq.apps.reports.dont_use.fields import ReportSelectField
-from corehq.apps.reports.filters.users import SelectCaseOwnerFilter
+from commcarehq.apps.reports.dont_use.fields import ReportSelectField
+from commcarehq.apps.reports.filters.users import SelectCaseOwnerFilter
 from django.utils.translation import ugettext_noop
-from corehq.apps.groups.models import Group
+from commcarehq.apps.groups.models import Group
 from dimagi.utils.couch.database import get_db
 from django.utils.translation import ugettext as _
 

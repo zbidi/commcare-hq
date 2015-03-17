@@ -1,15 +1,15 @@
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.users.models import CommCareUser
 from pact.enums import PACT_DOMAIN
 from pact.reports import chw_schedule
 
 
 class PactCHWAdminReport(GenericTabularReport, CustomProjectReport):
     fields = [
-        'corehq.apps.reports.filters.users.SelectMobileWorkerFilter',
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.users.SelectMobileWorkerFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
     ]
     name = "PACT CHW Admin"
     slug = "pactchwadmin"

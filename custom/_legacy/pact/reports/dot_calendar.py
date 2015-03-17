@@ -2,7 +2,7 @@ from calendar import HTMLCalendar
 from calendar import month_name
 from datetime import date, timedelta, datetime
 from itertools import groupby
-from corehq.apps.hqwebapp.templatetags.hq_shared_tags import static
+from commcarehq.apps.hqwebapp.templatetags.hq_shared_tags import static
 from dimagi.utils import make_time
 from dimagi.utils.decorators.memoized import memoized
 from pact.dot_data import (

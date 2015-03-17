@@ -1,0 +1,370 @@
+{% extends "app_manager/managed_app.html" %}
+{% load xforms_extras %}
+{% load hq_shared_tags %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block js %}{{ block.super }}
+    <script src="{% static 'app_manager/js/commcaresettings.js' %}"></script>
+    {% if app.get_doc_type == "Application" %}
+        <script src="{% static 'translations/js/translations.js' %}"></script>
+    {% endif %}
+    <script src="{% static 'style/ko/knockout_bindings.ko.js' %}"></script>
+    <script src="{% static 'style/lib/knockout_plugins/knockout_mapping.ko.min.js' %}"></script>
+    <script src="{% static 'hqwebapp/ko/bulk_upload_file.js' %}"></script>
+    <script src="{% static 'app_manager/js/supported-languages.js' %}"></script>
+    <script type="text/javascript" src="{% static 'hqmedia/js/hqmedia.reference_controller.js' %}"></script>
+{% endblock %}
+{% block js-inline %}
+    {{ block.super }}
+    {% if app %}
+    <script>
+        COMMCAREHQ.appView = {
+            settings: {
+                sections: {{ settings_layout|JSON }},
+                values: {{ settings_values|JSON }},
+                {% if request|toggle_enabled:"CUSTOM_PROPERTIES" %}
+                customProperties: {{ custom_properties|JSON }},
+                {% endif %}
+                urls: {
+                    save: '{% url "edit_commcare_settings" domain app.id %}'
+                },
+                edit: {{ edit|BOOL }},
+                user: {
+                    is_previewer: {{ request.couch_user.is_previewer|BOOL }}
+                },
+                permissions: {
+                    cloudcare: {{ is_cloudcare_allowed|BOOL }}
+                }
+            }
+        };
+        $(function () {
+            COMMCAREHQ.appView.settings = new CommcareSettings(COMMCAREHQ.appView.settings);
+            COMMCAREHQ.appView.settings.enableSuccessMessage = function () {
+                var properties = COMMCAREHQ.appView.settings.settingsIndex.properties;
+                if (properties) {
+                    var cc_send_unsent = properties['cc-send-unsent'];
+                    return cc_send_unsent.value() === 'cc-su-man';
+                } else {
+                    return true;
+                }
+            };
+            ko.applyBindings(COMMCAREHQ.appView.settings, $('#commcare-settings').get(0));
+
+            {% if not app.is_remote_app %}
+            ko.applyBindings(COMMCAREHQ.appView.settings, $('#success-message').get(0));
+            {% endif %}
+
+            var multimedia_tab = (function () {
+                var self = {};
+                self.load_state = ko.observable(null);
+                self.multimedia_page_html = ko.observable('');
+                self.load_if_necessary = function () {
+                    if (!self.load_state() || self.load_state() === 'error') {
+                        self.load_state('loading');
+                        $.ajax({
+                            url: '{% url 'app_multimedia_ajax' domain app.get_id %}'
+                        }).success(function (content) {
+                            self.load_state('loaded');
+                            self.multimedia_page_html(content);
+                        }).error(function () {
+                            alert('Oops, there was a problem loading this section. Please try again.');
+                            self.load_state('error');
+                        });
+                    }
+                };
+                return self;
+            }());
+            ko.applyBindings(multimedia_tab, $("#multimedia").get(0));
+            $('#multimedia-shower').on('show', function () {
+                if (multimedia_tab.load_state() === null) {
+                    multimedia_tab.load_if_necessary();
+                }
+            });
+        });
+
+    </script>
+    {% include 'hqmedia/partials/multimedia_init.html' %}
+    <script type="text/javascript">
+        var refs = {{ refs|JSON }};
+        var media_info = {{ media_info|JSON }};
+        var image_refs = {};
+        for (var slug in refs) {
+            image_refs[slug] = new ImageReference(refs[slug]);
+            image_refs[slug].upload_controller = HQMediaUploaders[slug];
+            image_refs[slug].setObjReference(media_info[slug]);
+        }
+        function urlFromLogo(slug) {
+            return image_refs[slug].url;
+        }
+        function thumbUrlFromLogo(slug) {
+            return image_refs[slug].thumb_url;
+        }
+        function triggerUploadForLogo(slug) {
+            if(image_refs[slug]) {
+                image_refs[slug].triggerUpload();
+            }
+        }
+        function uploadCompleteForLogo(slug, response) {
+            if(image_refs[slug]) {
+                image_refs[slug].uploadComplete(null, null, response);
+            }
+        }
+        function getPathFromSlug(slug) {
+            return image_refs[slug].path;
+        }
+        function removeLogo(slug) {
+            $.post(
+                '{% url "hqmedia_remove_logo" domain app.id %}',
+                {
+                    logo_slug: slug
+                },
+                function(data, status) {
+                    if(status == 'success'){
+                        image_refs[slug].url("");
+                    }
+                }
+            );
+        }
+    </script>
+    <script>
+        $(function () {
+            var langs = {{ app.langs|JSON }};
+            var buildLangs = {{ app.build_langs|JSON }};
+            var saveURL = "{% url "edit_app_langs" domain app.id %}";
+            var edit = {{ edit|JSON }};
+            var validate = !{{ app.is_remote_app|BOOL }};
+            ko.applyBindings(new SupportedLanguages({
+                langs: langs,
+                buildLangs: buildLangs,
+                saveURL: saveURL,
+                edit: edit,
+                validate: validate
+            }), $("#supported-languages").get(0));
+        });
+    </script>
+    {% endif %}
+    <script>
+        $.fn.password_setter = function (options) {
+            var that = this,
+                options = options || {},
+                title = options.title || "Set Password",
+                randID = Math.floor(Math.random() * 1000),
+                password1ID = 'password-' + randID + '-1',
+                password2ID = 'password-' + randID + '-2',
+                message = {
+                    RESET: "Reset",
+                    LABEL1: "Password",
+                    LABEL2: "Repeat Password",
+                    OK: "OK",
+                    CANCEL: "Cancel",
+                    PASSWORD_EMPTY: "You must enter a password.",
+                    PASSWORD_MISMATCH: "Try again. The passwords don't match"
+                },
+                label1 = $('<label/>').attr({'for': password1ID}).text(message.LABEL1),
+                label2 = $('<label/>').attr({'for': password2ID}).text(message.LABEL2),
+                password1 = $('<input/>').attr({type: 'password', id: password1ID}),
+                password2 = $('<input/>').attr({type: 'password', id: password2ID}),
+                popupLink = $('<a/>').attr({href: '#'}).text(message.RESET),
+                popup = $('<section/>').addClass('password-setter-popup'),
+                popupOK = $('<input/>').attr({type: 'submit'}).val(message.OK).button(),
+                popupCancel = $('<a/>').attr({href: '#'}).text(message.CANCEL).button(),
+                passwordMismatch = $('<p/>').text(message.PASSWORD_MISMATCH),
+                passwordEmpty = $('<p/>').text(message.PASSWORD_EMPTY),
+                form = $('<form/>').attr({action: ''}),
+                undefined = undefined;
+            this.hide();
+            this.after(popupLink);
+            popup.append(
+                $('<h1/>').text(title),
+                form.append(
+                    passwordMismatch,
+                    $('<table/>').append(
+                        $('<tr/>').append(
+                            $('<td/>').append(label1),
+                            $('<td/>').append(passwordEmpty, password1)
+                        ),
+                        $('<tr/>').append(
+                            $('<td/>').append(label2),
+                            $('<td/>').append(password2)
+                        )
+                    ),
+                    popupOK,
+                    popupCancel
+                )
+            );
+            passwordEmpty.hide();
+            passwordMismatch.hide();
+            popupLink.click(function (e) {
+                var position = popupLink.offset();
+                e.preventDefault();
+                popup.css({
+                    display: 'block',
+                    position: 'absolute',
+                    top: position.top,
+                    left: position.left,
+                }).addClass('ui-corner-tr ui-corner-br ui-corner-bl shadow');
+                $('body').append(popup);
+                password1.focus();
+            });
+
+            popupCancel.click(function (e) {
+                e.preventDefault();
+                popup.detach();
+            });
+
+            form.submit(function (e) {
+                e.preventDefault();
+                passwordEmpty.hide();
+                passwordMismatch.hide();
+                if (password1.val() && password1.val() === password2.val()) {
+                    popup.detach();
+                    that.val(password1.val()).trigger('textchange');
+                } else if (!password1.val()) {
+                    passwordEmpty.show();
+                } else {
+                    passwordMismatch.show();
+                }
+            });
+        };
+    </script>
+    {% if app.doc_type == "Application" %}
+        <script>
+            $(function () {
+                var $translation_ui = $("#translations_ui");
+                mk_translation_ui({
+                    translations: {{ translations|JSON }},
+                    url: "{% url "edit_app_translations" domain app.id %}",
+                    suggestion_url: "{% url "get_app_translations" domain %}",
+                    lang: "{{ lang }}",
+                    edit: {{ edit|yesno:"true,false" }},
+                    allow_autofill: "{{ lang }}" !== 'en',
+                    $home: $translation_ui
+                });
+            });
+        </script>
+    {% endif %}
+    <script>
+        $('#open_checker').click(function() {
+            ga_track_event('App Builder', 'Manage Multimedia');
+        });
+
+        $('#download_zip').click(function() {
+            ga_track_event('App Builder', 'Download Multimedia');
+        });
+    </script>
+{% endblock %}
+
+{% block title %}
+    {% if app.name %}
+        {{ app.name|html_name }}
+    {% else %}
+        {% trans 'Applications' %}
+    {% endif %}
+{% endblock %}
+
+{% block head %}{{ block.super }}
+    <style>
+        .sortable-handle {
+            cursor: move;
+        }
+        #custom-keys-help {
+            width: 400px;
+            font-size: .9em;
+        }
+        #custom-keys-help p {
+            color: #888;
+            vertical-align: bottom;
+        }
+        #custom-keys-example {
+            margin-top: 1em;
+        }
+        #custom-keys-help ul {
+            margin-left: 2em;
+        }
+        #custom-keys-help li span {
+            display: inline-block;
+            border: 1px solid #CCC;
+            padding: 2px;
+            margin: 1px;
+        }
+        #supported-languages .light {
+            color: #BBB;
+        }
+        #supported-languages td {
+            vertical-align: baseline;
+        }
+        #default-language-help {
+            position: absolute;
+            /*width: 100%;*/
+            border: 1px solid #CCC;
+            padding: .5em 1em;
+            padding-left: 150px;
+            left: 35px;
+            background-color: #FFF;
+            border-radius: 40px;
+        }
+        .password-setter-popup {
+            background-color: white;
+            border: 1px solid #CCC;
+            padding: 1em;
+        }
+        .password-setter-popup h1 {
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .password-setter-popup table {
+            margin: 0;
+        }
+        .password-setter-popup .ui-button {
+            float: right;
+            margin: 5px;
+        }
+        .password-setter-popup input[type='password'] {
+            width: 40px;
+        }
+    </style>
+{% endblock %}
+{% block form-view %}
+    <div class="tab-content">
+        <div class="tab-pane{% if not copy_app_form.is_bound %} active{% endif %}" id="app-settings">
+            {% include "app_manager/partials/app-settings.html" %}
+        </div>
+        {% include 'app_manager/languages.html' %}
+
+        {% if app.get_doc_type == "Application" %}
+            <div class="tab-pane multimedia" id="multimedia">
+                <div data-bind="if: load_state() === 'loading'">
+                    <i class="icon-large icon-refresh icon-spin" style="margin: 70px 0 0 200px;"></i>
+                </div>
+                <div data-bind="html: multimedia_page_html"></div>
+                <div data-bind="if: load_state() === 'error'">
+                    <button class="btn" data-bind="click: load_if_necessary">{% trans "Try again" %}</button>
+                </div>
+            </div>
+
+        {% endif %}
+        <div class="tab-pane{% if copy_app_form.is_bound %} active{% endif %}" id="copy">
+            <div>
+                <form class="form form-horizontal" method="post" action="{% url "copy_app" domain %}">
+                    {% crispy copy_app_form %}
+                </form>
+            </div>
+        </div>
+        <div class="tab-pane" id="delete">
+            <h3>{% trans "Delete Application" %}</h3>
+            <form action="{% url "commcarehq.apps.app_manager.views.delete_app" domain app.id %}" method="POST">
+
+                <button type="submit" class="btn btn-danger disable-on-submit">
+                    <i class="icon-trash"></i>
+                    {% trans "Delete this application" %}
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block modals %}{{ block.super }}
+{% for uploader in uploaders %}
+{% include 'hqmedia/partials/multimedia_uploader.html' %}
+{% endfor %}
+{% endblock %}

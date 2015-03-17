@@ -2,12 +2,12 @@ from celery.schedules import crontab
 from celery.task import periodic_task
 import datetime
 from casexml.apps.stock.models import StockTransaction
-from corehq import Domain
-from corehq.apps.commtrack.models import SupplyPointCase, StockState
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.sms.api import send_sms_to_verified_number
-from corehq.apps.users.models import CommCareUser
+from commcarehq import Domain
+from commcarehq.apps.commtrack.models import SupplyPointCase, StockState
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.users.models import CommCareUser
 from custom.ewsghana.models import EWSGhanaConfig
 from custom.ewsghana.reminders import STOCK_ON_HAND_REMINDER, SECOND_STOCK_ON_HAND_REMINDER, \
     SECOND_INCOMPLETE_SOH_REMINDER, THIRD_STOCK_ON_HAND_REMINDER, INCOMPLETE_SOH_TO_SUPER, STOCKOUT_REPORT, \

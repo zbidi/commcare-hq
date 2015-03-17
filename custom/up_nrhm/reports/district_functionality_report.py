@@ -1,9 +1,9 @@
 from sqlagg.columns import SimpleColumn
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumnGroup
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.sqlreport import DatabaseColumn
-from corehq.apps.reports.standard import DatespanMixin, CustomProjectReport
-from corehq.apps.reports.util import format_datatables_data
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumnGroup
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.sqlreport import DatabaseColumn
+from commcarehq.apps.reports.standard import DatespanMixin, CustomProjectReport
+from commcarehq.apps.reports.util import format_datatables_data
 from custom.up_nrhm.filters import HierarchySqlData
 from custom.up_nrhm.reports.block_level_af_report import BlockLevelAFReport
 from custom.up_nrhm.sql_data import ASHAFacilitatorsData

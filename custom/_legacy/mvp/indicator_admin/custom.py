@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
-from corehq.apps.indicators.admin.couch_indicators import CouchIndicatorAdminInterface
-from corehq.apps.indicators.admin.dynamic_indicators import BaseDynamicIndicatorAdminInterface
-from corehq.apps.reports.datatables import DataTablesColumn
+from commcarehq.apps.indicators.admin.couch_indicators import CouchIndicatorAdminInterface
+from commcarehq.apps.indicators.admin.dynamic_indicators import BaseDynamicIndicatorAdminInterface
+from commcarehq.apps.reports.datatables import DataTablesColumn
 from mvp.models import (MVPDaysSinceLastTransmission, MVPActiveCasesIndicatorDefinition,
                         MVPChildCasesByAgeIndicatorDefinition)
 from mvp.indicator_admin.forms import MVPDaysSinceLastTransmissionForm, MVPActiveCasesForm, MVPChildCasesByAgeForm

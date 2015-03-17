@@ -1,8 +1,8 @@
 # coding=utf-8
 from datetime import timedelta
-from corehq.apps.reports.filters.users import ExpandedMobileWorkerFilter
-from corehq.apps.reports.sqlreport import SqlTabularReport
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, DatespanMixin
+from commcarehq.apps.reports.filters.users import ExpandedMobileWorkerFilter
+from commcarehq.apps.reports.sqlreport import SqlTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, DatespanMixin
 from couchexport.models import Format
 from custom.tdh.filters import TDHDateSpanFilter
 

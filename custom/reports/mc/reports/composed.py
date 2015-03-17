@@ -1,5 +1,5 @@
-from corehq.apps.reports.datatables import DataTablesHeader
-from corehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.datatables import DataTablesHeader
+from commcarehq.apps.reports.generic import GenericTabularReport
 
 
 # this is a quick sketch of a possible way to start decoupling report rendering

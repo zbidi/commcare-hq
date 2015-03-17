@@ -1,16 +1,16 @@
 import logging
 from django.dispatch import Signal
-from corehq.apps.commtrack.helpers import make_supply_point
-from corehq.apps.commtrack.models import SupplyPointCase, RequisitionCase
-from corehq.apps.programs.models import Program
-from corehq.apps.products.models import Product
-from corehq.apps.domain.models import Domain
-from corehq.apps.locations.models import Location
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.commtrack.helpers import make_supply_point
+from commcarehq.apps.commtrack.models import SupplyPointCase, RequisitionCase
+from commcarehq.apps.programs.models import Program
+from commcarehq.apps.products.models import Product
+from commcarehq.apps.domain.models import Domain
+from commcarehq.apps.locations.models import Location
+from commcarehq.apps.users.models import CommCareUser
 from custom.api.utils import apply_updates
 from custom.openlmis.api import OpenLMISEndpoint
 from custom.openlmis.exceptions import BadParentException, OpenLMISAPIException
-from corehq.apps.commtrack import const
+from commcarehq.apps.commtrack import const
 from collections import defaultdict
 
 requisition_approved = Signal(providing_args=["requisitions"])

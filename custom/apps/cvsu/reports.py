@@ -1,8 +1,8 @@
-from corehq.apps.reports.datatables import DataTablesHeader
-from corehq.apps.reports.graph_models import MultiBarChart, Axis
-from corehq.apps.reports.sqlreport import calculate_total_row, TableDataFormat, DataFormatter
+from commcarehq.apps.reports.datatables import DataTablesHeader
+from commcarehq.apps.reports.graph_models import MultiBarChart, Axis
+from commcarehq.apps.reports.sqlreport import calculate_total_row, TableDataFormat, DataFormatter
 from dimagi.utils.decorators.memoized import memoized
-from corehq.apps.reports.standard import DatespanMixin, CustomProjectReport, ProjectReportParametersMixin
+from commcarehq.apps.reports.standard import DatespanMixin, CustomProjectReport, ProjectReportParametersMixin
 from .filters import AgeFilter, GenderFilter, GroupUserFilter, GroupFilter, ALL_CVSU_GROUP
 from .sqldata import (ChildProtectionData, ChildrenInHouseholdData,
                       ChildProtectionDataTrend, ChildrenInHouseholdDataTrend,

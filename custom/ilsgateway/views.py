@@ -7,19 +7,19 @@ from django.db.models import Count
 from django.http.response import HttpResponseRedirect, Http404
 from django.utils.decorators import method_decorator
 from django.views.generic.base import TemplateView
-from corehq.apps.commtrack.models import StockState
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.domain.views import BaseDomainView, DomainViewMixin
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.sms.mixin import VerifiedNumber
-from corehq.apps.sms.models import SMSLog
-from corehq.apps.sms.util import clean_phone_number
-from corehq.apps.users.models import CommCareUser, WebUser
+from commcarehq.apps.commtrack.models import StockState
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.domain.views import BaseDomainView, DomainViewMixin
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.sms.mixin import VerifiedNumber
+from commcarehq.apps.sms.models import SMSLog
+from commcarehq.apps.sms.util import clean_phone_number
+from commcarehq.apps.users.models import CommCareUser, WebUser
 from django.http import HttpResponse
 from django.utils.translation import ugettext_noop
 from django.views.decorators.http import require_POST
-from corehq import Domain
-from corehq.apps.domain.decorators import domain_admin_required
+from commcarehq import Domain
+from commcarehq.apps.domain.decorators import domain_admin_required
 from custom.ilsgateway.forms import SupervisionDocumentForm
 from custom.ilsgateway.tanzania.reminders.delivery import send_delivery_reminder
 from custom.ilsgateway.tanzania.reminders.randr import send_ror_reminder

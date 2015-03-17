@@ -2,14 +2,14 @@
 from sqlagg.base import AliasColumn, QueryMeta, CustomQueryColumn
 from sqlagg.columns import SumColumn, MaxColumn, SimpleColumn, CountColumn, CountUniqueColumn, MeanColumn
 from sqlalchemy.sql.expression import alias
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.products.models import Product, SQLProduct
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.products.models import Product, SQLProduct
 
-from corehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
-from corehq.apps.reports.sqlreport import DataFormatter, \
+from commcarehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
+from commcarehq.apps.reports.sqlreport import DataFormatter, \
     TableDataFormat, calculate_total_row
 from sqlagg.filters import EQ, BETWEEN, AND, GTE, LTE
-from corehq.apps.reports.sqlreport import DatabaseColumn, SqlData, AggregateColumn
+from commcarehq.apps.reports.sqlreport import DatabaseColumn, SqlData, AggregateColumn
 from django.utils.translation import ugettext as _
 from sqlalchemy import select
 
@@ -62,7 +62,7 @@ class BaseSqlData(SqlData):
         return list(formatter.format(self.data, keys=self.keys, group_by=self.group_by))
 
     # this is copy/paste from the
-    # https://github.com/dimagi/commcare-hq/blob/master/corehq/apps/reports/sqlreport.py#L383
+    # https://github.com/dimagi/commcare-hq/blob/master/commcarehq/apps/reports/sqlreport.py#L383
     # we added possibility to sum Float values
     def calculate_total_row(self, rows):
         total_row = []

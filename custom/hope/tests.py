@@ -9,8 +9,8 @@ from django.test import TestCase
 from casexml.apps.case.models import CommCareCase
 
 # CommCare HQ imports
-from corehq.apps.domain.models import Domain
-from corehq.apps.users.models import WebUser
+from commcarehq.apps.domain.models import Domain
+from commcarehq.apps.users.models import WebUser
 from custom.hope.models import HOPECase
 
 class TestHOPECaseResource(TestCase):

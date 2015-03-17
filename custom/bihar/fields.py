@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_noop
-from corehq.apps.groups.models import Group
-from corehq.apps.reports.filters.select import GroupFilter
+from commcarehq.apps.groups.models import Group
+from commcarehq.apps.reports.filters.select import GroupFilter
 
 class SelectCaseSharingGroupField(GroupFilter):
 

@@ -1,4 +1,4 @@
-from corehq.fluff.calculators.xform import FormPropertyFilter
+from commcarehq.fluff.calculators.xform import FormPropertyFilter
 from couchforms.models import XFormInstance
 import fluff
 from custom.tdh import TDH_DOMAINS, ENROLL_CHILD_XMLNSES, INFANT_CLASSIFICATION_XMLNSES, INFANT_TREATMENT_XMLNSES, \

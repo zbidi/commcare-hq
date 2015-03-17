@@ -2,9 +2,9 @@ import uuid
 from django.test import TestCase
 from casexml.apps.case.mock import CaseBlock
 from casexml.apps.case.xml import V2
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.users.util import format_username
-from corehq.apps.domain.shortcuts import create_domain
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.util import format_username
+from commcarehq.apps.domain.shortcuts import create_domain
 from dimagi.utils.parsing import json_format_datetime
 from casexml.apps.case.util import post_case_blocks
 import os

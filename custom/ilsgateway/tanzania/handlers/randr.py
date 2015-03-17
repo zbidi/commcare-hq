@@ -1,6 +1,6 @@
 from datetime import datetime
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.sms.api import send_sms_to_verified_number
 from custom.ilsgateway.tanzania.handlers import get_location
 from custom.ilsgateway.models import SupplyPointStatus, SupplyPointStatusTypes, SupplyPointStatusValues, \
     DeliveryGroupReport

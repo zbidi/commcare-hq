@@ -1,6 +1,6 @@
-from corehq.apps.reports.filters.base import BaseSingleOptionFilter, BaseDrilldownOptionFilter
+from commcarehq.apps.reports.filters.base import BaseSingleOptionFilter, BaseDrilldownOptionFilter
 from django.utils.translation import ugettext_noop as _
-from corehq.apps.groups.models import Group
+from commcarehq.apps.groups.models import Group
 
 ALL_DISTRICTS = 'All Districts'
 

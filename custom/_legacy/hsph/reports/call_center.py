@@ -7,13 +7,13 @@ from django.utils.datastructures import SortedDict
 
 from dimagi.utils.couch.database import get_db
 
-from corehq.apps.reports.standard import (DatespanMixin,
+from commcarehq.apps.reports.standard import (DatespanMixin,
     ProjectReportParametersMixin, CustomProjectReport)
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.datatables import (DataTablesHeader, DataTablesColumn,
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.datatables import (DataTablesHeader, DataTablesColumn,
     NumericColumn)
-from corehq.apps.reports import util
-from corehq.apps.groups.models import Group
+from commcarehq.apps.reports import util
+from commcarehq.apps.groups.models import Group
 
 import hsph.const as const
 
@@ -72,8 +72,8 @@ class CATIPerformanceReport(GenericTabularReport, CustomProjectReport,
     slug = "cati_performance"
 
     fields = [
-        'corehq.apps.reports.filters.dates.DatespanFilter',
-        'corehq.apps.reports.filters.users.UserTypeFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.users.UserTypeFilter',
         'hsph.fields.NameOfCATIField',
     ]
 
@@ -200,8 +200,8 @@ class CATITeamLeaderReport(GenericTabularReport, CustomProjectReport,
     slug = "cati_tl"
 
     fields = [
-        'corehq.apps.reports.filters.dates.DatespanFilter',
-        'corehq.apps.reports.filters.users.UserTypeFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.users.UserTypeFilter',
         #'hsph.fields.NameOfCATITLField',
     ]
 

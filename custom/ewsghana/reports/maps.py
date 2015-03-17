@@ -1,13 +1,13 @@
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_noop
-from corehq import Domain
-from corehq.apps.commtrack.models import StockState, CommtrackConfig
-from corehq.apps.locations.models import Location, SQLLocation
-from corehq.apps.products.models import Product, SQLProduct
-from corehq.apps.reports.commtrack.const import STOCK_SECTION_TYPE
-from corehq.apps.reports.commtrack.data_sources import StockStatusBySupplyPointDataSource
-from corehq.apps.reports.commtrack.maps import StockStatusMapReport
-from corehq.apps.reports.standard import CustomProjectReport
+from commcarehq import Domain
+from commcarehq.apps.commtrack.models import StockState, CommtrackConfig
+from commcarehq.apps.locations.models import Location, SQLLocation
+from commcarehq.apps.products.models import Product, SQLProduct
+from commcarehq.apps.reports.commtrack.const import STOCK_SECTION_TYPE
+from commcarehq.apps.reports.commtrack.data_sources import StockStatusBySupplyPointDataSource
+from commcarehq.apps.reports.commtrack.maps import StockStatusMapReport
+from commcarehq.apps.reports.standard import CustomProjectReport
 
 
 class EWSStockStatusBySupplyPointDataSource(StockStatusBySupplyPointDataSource):
@@ -117,7 +117,7 @@ class EWSMapReport(CustomProjectReport, StockStatusMapReport):
     }
 
     fields = [
-        'corehq.apps.reports.filters.fixtures.AsyncLocationFilter',
+        'commcarehq.apps.reports.filters.fixtures.AsyncLocationFilter',
         'custom.ewsghana.filters.ProductFilter',
     ]
 

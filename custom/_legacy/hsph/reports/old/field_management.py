@@ -1,18 +1,18 @@
 import datetime
 import dateutil
 import pytz
-from corehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
-from corehq.apps.reports.standard import ProjectReportParametersMixin, DatespanMixin, CustomProjectReport
-from corehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
-from corehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
+from commcarehq.apps.reports.standard import ProjectReportParametersMixin, DatespanMixin, CustomProjectReport
+from commcarehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader
+from commcarehq.apps.reports.generic import GenericTabularReport
 from couchforms.models import XFormInstance
 from dimagi.utils.couch.database import get_db
 from hsph.fields import FacilityField, NameOfDCTLField, SelectCaseStatusField
 from hsph.reports import HSPHSiteDataMixin
 
 class HSPHFieldManagementReport(GenericTabularReport, CustomProjectReport, ProjectReportParametersMixin, DatespanMixin):
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter',
-              'corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter',
+              'commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.NameOfFIDAField',
               'hsph.fields.NameOfDCTLField']
 
@@ -119,8 +119,8 @@ class DCOActivityReport(HSPHFieldManagementReport):
 class FieldDataCollectionActivityReport(HSPHFieldManagementReport):
     name = "Field Data Collection Activity Report"
     slug = "hsph_field_data"
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter',
-              'corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter',
+              'commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.NameOfFIDAField',
               'hsph.fields.NameOfDCTLField',
               'hsph.fields.FacilityField']
@@ -195,8 +195,8 @@ class FieldDataCollectionActivityReport(HSPHFieldManagementReport):
 class HVFollowUpStatusReport(HSPHFieldManagementReport, HSPHSiteDataMixin):
     name = "Home Visit Follow Up Status"
     slug = "hsph_hv_status"
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter',
-              'corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter',
+              'commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.NameOfFIDAField',
               'hsph.fields.NameOfDCTLField',
               'hsph.fields.SiteField']
@@ -281,8 +281,8 @@ class HVFollowUpStatusReport(HSPHFieldManagementReport, HSPHSiteDataMixin):
 class HVFollowUpStatusSummaryReport(HVFollowUpStatusReport):
     name = "Home Visit Follow Up Status Summary"
     slug = "hsph_hv_status_summary"
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter',
-              'corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter',
+              'commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.NameOfFIDAField',
               'hsph.fields.NameOfDCTLField',
               'hsph.fields.SelectCaseStatusField',
@@ -395,7 +395,7 @@ class HVFollowUpStatusSummaryReport(HVFollowUpStatusReport):
 class DCOProcessDataReport(HSPHFieldManagementReport, HSPHSiteDataMixin):
     name = "DCO Process Data Report"
     slug = "hsph_dco_process_data"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.SiteField']
 
     @property

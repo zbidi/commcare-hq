@@ -1,11 +1,11 @@
 from django.contrib.auth.models import User
-from corehq.apps.commtrack.models import SupplyPointCase
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
-from corehq.apps.users.models import WebUser
+from commcarehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
+from commcarehq.apps.users.models import WebUser
 from custom.ewsghana.api import GhanaEndpoint
 from custom.ewsghana.models import EWSGhanaConfig
 

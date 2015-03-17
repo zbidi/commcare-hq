@@ -5,9 +5,9 @@ from dateutil.relativedelta import relativedelta
 from lxml import etree as ElementTree
 from django.utils.translation import ugettext as _
 
-from corehq import Domain
-from corehq.apps.commtrack.util import get_commtrack_location_id
-from corehq.apps.locations.models import Location
+from commcarehq import Domain
+from commcarehq.apps.commtrack.util import get_commtrack_location_id
+from commcarehq.apps.locations.models import Location
 from custom.m4change.constants import M4CHANGE_DOMAINS, NUMBER_OF_MONTHS_FOR_FIXTURES
 from custom.m4change.models import FixtureReportResult
 from custom.m4change.reports.reports import M4ChangeReportDataSource

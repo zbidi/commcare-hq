@@ -8,18 +8,18 @@ from django.utils.translation import ugettext as _
 from custom.bihar.utils import (get_team_members, get_all_owner_ids_from_group, SUPERVISOR_ROLES, FLW_ROLES,
     groups_for_user, get_role)
 
-from corehq.apps.fixtures.models import FixtureDataItem
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.reports.generic import GenericTabularReport,\
+from commcarehq.apps.fixtures.models import FixtureDataItem
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.generic import GenericTabularReport,\
     SummaryTablularReport, summary_context
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.dispatcher import CustomProjectReportDispatcher
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.dispatcher import CustomProjectReportDispatcher
 from dimagi.utils.excel import alphanumeric_sort_key
 from dimagi.utils.html import format_html
-from corehq.apps.groups.models import Group
+from commcarehq.apps.groups.models import Group
 from dimagi.utils.decorators.memoized import memoized
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.adm.reports.supervisor import SupervisorReportsADMSection
+from commcarehq.apps.adm.reports.supervisor import SupervisorReportsADMSection
 from custom.bihar.reports.indicators.mixins import IndicatorConfigMixIn
 
 

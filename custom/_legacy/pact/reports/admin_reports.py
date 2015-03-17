@@ -1,9 +1,9 @@
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport
 
 
 class PactAdminReport(GenericTabularReport, CustomProjectReport):
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter']
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter']
     name = "PACT Admin Reports"
     slug = "pactadmin"
     emailable = True

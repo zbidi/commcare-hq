@@ -1,13 +1,13 @@
 from datetime import date, timedelta
 import re
 import dateutil
-from corehq.apps.reports.standard.cases.data_sources import CaseDisplay
+from commcarehq.apps.reports.standard.cases.data_sources import CaseDisplay
 from casexml.apps.case.models import CommCareCase
 from django.utils.translation import ugettext as _
 import logging
 from custom.bihar.calculations.utils.xmlns import BP, NEW, MTB_ABORT, DELIVERY, REGISTRATION, PNC
 from couchdbkit.exceptions import ResourceNotFound
-from corehq.apps.users.models import CommCareUser, CouchUser
+from commcarehq.apps.users.models import CommCareUser, CouchUser
 
 EMPTY_FIELD = "---"
 

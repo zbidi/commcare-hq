@@ -1,7 +1,7 @@
 import dateutil
 from django.core.management.base import BaseCommand
-from corehq.apps.indicators.models import DynamicIndicatorDefinition
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.indicators.models import DynamicIndicatorDefinition
+from commcarehq.apps.users.models import CommCareUser
 from dimagi.utils.dates import DateSpan
 from mvp.models import MVP
 

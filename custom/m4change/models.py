@@ -11,7 +11,7 @@ from couchforms.models import XFormInstance
 
 import fluff
 from fluff.filters import ORFilter
-from corehq.fluff.calculators.xform import FormPropertyFilter
+from commcarehq.fluff.calculators.xform import FormPropertyFilter
 from custom.m4change.user_calcs import anc_hmis_report_calcs, ld_hmis_report_calcs, immunization_hmis_report_calcs,\
     all_hmis_report_calcs, project_indicators_report_calcs, mcct_monthly_aggregate_report_calcs, \
     form_passes_filter_date_delivery

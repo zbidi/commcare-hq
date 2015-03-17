@@ -4,28 +4,28 @@ import cgi
 from datetime import datetime, time, timedelta
 from django.utils.translation import ugettext_noop
 from django.utils.translation import ugettext as _
-from corehq.apps.domain.models import Domain
-from corehq.apps.reports.standard import CustomProjectReport, DatespanMixin
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.datatables import (
+from commcarehq.apps.domain.models import Domain
+from commcarehq.apps.reports.standard import CustomProjectReport, DatespanMixin
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.datatables import (
     DataTablesColumn,
     DataTablesHeader,
     DTSortType,
 )
-from corehq.apps.reports.util import format_datatables_data
+from commcarehq.apps.reports.util import format_datatables_data
 from custom.fri.models import FRISMSLog, PROFILE_DESC
 from custom.fri.reports.filters import (InteractiveParticipantFilter,
     RiskProfileFilter, SurveyDateSelector)
 from custom.fri.api import get_message_bank, add_metadata, get_date
-from corehq.apps.sms.models import INCOMING, OUTGOING
+from commcarehq.apps.sms.models import INCOMING, OUTGOING
 from dimagi.utils.parsing import json_format_datetime
 from casexml.apps.case.models import CommCareCase
 from casexml.apps.case.xform import CaseDbCache
-from corehq.apps.users.models import CouchUser, UserCache
+from commcarehq.apps.users.models import CouchUser, UserCache
 from dimagi.utils.timezones import utils as tz_utils
 from custom.fri.api import get_interactive_participants, get_valid_date_range
 from django.core.urlresolvers import reverse
-from corehq.apps.reports.dispatcher import CustomProjectReportDispatcher
+from commcarehq.apps.reports.dispatcher import CustomProjectReportDispatcher
 from dateutil.parser import parse
 
 RESPONSE_NOT_APPLICABLE = 1

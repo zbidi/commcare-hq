@@ -1,10 +1,10 @@
 import os
 from django.test import TestCase
-from corehq.apps.commtrack.models import Product
-from corehq.apps.commtrack.tests.util import bootstrap_domain as initial_bootstrap
-from corehq.apps.locations.models import Location
-from corehq.apps.sms.test_backend import TestSMSBackend
-from corehq.apps.users.models import WebUser, CommCareUser
+from commcarehq.apps.commtrack.models import Product
+from commcarehq.apps.commtrack.tests.util import bootstrap_domain as initial_bootstrap
+from commcarehq.apps.locations.models import Location
+from commcarehq.apps.sms.test_backend import TestSMSBackend
+from commcarehq.apps.users.models import WebUser, CommCareUser
 from custom.ilsgateway.models import ILSGatewayConfig
 from custom.ilsgateway.tests import MockEndpoint
 from custom.ilsgateway.utils import ils_bootstrap_domain_test_task

@@ -1,4 +1,4 @@
-from corehq.apps.users.models import  CouchUser
+from commcarehq.apps.users.models import  CouchUser
 from dimagi.utils.logging import notify_exception
 from pact.utils import get_case_id
 from couchforms.signals import successful_form_received

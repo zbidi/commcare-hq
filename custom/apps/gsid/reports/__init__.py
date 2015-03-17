@@ -1,8 +1,8 @@
-from corehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
-from corehq.apps.reports.dont_use.fields import ReportSelectField
-from corehq.apps.reports.filters.base import BaseDrilldownOptionFilter
-from corehq.apps.reports.filters.dates import DatespanFilter
-from corehq.apps.reports.filters.fixtures import MultiLocationFilter
+from commcarehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
+from commcarehq.apps.reports.dont_use.fields import ReportSelectField
+from commcarehq.apps.reports.filters.base import BaseDrilldownOptionFilter
+from commcarehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.fixtures import MultiLocationFilter
 from util import get_unique_combinations
 
 

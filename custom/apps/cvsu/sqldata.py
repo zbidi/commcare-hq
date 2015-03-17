@@ -1,14 +1,14 @@
 from operator import itemgetter
-from corehq.apps.groups.models import Group
-from corehq.apps.reports import util
-from corehq.apps.reports.standard import CommCareUserMemoizer
-from corehq.apps.reports.util import format_datatables_data, make_ctable_table_name
+from commcarehq.apps.groups.models import Group
+from commcarehq.apps.reports import util
+from commcarehq.apps.reports.standard import CommCareUserMemoizer
+from commcarehq.apps.reports.util import format_datatables_data, make_ctable_table_name
 from .filters import ALL_CVSU_GROUP
 from dimagi.utils.decorators.memoized import memoized
 from sqlagg import AliasColumn
 from sqlagg.columns import SimpleColumn, YearColumn, MonthColumn, YearQuarterColumn, SumColumn
-from corehq.apps.reports.datatables import DataTablesColumnGroup
-from corehq.apps.reports.sqlreport import DatabaseColumn, AggregateColumn, SqlData
+from commcarehq.apps.reports.datatables import DataTablesColumnGroup
+from commcarehq.apps.reports.sqlreport import DatabaseColumn, AggregateColumn, SqlData
 
 
 def combine_month_year(year, month):

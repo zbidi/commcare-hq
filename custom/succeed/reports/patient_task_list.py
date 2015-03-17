@@ -6,16 +6,16 @@ from django.utils import html
 from django.utils.translation import ugettext as _, ugettext_noop
 import simplejson
 
-from corehq.apps.api.es import ReportCaseES
-from corehq.apps.cloudcare.api import get_cloudcare_app, get_cloudcare_form_url
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.search import SearchFilter
-from corehq.apps.reports.generic import ElasticProjectInspectionReport
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
-from corehq.apps.reports.standard.cases.data_sources import CaseDisplay
-from corehq.elastic import es_query
-from corehq.pillows.base import restore_property_dict
-from corehq.pillows.mappings.reportcase_mapping import REPORT_CASE_INDEX
+from commcarehq.apps.api.es import ReportCaseES
+from commcarehq.apps.cloudcare.api import get_cloudcare_app, get_cloudcare_form_url
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.search import SearchFilter
+from commcarehq.apps.reports.generic import ElasticProjectInspectionReport
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
+from commcarehq.apps.reports.standard.cases.data_sources import CaseDisplay
+from commcarehq.elastic import es_query
+from commcarehq.pillows.base import restore_property_dict
+from commcarehq.pillows.mappings.reportcase_mapping import REPORT_CASE_INDEX
 from custom.succeed import PatientInfoReport
 from custom.succeed.reports import VISIT_SCHEDULE, LAST_INTERACTION_LIST, EMPTY_FIELD, \
     INPUT_DATE_FORMAT, OUTPUT_DATE_FORMAT, CM_APP_UPDATE_VIEW_TASK_MODULE, CM_UPDATE_TASK, TASK_RISK_FACTOR, TASK_ACTIVITY
@@ -166,7 +166,7 @@ class PatientTaskListReport(CustomProjectReport, ElasticProjectInspectionReport,
     fields = ['custom.succeed.fields.ResponsibleParty',
               'custom.succeed.fields.PatientName',
               'custom.succeed.fields.TaskStatus',
-              'corehq.apps.reports.standard.cases.filters.CaseSearchFilter']
+              'commcarehq.apps.reports.standard.cases.filters.CaseSearchFilter']
 
     @classmethod
     def show_in_navigation(cls, domain=None, project=None, user=None):

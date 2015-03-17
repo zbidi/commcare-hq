@@ -1,4 +1,4 @@
-from corehq.apps.fixtures.models import FixtureDataItem
+from commcarehq.apps.fixtures.models import FixtureDataItem
 
 DOMAIN = 'opm'
 

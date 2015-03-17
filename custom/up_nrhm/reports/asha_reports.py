@@ -1,7 +1,7 @@
-from corehq.apps.reports.filters.select import YearFilter
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import CustomProjectReport, DatespanMixin
-from corehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.select import YearFilter
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport, DatespanMixin
+from commcarehq.apps.reports.filters.dates import DatespanFilter
 from custom.up_nrhm.filters import DrillDownOptionFilter, SampleFormatFilter, ASHAMonthFilter
 from custom.up_nrhm.reports.asha_facilitators_report import ASHAFacilitatorsReport
 from custom.up_nrhm.reports.block_level_af_report import BlockLevelAFReport

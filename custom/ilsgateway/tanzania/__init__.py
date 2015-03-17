@@ -1,10 +1,10 @@
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.reports.sqlreport import SqlTabularReport
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, MonthYearMixin
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.reports.sqlreport import SqlTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, MonthYearMixin
 from couchexport.models import Format
 from custom.common import ALL_OPTION
 from custom.ilsgateway.models import SupplyPointStatusTypes, OrganizationSummary
-from corehq.apps.reports.graph_models import PieChart
+from commcarehq.apps.reports.graph_models import PieChart
 from dimagi.utils.decorators.memoized import memoized
 from custom.ilsgateway.tanzania.reports.utils import make_url
 from django.utils import html

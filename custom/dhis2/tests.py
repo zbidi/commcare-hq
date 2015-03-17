@@ -6,8 +6,8 @@ Replace this with more appropriate tests for your application.
 """
 from contextlib import contextmanager
 from unittest import skip
-from corehq.apps.fixtures.models import FixtureDataType, FixtureTypeField
-from corehq.apps.receiverwrapper.exceptions import IgnoreDocument
+from commcarehq.apps.fixtures.models import FixtureDataType, FixtureTypeField
+from commcarehq.apps.receiverwrapper.exceptions import IgnoreDocument
 from couchdbkit import ResourceNotFound
 from custom.dhis2.const import ORG_UNIT_FIXTURES, REGISTER_CHILD_XMLNS, CASE_TYPE
 from custom.dhis2.models import Dhis2OrgUnit, JsonApiRequest, JsonApiError, Dhis2Api, Dhis2ApiQueryError, \
@@ -309,7 +309,7 @@ class Dhis2OrgUnitTest(TestCase):
         Dhis2OrgUnit.save should save a FixtureDataItem
         """
         # with fixture_type_context(), \
-        #         patch('corehq.apps.fixtures.models.FixtureDataItem') as data_item_patch, \
+        #         patch('commcarehq.apps.fixtures.models.FixtureDataItem') as data_item_patch, \
         #         patch('couchdbkit.schema.base.DocumentBase.save') as save_patch:
         #     data_item_mock = Mock()
         #     data_item_mock.save.return_value = None
@@ -339,7 +339,7 @@ class Dhis2OrgUnitTest(TestCase):
         Dhis2OrgUnit.delete should do nothing if it's not saved
         """
         with fixture_type_context(), \
-                patch('corehq.apps.fixtures.models.FixtureDataItem.get') as mock_get:
+                patch('commcarehq.apps.fixtures.models.FixtureDataItem.get') as mock_get:
             data_item_mock = Mock()
             mock_get.return_value = data_item_mock
 
@@ -355,7 +355,7 @@ class Dhis2OrgUnitTest(TestCase):
         Dhis2OrgUnit.delete should delete if it's saved
         """
         with fixture_type_context(), \
-                patch('corehq.apps.fixtures.models.FixtureDataItem') as data_item_patch, \
+                patch('commcarehq.apps.fixtures.models.FixtureDataItem') as data_item_patch, \
                 patch('couchdbkit.schema.base.DocumentBase.get') as get_patch:
             data_item_mock = Mock()
             data_item_mock.get_id.return_value = '123'

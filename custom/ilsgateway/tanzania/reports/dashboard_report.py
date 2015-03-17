@@ -4,8 +4,8 @@ from custom.ilsgateway.tanzania.reports.mixins import RandRSubmissionData, Distr
     SohSubmissionData, DeliverySubmissionData, ProductAvailabilitySummary
 from custom.ilsgateway.tanzania.reports.stock_on_hand import StockOnHandReport
 from custom.ilsgateway.tanzania.reports.utils import make_url
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.filters.select import YearFilter, MonthFilter
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.filters.select import YearFilter, MonthFilter
 from dimagi.utils.decorators.memoized import memoized
 from django.utils import html
 

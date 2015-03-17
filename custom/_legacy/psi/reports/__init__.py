@@ -1,8 +1,8 @@
-from corehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
-from corehq.apps.reports.filters.base import BaseSingleOptionFilter
-from corehq.apps.reports.filters.fixtures import AsyncDrillableFilter
-from corehq.apps.reports.standard import CustomProjectReport, DatespanMixin
-from corehq.apps.reports.basic import Column, FunctionView, SummingTabularReport
+from commcarehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
+from commcarehq.apps.reports.filters.base import BaseSingleOptionFilter
+from commcarehq.apps.reports.filters.fixtures import AsyncDrillableFilter
+from commcarehq.apps.reports.standard import CustomProjectReport, DatespanMixin
+from commcarehq.apps.reports.basic import Column, FunctionView, SummingTabularReport
 from util import get_unique_combinations
 from couchdbkit_aggregate.fn import mean
 from dimagi.utils.decorators.memoized import memoized
@@ -91,7 +91,7 @@ def get_village_class(key, req):
 class PSIReport(SummingTabularReport, CustomProjectReport, DatespanMixin):
     is_cacheable = True
     update_after = True
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter','psi.reports.AsyncPlaceField',]
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter','psi.reports.AsyncPlaceField',]
 
     state_name = Column("State", calculate_fn=lambda key, _: key[1])
 
@@ -137,7 +137,7 @@ class PSIReport(SummingTabularReport, CustomProjectReport, DatespanMixin):
 
 
 class PSIEventsReport(PSIReport):
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.StateDistrictField',
               'psi.reports.AASD',]
     name = "Event Demonstration Report"
@@ -179,7 +179,7 @@ class PSIHDReport(PSIReport):
     emailable = True
     slug = "household_demonstations"
     section_name = "household demonstrations"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.AsyncPlaceField',
               'psi.reports.DemoTypeField',
               'psi.reports.AASDBV',]
@@ -247,7 +247,7 @@ class PSISSReport(PSIReport):
     emailable = True
     slug = "sensitization_sessions"
     section_name = "sensitization sessions"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.StateDistrictBlockField',
               'psi.reports.AASDB',]
     default_aggregation = 'block'
@@ -289,7 +289,7 @@ class PSITSReport(PSIReport):
     emailable = True
     slug = "training_sessions"
     section_name = "training sessions"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'psi.reports.StateDistrictField',
               'psi.reports.AASD',]
     default_aggregation = 'district'

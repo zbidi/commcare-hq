@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_noop
-from corehq.apps.reports.filters.base import BaseDrilldownOptionFilter, BaseSingleOptionFilter
-from corehq.apps.reports.filters.select import YearFilter
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.reports.filters.base import BaseDrilldownOptionFilter, BaseSingleOptionFilter
+from commcarehq.apps.reports.filters.select import YearFilter
+from commcarehq.apps.users.models import CommCareUser
 from custom.care_pathways.sqldata import GeographySqlData
 from custom.care_pathways.utils import get_domain_configuration, ByTypeHierarchyRecord
 from dimagi.utils.decorators.memoized import memoized

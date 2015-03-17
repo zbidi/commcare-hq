@@ -2,9 +2,9 @@ from datetime import datetime, timedelta
 import logging
 import uuid
 from couchdbkit import ResourceNotFound
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport
 from pact.models import PactPatientCase, CObservation
 from pact.reports.dot import PactDOTPatientField
 
@@ -19,7 +19,7 @@ COUCH_MAX_LIMIT = 1000
 
 class PactDOTAdminReport(GenericTabularReport, CustomProjectReport):
     fields = ['pact.reports.admin_dot_reports.PactDOTAdminPatientField',
-              'corehq.apps.reports.filters.dates.DatespanFilter']
+              'commcarehq.apps.reports.filters.dates.DatespanFilter']
     name = "PACT DOT Admin"
     slug = "pactdotadmin"
     emailable = True

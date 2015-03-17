@@ -1,6 +1,6 @@
 from datetime import datetime
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
 from custom.ilsgateway.filters import ProductByProgramFilter, MSDZoneFilter
 from custom.ilsgateway.tanzania import ILSData, DetailsReport
 from custom.ilsgateway.tanzania.reports.facility_details import FacilityDetailsReport
@@ -9,8 +9,8 @@ from custom.ilsgateway.tanzania.reports.mixins import DeliverySubmissionData
 from custom.ilsgateway.tanzania.reports.utils import make_url, link_format, latest_status_or_none,\
     get_this_lead_time, get_avg_lead_time
 from dimagi.utils.decorators.memoized import memoized
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.filters.select import MonthFilter, YearFilter
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.filters.select import MonthFilter, YearFilter
 from django.utils.translation import ugettext as _
 
 

@@ -2,11 +2,11 @@ from couchdbkit.exceptions import ResourceNotFound
 from casexml.apps.case.models import CommCareCase
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
-from corehq.apps.domain.decorators import login_and_domain_required
-from corehq.apps.reports.dispatcher import QuestionTemplateDispatcher
-from corehq.apps.reports.views import require_case_view_permission
+from commcarehq.apps.domain.decorators import login_and_domain_required
+from commcarehq.apps.reports.dispatcher import QuestionTemplateDispatcher
+from commcarehq.apps.reports.views import require_case_view_permission
 from casexml.apps.case.templatetags.case_tags import case_inline_display
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.models import CommCareUser
 from django.template.loader import get_template
 from django.template import Context
 from django.http import HttpResponse

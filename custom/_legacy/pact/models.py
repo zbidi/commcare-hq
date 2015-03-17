@@ -3,7 +3,7 @@ import uuid
 from dateutil.parser import parser
 import simplejson
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.models import CommCareUser
 from couchforms.models import XFormInstance
 from dimagi.utils.decorators.memoized import memoized
 from pact import enums

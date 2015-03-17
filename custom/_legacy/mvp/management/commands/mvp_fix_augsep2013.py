@@ -1,8 +1,8 @@
 import logging
 from dimagi.utils.couch.database import iter_docs
-from corehq.apps.indicators.utils import get_namespaces, get_indicator_domains
+from commcarehq.apps.indicators.utils import get_namespaces, get_indicator_domains
 from django.core.management.base import LabelCommand
-from corehq.apps.indicators.models import FormIndicatorDefinition
+from commcarehq.apps.indicators.models import FormIndicatorDefinition
 from couchforms.models import XFormInstance
 
 

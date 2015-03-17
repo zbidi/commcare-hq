@@ -5,8 +5,8 @@ from celery.task import periodic_task
 from custom.ewsghana.utils import send_test_message
 
 from dimagi.utils.dates import get_business_day_of_month
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.sms.api import send_sms_to_verified_number
 from custom.ilsgateway.models import SupplyPointStatusTypes, SupplyPointStatusValues, SupplyPointStatus
 from custom.ilsgateway.tanzania.reminders import update_statuses, REMINDER_SUPERVISION
 from custom.ilsgateway.utils import send_for_all_domains

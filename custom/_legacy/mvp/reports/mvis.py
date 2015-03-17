@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 import logging
 import numpy
 import pytz
-from corehq.apps.indicators.models import DynamicIndicatorDefinition, CombinedCouchViewIndicatorDefinition
+from commcarehq.apps.indicators.models import DynamicIndicatorDefinition, CombinedCouchViewIndicatorDefinition
 from dimagi.utils.decorators.memoized import memoized
 from mvp.models import MVP
 from mvp.reports import MVPIndicatorReport
@@ -20,8 +20,8 @@ class HealthCoordinatorReport(MVPIndicatorReport):
     report_template_path = "mvp/reports/health_coordinator.html"
     flush_layout = True
     hide_filters = True
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter',
-              'corehq.apps.reports.filters.select.GroupFilter']
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter',
+              'commcarehq.apps.reports.filters.select.GroupFilter']
     emailable = True
 
     @property

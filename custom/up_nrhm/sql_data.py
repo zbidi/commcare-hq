@@ -2,9 +2,9 @@ from sqlagg.base import CustomQueryColumn, QueryMeta
 from sqlagg.columns import CountUniqueColumn, SumWhen, SimpleColumn
 from sqlagg.filters import BETWEEN, EQ, LTE
 import sqlalchemy
-from corehq.apps.reports.sqlreport import SqlData, DatabaseColumn
-from corehq.apps.userreports.models import CustomDataSourceConfiguration
-from corehq.apps.userreports.sql import get_table_name, get_indicator_table
+from commcarehq.apps.reports.sqlreport import SqlData, DatabaseColumn
+from commcarehq.apps.userreports.models import CustomDataSourceConfiguration
+from commcarehq.apps.userreports.sql import get_table_name, get_indicator_table
 
 TABLE_ID = 'asha_facilitators'
 

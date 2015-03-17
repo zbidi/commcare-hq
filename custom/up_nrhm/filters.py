@@ -1,10 +1,10 @@
 from django.utils.translation import ugettext_noop
-from corehq.apps.reports.filters.select import MonthFilter
-from corehq.apps.userreports.sql import get_table_name
+from commcarehq.apps.reports.filters.select import MonthFilter
+from commcarehq.apps.userreports.sql import get_table_name
 from dimagi.utils.decorators.memoized import memoized
 from sqlagg.columns import SimpleColumn
-from corehq.apps.reports.filters.base import BaseDrilldownOptionFilter, BaseSingleOptionFilter
-from corehq.apps.reports.sqlreport import SqlData, DatabaseColumn
+from commcarehq.apps.reports.filters.base import BaseDrilldownOptionFilter, BaseSingleOptionFilter
+from commcarehq.apps.reports.sqlreport import SqlData, DatabaseColumn
 
 
 class HierarchySqlData(SqlData):

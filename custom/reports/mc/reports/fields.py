@@ -1,4 +1,4 @@
-from corehq.apps.reports.filters.fixtures import AsyncDrillableFilter
+from commcarehq.apps.reports.filters.fixtures import AsyncDrillableFilter
 from django.utils.translation import ugettext_noop
 
 

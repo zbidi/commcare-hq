@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_noop
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.programs.models import Program
-from corehq.apps.reports.filters.base import BaseDrilldownOptionFilter, BaseSingleOptionFilter
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.programs.models import Program
+from commcarehq.apps.reports.filters.base import BaseDrilldownOptionFilter, BaseSingleOptionFilter
 from custom.common import ALL_OPTION
 
 

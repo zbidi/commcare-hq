@@ -1,5 +1,5 @@
 from sqlagg.columns import SimpleColumn
-from corehq.apps.reports.sqlreport import SqlData, DatabaseColumn
+from commcarehq.apps.reports.sqlreport import SqlData, DatabaseColumn
 from custom.common import ALL_OPTION
 
 

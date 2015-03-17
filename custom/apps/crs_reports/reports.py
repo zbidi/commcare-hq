@@ -6,13 +6,13 @@ from casexml.apps.case.models import CommCareCase
 from django.core.urlresolvers import reverse, NoReverseMatch
 import pytz
 from django.utils.translation import ugettext as _
-from corehq.apps.reports.standard.cases.basic import CaseListReport
+from commcarehq.apps.reports.standard.cases.basic import CaseListReport
 
-from corehq.apps.api.es import ReportCaseES
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.standard.cases.data_sources import CaseDisplay
-from corehq.pillows.base import restore_property_dict
+from commcarehq.apps.api.es import ReportCaseES
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.standard.cases.data_sources import CaseDisplay
+from commcarehq.pillows.base import restore_property_dict
 from dimagi.utils.decorators.memoized import memoized
 from dimagi.utils.timezones import utils as tz_utils
 

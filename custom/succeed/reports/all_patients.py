@@ -1,19 +1,19 @@
 from datetime import datetime, timedelta
 from django.utils.translation import ugettext as _, ugettext_noop
 from dimagi.utils.decorators.memoized import memoized
-from corehq.apps.api.es import ReportCaseES
-from corehq.apps.cloudcare.api import get_cloudcare_app, get_cloudcare_form_url
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.search import SearchFilter
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.reports.standard.cases.basic import CaseListReport
-from corehq.apps.reports.standard.cases.data_sources import CaseDisplay
-from corehq.apps.users.models import CommCareUser, WebUser, UserRole, DomainMembershipError
-from corehq.elastic import es_query
-from corehq.pillows.base import restore_property_dict
+from commcarehq.apps.api.es import ReportCaseES
+from commcarehq.apps.cloudcare.api import get_cloudcare_app, get_cloudcare_form_url
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.search import SearchFilter
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.standard.cases.basic import CaseListReport
+from commcarehq.apps.reports.standard.cases.data_sources import CaseDisplay
+from commcarehq.apps.users.models import CommCareUser, WebUser, UserRole, DomainMembershipError
+from commcarehq.elastic import es_query
+from commcarehq.pillows.base import restore_property_dict
 from django.utils import html
 import dateutil
-from corehq.pillows.mappings.reportcase_mapping import REPORT_CASE_INDEX
+from commcarehq.pillows.mappings.reportcase_mapping import REPORT_CASE_INDEX
 from custom.succeed.reports import VISIT_SCHEDULE, LAST_INTERACTION_LIST, EMPTY_FIELD, CM7, PM3, CM_APP_CM_MODULE, \
     OUTPUT_DATE_FORMAT, INPUT_DATE_FORMAT
 from custom.succeed.reports.patient_Info import PatientInfoReport
@@ -150,7 +150,7 @@ class PatientListReport(CustomProjectReport, CaseListReport):
 
     fields = ['custom.succeed.fields.CareSite',
               'custom.succeed.fields.PatientStatus',
-              'corehq.apps.reports.standard.cases.filters.CaseSearchFilter']
+              'commcarehq.apps.reports.standard.cases.filters.CaseSearchFilter']
 
     @classmethod
     def show_in_navigation(cls, domain=None, project=None, user=None):

@@ -1,0 +1,20 @@
+from celery.task import task
+from commcarehq.apps.commtrack.consumption import recalculate_domain_consumption
+from commcarehq.apps.locations.bulk import import_locations
+from dimagi.utils.excel_importer import MultiExcelImporter
+
+
+@task
+def import_locations_async(domain, file_ref_id):
+    importer = MultiExcelImporter(import_locations_async, file_ref_id)
+    results = list(import_locations(domain, importer))
+    importer.mark_complete()
+
+    return {
+        'messages': results
+    }
+
+
+@task
+def recalculate_domain_consumption_task(domain):
+    recalculate_domain_consumption(domain)

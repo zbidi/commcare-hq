@@ -1,14 +1,14 @@
 from django.core.urlresolvers import reverse
 from django.db.models import Q
-from corehq import Domain
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.programs.models import Program
-from corehq.apps.reports.commtrack.standard import CommtrackReportMixin
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.graph_models import LineChart, MultiBarChart
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, DatespanMixin
+from commcarehq import Domain
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.programs.models import Program
+from commcarehq.apps.reports.commtrack.standard import CommtrackReportMixin
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.graph_models import LineChart, MultiBarChart
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, DatespanMixin
 from dimagi.utils.decorators.memoized import memoized
-from corehq.apps.locations.models import Location, SQLLocation
+from commcarehq.apps.locations.models import Location, SQLLocation
 from custom.ewsghana.utils import get_supply_points, calculate_last_period
 from casexml.apps.stock.models import StockTransaction
 

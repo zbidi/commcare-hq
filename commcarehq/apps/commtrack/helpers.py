@@ -1,0 +1,20 @@
+from commcarehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.products.models import Product
+
+"""
+helper code to populate the various commtrack models, for ease of
+development/testing, before we have proper UIs and imports
+"""
+
+
+def make_product(domain, name, code):
+    p = Product()
+    p.domain = domain
+    p.name = name
+    p.code = code.lower()
+    p.save()
+    return p
+
+
+def make_supply_point(domain, location):
+    return SupplyPointCase.create_from_location(domain, location)

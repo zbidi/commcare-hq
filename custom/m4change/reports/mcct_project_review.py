@@ -5,17 +5,17 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from jsonobject import DateTimeProperty
 
-from corehq.apps.locations.models import Location
-from corehq.apps.reports.cache import request_cache
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.elastic import ES_URLS
-from corehq.apps.reports.standard import CustomProjectReport
-from corehq.apps.reports.standard import ProjectReport, ProjectReportParametersMixin, DatespanMixin
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.dont_use.fields import StrongFilterUsersField
-from corehq.apps.reports.generic import ElasticProjectInspectionReport
-from corehq.apps.reports.standard.monitoring import MultiFormDrilldownMixin
-from corehq.elastic import es_query
+from commcarehq.apps.locations.models import Location
+from commcarehq.apps.reports.cache import request_cache
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.elastic import ES_URLS
+from commcarehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.reports.standard import ProjectReport, ProjectReportParametersMixin, DatespanMixin
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.dont_use.fields import StrongFilterUsersField
+from commcarehq.apps.reports.generic import ElasticProjectInspectionReport
+from commcarehq.apps.reports.standard.monitoring import MultiFormDrilldownMixin
+from commcarehq.elastic import es_query
 from custom.m4change.constants import REJECTION_REASON_DISPLAY_NAMES, MCCT_SERVICE_TYPES
 from custom.m4change.filters import ServiceTypeFilter
 from custom.m4change.models import McctStatus
@@ -163,12 +163,12 @@ class BaseReport(CustomProjectReport, ElasticProjectInspectionReport, ProjectRep
         def _get_case_name_html(self, case, add_link):
             case_name = get_property(case, "full_name", EMPTY_FIELD)
             return self._make_link(
-                reverse('corehq.apps.reports.views.case_details', args=[self.domain, case._id]), case_name
+                reverse('commcarehq.apps.reports.views.case_details', args=[self.domain, case._id]), case_name
             ) if add_link else case_name
 
         def _get_service_type_html(self, form, service_type, add_link):
             return self._make_link(
-                reverse('corehq.apps.reports.views.form_data', args=[self.domain, form['_id']]), service_type
+                reverse('commcarehq.apps.reports.views.form_data', args=[self.domain, form['_id']]), service_type
             ) if add_link else service_type
 
 

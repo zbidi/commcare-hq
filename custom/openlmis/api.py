@@ -3,8 +3,8 @@ import json
 import feedparser
 import time
 import requests
-from corehq.apps.commtrack.const import REQUISITION_CASE_TYPE
-from corehq.apps.commtrack.models import RequisitionCase
+from commcarehq.apps.commtrack.const import REQUISITION_CASE_TYPE
+from commcarehq.apps.commtrack.models import RequisitionCase
 from custom.api.utils import EndpointMixin
 from custom.openlmis.exceptions import OpenLMISAPIException
 

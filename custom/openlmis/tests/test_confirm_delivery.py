@@ -1,12 +1,12 @@
-from corehq.apps.commtrack.const import RequisitionActions
-from corehq.apps.commtrack.requisitions import create_requisition
+from commcarehq.apps.commtrack.const import RequisitionActions
+from commcarehq.apps.commtrack.requisitions import create_requisition
 from custom.openlmis.commtrack import requisition_receipt
 from custom.openlmis.tests.base import OpenLMISTestBase
 
 class ConfirmDeliveryTest(OpenLMISTestBase):
 
     def fixmetestConfirmDelivery(self):
-        from corehq.apps.commtrack.stockreport import Requisition
+        from commcarehq.apps.commtrack.stockreport import Requisition
         requisition_cases = []
         config = self.domain.commtrack_settings
         for spp in self.spps.values():

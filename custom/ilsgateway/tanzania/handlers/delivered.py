@@ -1,9 +1,9 @@
 from datetime import datetime
-from corehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.sms.api import send_sms_to_verified_number
 from custom.ilsgateway.tanzania.handlers import get_location
 from custom.ilsgateway.tanzania.handlers.keyword import KeywordHandler
 from custom.ilsgateway.models import SupplyPointStatus, SupplyPointStatusTypes, SupplyPointStatusValues
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.models import CommCareUser
 from custom.ilsgateway.tanzania.reminders import DELIVERY_CONFIRM_DISTRICT, DELIVERY_PARTIAL_CONFIRM, DELIVERY_CONFIRM_CHILDREN
 
 

@@ -1,7 +1,7 @@
 from custom.ilsgateway.tanzania import ILSData
 
-from corehq.apps.commtrack.models import SQLProduct
-from corehq.apps.reports.graph_models import MultiBarChart, Axis
+from commcarehq.apps.commtrack.models import SQLProduct
+from commcarehq.apps.reports.graph_models import MultiBarChart, Axis
 from custom.ilsgateway.models import GroupSummary, SupplyPointStatusTypes, DeliveryGroups, \
     ProductAvailabilityData, ProductAvailabilityDashboardChart
 

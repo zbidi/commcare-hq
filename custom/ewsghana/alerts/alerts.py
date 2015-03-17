@@ -2,18 +2,18 @@ from celery.schedules import crontab
 from celery.task import periodic_task
 import datetime
 from casexml.apps.stock.models import StockTransaction
-from corehq.apps.commtrack.models import SupplyPointCase, StockState
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.sms.api import send_sms_to_verified_number
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.commtrack.models import SupplyPointCase, StockState
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.sms.api import send_sms_to_verified_number
+from commcarehq.apps.users.models import CommCareUser
 from custom.ewsghana.alerts import ONGOING_NON_REPORTING, ONGOING_STOCKOUT_AT_SDP, ONGOING_STOCKOUT_AT_RMS,\
     REPORT_REMINDER, WEB_REMINDER, URGENT_NON_REPORTING, URGENT_STOCKOUT, COMPLETE_REPORT, INCOMPLETE_REPORT, \
     BELOW_REORDER_LEVELS, ABOVE_THRESHOLD, WITHOUT_RECEIPTS
 from django.core.mail import send_mail
 from custom.ewsghana.utils import send_test_message, get_reporting_types, can_receive_email
 import settings
-from corehq.apps.commtrack.models import CommtrackConfig
+from commcarehq.apps.commtrack.models import CommtrackConfig
 from custom.ewsghana.models import EWSGhanaConfig
 
 

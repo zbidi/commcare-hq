@@ -7,8 +7,8 @@ from django.conf import settings
 import simplejson
 
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.domain.shortcuts import create_domain
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.domain.shortcuts import create_domain
+from commcarehq.apps.users.models import CommCareUser
 from couchforms.models import XFormInstance
 from pact.dot_data import get_dots_case_json
 from pact.enums import PACT_DOTS_DATA_PROPERTY, PACT_DOMAIN, XMLNS_DOTS_FORM, XMLNS_PATIENT_UPDATE_DOT, DOT_NONART, DOT_ART, DOT_ART_IDX, DOT_NONART_IDX

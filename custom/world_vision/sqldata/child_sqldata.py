@@ -2,8 +2,8 @@ import calendar
 from sqlagg import CountUniqueColumn
 from sqlagg.columns import SimpleColumn
 from sqlagg.filters import LT, LTE, AND, GTE, GT, EQ, NOTEQ, OR, IN
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.sqlreport import DatabaseColumn
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.sqlreport import DatabaseColumn
 from custom.world_vision.custom_queries import CustomMedianColumn, MeanColumnWithCasting
 from custom.world_vision.sqldata import BaseSqlData
 from custom.world_vision.sqldata.main_sqldata import ImmunizationOverview

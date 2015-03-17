@@ -1,6 +1,6 @@
 import fluff
 from casexml.apps.case.models import CommCareCase
-from corehq.fluff.calculators.case import CasePropertyFilter
+from commcarehq.fluff.calculators.case import CasePropertyFilter
 from custom.care_pathways.utils import get_domain_configuration
 
 # This calculator is necessary to generate 'date' field which is required in the database

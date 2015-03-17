@@ -1,20 +1,20 @@
 import logging
 from django.core.validators import validate_email
-from corehq.apps.products.models import SQLProduct
+from commcarehq.apps.products.models import SQLProduct
 from custom.logistics.commtrack import add_location
 from dimagi.utils.dates import force_to_datetime
-from corehq import Domain
-from corehq.apps.commtrack.models import SupplyPointCase
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.locations.schema import LocationType
-from corehq.apps.users.models import WebUser, UserRole, Permissions
+from commcarehq import Domain
+from commcarehq.apps.commtrack.models import SupplyPointCase
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.locations.schema import LocationType
+from commcarehq.apps.users.models import WebUser, UserRole, Permissions
 from custom.api.utils import apply_updates
 from custom.ewsghana.extensions import ews_product_extension, ews_webuser_extension
 from jsonobject.properties import StringProperty, BooleanProperty, ListProperty, IntegerProperty, ObjectProperty
 from custom.ilsgateway.api import ProductStock, StockTransaction
 from jsonobject import JsonObject
 from custom.logistics.api import LogisticsEndpoint, APISynchronization
-from corehq.apps.locations.models import Location as Loc
+from commcarehq.apps.locations.models import Location as Loc
 from django.core.exceptions import ValidationError
 
 

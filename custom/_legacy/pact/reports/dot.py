@@ -1,10 +1,10 @@
 from datetime import datetime, timedelta
 import uuid
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.api.es import ReportCaseES, ReportXFormES
-from corehq.apps.reports.filters.base import BaseSingleOptionFilter
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, DatespanMixin
+from commcarehq.apps.api.es import ReportCaseES, ReportXFormES
+from commcarehq.apps.reports.filters.base import BaseSingleOptionFilter
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin, DatespanMixin
 from dimagi.utils.decorators.memoized import memoized
 
 from pact.enums import PACT_DOMAIN, PACT_CASE_TYPE, XMLNS_DOTS_FORM
@@ -55,7 +55,7 @@ class PactDOTReport(GenericTabularReport, CustomProjectReport, ProjectReportPara
 
     report_template_path = "pact/dots/dots_report.html"
     flush_layout = True
-    fields = ['pact.reports.dot.PactDOTPatientField', 'corehq.apps.reports.filters.dates.DatespanFilter']
+    fields = ['pact.reports.dot.PactDOTPatientField', 'commcarehq.apps.reports.filters.dates.DatespanFilter']
 
     @property
     def report_context(self):

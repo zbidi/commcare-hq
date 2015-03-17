@@ -4,7 +4,7 @@ from couchdbkit import ResourceNotFound, ResourceConflict
 import datetime
 from django.test.testcases import TestCase
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.indicators.models import (
+from commcarehq.apps.indicators.models import (
     FormLabelIndicatorDefinition,
     FormDataInCaseIndicatorDefinition,
     FormDataAliasIndicatorDefinition,

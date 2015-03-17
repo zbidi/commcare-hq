@@ -1,12 +1,12 @@
-from corehq import Domain
-from corehq.apps.commtrack.models import StockState
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.reports.generic import GenericTabularReport
+from commcarehq import Domain
+from commcarehq.apps.commtrack.models import StockState
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.reports.generic import GenericTabularReport
 from dimagi.utils.decorators.memoized import memoized
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.graph_models import Axis
-from corehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.graph_models import Axis
+from commcarehq.apps.reports.filters.dates import DatespanFilter
 from custom.common import ALL_OPTION
 from custom.ewsghana.filters import ProductByProgramFilter, ViewReportFilter
 from custom.ewsghana.reports.stock_levels_report import StockLevelsReport, InventoryManagementData, \

@@ -1,7 +1,7 @@
 from django.core.management.base import LabelCommand
 import sys
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.reports.util import make_form_couch_key
+from commcarehq.apps.reports.util import make_form_couch_key
 from couchforms.models import XFormInstance
 
 class Command(LabelCommand):

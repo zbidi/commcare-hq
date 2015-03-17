@@ -1,8 +1,8 @@
-from corehq.apps.api.es import ReportCaseES, get_report_script_field
+from commcarehq.apps.api.es import ReportCaseES, get_report_script_field
 from pact.enums import PACT_DOTS_DATA_PROPERTY, PACT_DOMAIN
 from StringIO import StringIO
 from django.test.client import RequestFactory
-from corehq.apps.receiverwrapper import views as rcv_views
+from commcarehq.apps.receiverwrapper import views as rcv_views
 
 
 def submit_xform(url_path, domain, submission_xml_string, extra_meta=None):

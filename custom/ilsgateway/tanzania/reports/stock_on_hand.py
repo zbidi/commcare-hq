@@ -2,12 +2,12 @@ from casexml.apps.stock.models import StockTransaction
 from datetime import timedelta, datetime, time
 from django.db.models import Q
 from django.template.defaultfilters import floatformat
-from corehq.apps.commtrack.models import SQLProduct, StockState
-from corehq.apps.locations.models import Location, SQLLocation
-from corehq.apps.reports.commtrack.util import get_relevant_supply_point_ids
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.filters.select import MonthFilter, YearFilter
+from commcarehq.apps.commtrack.models import SQLProduct, StockState
+from commcarehq.apps.locations.models import Location, SQLLocation
+from commcarehq.apps.reports.commtrack.util import get_relevant_supply_point_ids
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.filters.select import MonthFilter, YearFilter
 from django.utils import html
 from custom.ilsgateway.filters import ProductByProgramFilter, MSDZoneFilter
 from custom.ilsgateway.models import GroupSummary, SupplyPointStatusTypes, ProductAvailabilityData, \

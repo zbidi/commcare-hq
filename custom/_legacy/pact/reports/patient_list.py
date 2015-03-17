@@ -1,10 +1,10 @@
 from django.core.urlresolvers import  NoReverseMatch
 from django.utils import html
 
-from corehq.apps.api.es import ReportCaseES, ReportXFormES
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.base import BaseSingleOptionFilter
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.api.es import ReportCaseES, ReportXFormES
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.base import BaseSingleOptionFilter
+from commcarehq.apps.users.models import CommCareUser
 from dimagi.utils.decorators.memoized import memoized
 from pact.enums import PACT_DOMAIN, PACT_HP_CHOICES, PACT_DOT_CHOICES, PACT_CASE_TYPE
 from pact.reports import PactElasticTabularReportMixin

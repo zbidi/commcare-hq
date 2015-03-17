@@ -1,6 +1,6 @@
 from casexml.apps.case.models import CommCareCase
 from dimagi.utils.decorators.memoized import memoized
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.users.models import CommCareUser
 from constants import EMPTY_FIELD
 from custom.m4change.models import McctStatus
 

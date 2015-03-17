@@ -1,10 +1,10 @@
 # coding=utf-8
 import calendar
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.locations.models import Location
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumnGroup, DataTablesColumn
-from corehq.apps.reports.sqlreport import DataFormatter, DictDataFormat
-from corehq.util.translation import localize
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.locations.models import Location
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumnGroup, DataTablesColumn
+from commcarehq.apps.reports.sqlreport import DataFormatter, DictDataFormat
+from commcarehq.util.translation import localize
 from custom.intrahealth.sqldata import NombreData, TauxConsommationData
 from django.utils.translation import ugettext as _
 from dimagi.utils.decorators.memoized import memoized

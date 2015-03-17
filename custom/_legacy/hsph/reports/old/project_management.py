@@ -1,9 +1,9 @@
-from corehq.apps.groups.models import Group
-from corehq.apps.reports.standard import (CustomProjectReport,
+from commcarehq.apps.groups.models import Group
+from commcarehq.apps.reports.standard import (CustomProjectReport,
     ProjectReportParametersMixin, DatespanMixin)
-from corehq.apps.reports.datatables import (DataTablesColumn, DataTablesHeader,
+from commcarehq.apps.reports.datatables import (DataTablesColumn, DataTablesHeader,
     DTSortType)
-from corehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.generic import GenericTabularReport
 from dimagi.utils.couch.database import get_db
 from hsph.fields import (FacilityStatusField, IHForCHFField, SiteField,
     NameOfDCTLField)
@@ -18,7 +18,7 @@ class ProjectManagementReport(CustomProjectReport, ProjectReportParametersMixin,
 class ProjectStatusDashboardReport(ProjectManagementReport):
     name = "Project Status Dashboard"
     slug = "hsph_project_status"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.SiteField']
     report_template_path = "hsph/reports/project_status.html"
     flush_layout = True
@@ -125,7 +125,7 @@ class ProjectStatusDashboardReport(ProjectManagementReport):
 class ImplementationStatusDashboardReport(GenericTabularReport, ProjectManagementReport, HSPHSiteDataMixin):
     name = "Implementation Status Dashboard"
     slug = "hsph_implementation_status"
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.IHForCHFField',
               'hsph.fields.FacilityStatusField',
               'hsph.fields.NameOfCITLField',

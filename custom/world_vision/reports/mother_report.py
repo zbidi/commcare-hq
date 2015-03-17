@@ -1,4 +1,4 @@
-from corehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.dates import DatespanFilter
 from custom.world_vision.filters import LocationFilter, WVDatespanFilter
 from custom.world_vision.reports import TTCReport
 from custom.world_vision.sqldata.mother_sqldata import MotherRegistrationDetails, ClosedMotherCasesBreakdown, \

@@ -1,5 +1,5 @@
 from django import forms
-from corehq.apps.indicators.admin.forms import BaseDynamicIndicatorForm, CouchIndicatorForm
+from commcarehq.apps.indicators.admin.forms import BaseDynamicIndicatorForm, CouchIndicatorForm
 from mvp.models import MVPDaysSinceLastTransmission, MVPActiveCasesIndicatorDefinition, MVPChildCasesByAgeIndicatorDefinition
 
 

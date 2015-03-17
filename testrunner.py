@@ -152,7 +152,7 @@ class TwoStageTestRunner(HqTestSuiteRunner):
         old_config = self.setup_databases()
         result = self.run_suite(suite)
 
-        from corehq.db import _engine, Session
+        from commcarehq.db import _engine, Session
         Session.remove()
         _engine.dispose()
 

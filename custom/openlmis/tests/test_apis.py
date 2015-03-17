@@ -2,9 +2,9 @@ from datetime import datetime
 import json
 import os
 from django.test import TestCase
-from corehq.apps.commtrack.helpers import make_supply_point
-from corehq.apps.commtrack.tests import bootstrap_domain
-from corehq.apps.locations.models import Location
+from commcarehq.apps.commtrack.helpers import make_supply_point
+from commcarehq.apps.commtrack.tests import bootstrap_domain
+from commcarehq.apps.locations.models import Location
 from custom.openlmis.api import get_facilities, Facility, get_facility_programs, FacilityProgramLink, get_programs_and_products, Program, RequisitionDetails, RequisitionStatus, get_requisition_statuses, Requisition
 from custom.openlmis.commtrack import sync_supply_point_to_openlmis, submit_requisition
 from custom.openlmis.tests.mock_api import MockOpenLMISEndpoint

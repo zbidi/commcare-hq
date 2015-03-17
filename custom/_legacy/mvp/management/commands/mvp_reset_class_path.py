@@ -1,5 +1,5 @@
 from django.core.management.base import LabelCommand
-from corehq.apps.indicators.utils import get_indicator_config
+from commcarehq.apps.indicators.utils import get_indicator_config
 from mvp.models import (
     CLASS_PATH,
     MVPDaysSinceLastTransmission,

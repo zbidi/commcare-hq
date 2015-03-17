@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_noop
-from corehq.apps.reports.filters.base import BaseDrilldownOptionFilter
-from corehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.base import BaseDrilldownOptionFilter
+from commcarehq.apps.reports.filters.dates import DatespanFilter
 from custom.world_vision.sqldata import LocationSqlData, LOCATION_HIERARCHY
 
 

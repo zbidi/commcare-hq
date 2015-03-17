@@ -1,9 +1,9 @@
 import logging
 from couchdbkit import ChangesStream, ResourceNotFound
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.indicators.models import FormIndicatorDefinition, \
+from commcarehq.apps.indicators.models import FormIndicatorDefinition, \
     CaseIndicatorDefinition, CaseDataInFormIndicatorDefinition
-from corehq.apps.indicators.utils import get_namespaces, get_indicator_domains
+from commcarehq.apps.indicators.utils import get_namespaces, get_indicator_domains
 from couchforms.models import XFormInstance
 from mvp_docs.models import IndicatorXForm, IndicatorCase
 from pillowtop.listener import BasicPillow

@@ -1,7 +1,7 @@
 from datetime import datetime
 import uuid
 from casexml.apps.case.models import CommCareCase
-from corehq.apps.users.models import WebUser, CommCareUser
+from commcarehq.apps.users.models import WebUser, CommCareUser
 from pact.enums import PACT_DOMAIN
 
 

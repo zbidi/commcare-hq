@@ -1,18 +1,18 @@
 import datetime
 from casexml.apps.case.models import CommCareCaseAction
-from corehq.apps.reports.standard.cases.basic import CaseListReport
-from corehq.apps.api.es import ReportCaseES
-from corehq.apps.reports.generic import GenericTabularReport
-from corehq.apps.reports.basic import BasicTabularReport, Column
-from corehq.apps.reports.standard import (DatespanMixin,
+from commcarehq.apps.reports.standard.cases.basic import CaseListReport
+from commcarehq.apps.api.es import ReportCaseES
+from commcarehq.apps.reports.generic import GenericTabularReport
+from commcarehq.apps.reports.basic import BasicTabularReport, Column
+from commcarehq.apps.reports.standard import (DatespanMixin,
     ProjectReportParametersMixin, CustomProjectReport)
-from corehq.apps.reports.standard.cases.data_sources import CaseDisplay
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.pillows.base import restore_property_dict
+from commcarehq.apps.reports.standard.cases.data_sources import CaseDisplay
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.pillows.base import restore_property_dict
 from hsph.reports import HSPHSiteDataMixin
 from hsph.fields import NameOfCATIField, AllocatedToFilter
-from corehq.apps.reports.filters.users import UserTypeFilter
-from corehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.reports.filters.users import UserTypeFilter
+from commcarehq.apps.reports.filters.dates import DatespanFilter
 from couchdbkit_aggregate.fn import mean, unique_count
 from casexml.apps.case import const
 from dimagi.utils.decorators.memoized import memoized
@@ -215,11 +215,11 @@ class CaseReport(CaseListReport, CustomProjectReport, HSPHSiteDataMixin,
     slug = 'case_report'
     
     fields = (
-        'corehq.apps.reports.filters.users.UserTypeFilter',
-        'corehq.apps.reports.filters.dates.DatespanFilter',
+        'commcarehq.apps.reports.filters.users.UserTypeFilter',
+        'commcarehq.apps.reports.filters.dates.DatespanFilter',
         'hsph.fields.SiteField',
         #'hsph.fields.AllocatedToFilter',
-        'corehq.apps.reports.filters.select.SelectOpenCloseFilter',
+        'commcarehq.apps.reports.filters.select.SelectOpenCloseFilter',
     )
 
     default_case_type = 'birth'
@@ -353,7 +353,7 @@ class CallCenterFollowUpSummaryReport(GenericTabularReport,
     name = "Call Center Follow Up Summary"
     slug = "hsph_dcc_followup_summary"
 
-    fields = ['corehq.apps.reports.filters.dates.DatespanFilter',
+    fields = ['commcarehq.apps.reports.filters.dates.DatespanFilter',
               'hsph.fields.SiteField']
 
     @property

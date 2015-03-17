@@ -3,17 +3,17 @@ from couchdbkit import ResourceNotFound
 from django.core.cache import cache
 from django.http import HttpResponse
 import json
-from corehq.apps.indicators.models import DynamicIndicatorDefinition
+from commcarehq.apps.indicators.models import DynamicIndicatorDefinition
 
-from corehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
+from commcarehq.apps.reports.standard import CustomProjectReport, ProjectReportParametersMixin
 from mvp.models import MVP
 
 class MVPIndicatorReport(CustomProjectReport, ProjectReportParametersMixin):
     """
         All MVP Reports with indicators should inherit from this.
     """
-    fields = ['corehq.apps.reports.filters.users.UserTypeFilter',
-              'corehq.apps.reports.filters.select.GroupFilter']
+    fields = ['commcarehq.apps.reports.filters.users.UserTypeFilter',
+              'commcarehq.apps.reports.filters.select.GroupFilter']
 
     def indicator_cache_key(self, indicator_slug, is_debug=False):
         key = "%(view_slug)s:%(domain)s:%(indicator_slug)s:%(query_string)s%(debug)s" % {

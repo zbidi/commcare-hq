@@ -1,7 +1,7 @@
 import datetime
-from corehq.apps.reports.graph_models import MultiBarChart, Axis, PieChart
-from corehq.apps.reports.sqlreport import calculate_total_row
-from corehq.apps.reports.standard import ProjectReportParametersMixin, CustomProjectReport
+from commcarehq.apps.reports.graph_models import MultiBarChart, Axis, PieChart
+from commcarehq.apps.reports.sqlreport import calculate_total_row
+from commcarehq.apps.reports.standard import ProjectReportParametersMixin, CustomProjectReport
 from custom.world_vision.sqldata import LOCATION_HIERARCHY
 from custom.world_vision.sqldata.child_sqldata import NutritionBirthWeightDetails,  ChildrenDeathsByMonth
 from custom.world_vision.sqldata.main_sqldata import ImmunizationOverview

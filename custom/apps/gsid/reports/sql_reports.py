@@ -2,13 +2,13 @@ import functools
 from sqlagg.columns import *
 from sqlagg.base import AliasColumn
 from sqlagg.filters import *
-from corehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
-from corehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader, DataTablesColumnGroup, DTSortType
-from corehq.apps.reports.graph_models import MultiBarChart, LineChart, Axis
-from corehq.apps.reports.sqlreport import DatabaseColumn, SummingSqlTabularReport, AggregateColumn, calculate_total_row
-from corehq.apps.reports.standard import CustomProjectReport, DatespanMixin
-from corehq.apps.reports.standard.maps import GenericMapReport
-from corehq.apps.reports.util import format_datatables_data, make_ctable_table_name
+from commcarehq.apps.fixtures.models import FixtureDataItem, FixtureDataType
+from commcarehq.apps.reports.datatables import DataTablesColumn, DataTablesHeader, DataTablesColumnGroup, DTSortType
+from commcarehq.apps.reports.graph_models import MultiBarChart, LineChart, Axis
+from commcarehq.apps.reports.sqlreport import DatabaseColumn, SummingSqlTabularReport, AggregateColumn, calculate_total_row
+from commcarehq.apps.reports.standard import CustomProjectReport, DatespanMixin
+from commcarehq.apps.reports.standard.maps import GenericMapReport
+from commcarehq.apps.reports.util import format_datatables_data, make_ctable_table_name
 from dimagi.utils.decorators.memoized import memoized
 from util import get_unique_combinations,  capitalize_fn
 from django.conf import settings
@@ -28,7 +28,7 @@ class StaticColumn(AliasColumn):
 
 class GSIDSQLReport(SummingSqlTabularReport, CustomProjectReport, DatespanMixin):
     fields = ['custom.apps.gsid.reports.TestField', 
-              'corehq.apps.reports.filters.dates.DatespanFilter', 
+              'commcarehq.apps.reports.filters.dates.DatespanFilter',
               'custom.apps.gsid.reports.AsyncClinicField',
               'custom.apps.gsid.reports.AggregateAtField']
 
@@ -701,7 +701,7 @@ class PatientMapReport(GenericMapReport, CustomProjectReport):
     slug = "patient_summary_map"
 
     fields = ['custom.apps.gsid.reports.TestField', 
-              'corehq.apps.reports.filters.dates.DatespanFilter', 
+              'commcarehq.apps.reports.filters.dates.DatespanFilter',
               'custom.apps.gsid.reports.AsyncClinicField',
               'custom.apps.gsid.reports.AggregateAtField']
 

@@ -3,16 +3,16 @@ from jsonobject import JsonObject
 from jsonobject.properties import StringProperty, BooleanProperty, DecimalProperty, ListProperty, IntegerProperty,\
     FloatProperty, DictProperty
 from requests.exceptions import ConnectionError
-from corehq import Domain
-from corehq.apps.commtrack.models import SupplyPointCase, CommtrackConfig, CommtrackActionConfig
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.locations.schema import LocationType
-from corehq.apps.programs.models import Program
-from corehq.apps.users.models import UserRole
+from commcarehq import Domain
+from commcarehq.apps.commtrack.models import SupplyPointCase, CommtrackConfig, CommtrackActionConfig
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.locations.schema import LocationType
+from commcarehq.apps.programs.models import Program
+from commcarehq.apps.users.models import UserRole
 from custom.api.utils import apply_updates
 from custom.ilsgateway.models import SupplyPointStatus, DeliveryGroupReport, HistoricalLocationGroup
 from custom.logistics.api import LogisticsEndpoint, APISynchronization
-from corehq.apps.locations.models import Location as Loc
+from commcarehq.apps.locations.models import Location as Loc
 
 LOCATION_TYPES = ["MOHSW", "REGION", "DISTRICT", "FACILITY"]
 

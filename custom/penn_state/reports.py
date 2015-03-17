@@ -3,9 +3,9 @@ import copy
 from couchdbkit.exceptions import ResourceNotFound
 from no_exceptions.exceptions import Http403, Http404
 
-from corehq.apps.users.models import CommCareUser
-from corehq.apps.groups.models import Group
-from corehq.apps.reports.standard import CustomProjectReport
+from commcarehq.apps.users.models import CommCareUser
+from commcarehq.apps.groups.models import Group
+from commcarehq.apps.reports.standard import CustomProjectReport
 
 from .models import LegacyWeeklyReport
 from .constants import *

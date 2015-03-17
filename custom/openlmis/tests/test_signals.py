@@ -1,10 +1,10 @@
 import json
-from corehq.apps.commtrack.models import CommtrackConfig, OpenLMISConfig
-from corehq.apps.programs.models import Program
-from corehq.apps.products.models import Product
-from corehq.apps.commtrack.tests.util import TEST_DOMAIN
-from corehq.apps.commtrack.const import RequisitionActions
-from corehq.apps.commtrack.requisitions import create_requisition
+from commcarehq.apps.commtrack.models import CommtrackConfig, OpenLMISConfig
+from commcarehq.apps.programs.models import Program
+from commcarehq.apps.products.models import Product
+from commcarehq.apps.commtrack.tests.util import TEST_DOMAIN
+from commcarehq.apps.commtrack.const import RequisitionActions
+from commcarehq.apps.commtrack.requisitions import create_requisition
 from custom.openlmis.signals import stock_data_submission
 from custom.openlmis.tests.base import OpenLMISTestBase
 from custom.openlmis.tests.mock_api import MockOpenLMISSubmitEndpoint
@@ -49,7 +49,7 @@ class SignalsTest(OpenLMISTestBase):
         self.createProducts()
 
     def fixmetestSyncStockRequisition(self):
-        from corehq.apps.commtrack.stockreport import Requisition
+        from commcarehq.apps.commtrack.stockreport import Requisition
         requisition_cases = []
         config = self.domain.commtrack_settings
         for spp in self.spps.values():

@@ -1,12 +1,12 @@
 from collections import defaultdict
 from casexml.apps.stock.models import StockTransaction
-from corehq.apps.commtrack.models import StockState, CommtrackConfig
-from corehq.apps.locations.models import SQLLocation
-from corehq.apps.products.models import SQLProduct
-from corehq.apps.reports.commtrack.const import STOCK_SECTION_TYPE
-from corehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
-from corehq.apps.reports.filters.fixtures import AsyncLocationFilter
-from corehq.apps.reports.filters.dates import DatespanFilter
+from commcarehq.apps.commtrack.models import StockState, CommtrackConfig
+from commcarehq.apps.locations.models import SQLLocation
+from commcarehq.apps.products.models import SQLProduct
+from commcarehq.apps.reports.commtrack.const import STOCK_SECTION_TYPE
+from commcarehq.apps.reports.datatables import DataTablesHeader, DataTablesColumn
+from commcarehq.apps.reports.filters.fixtures import AsyncLocationFilter
+from commcarehq.apps.reports.filters.dates import DatespanFilter
 from custom.ewsghana.reports import EWSData, MultiReport
 from django.utils.translation import ugettext as _
 from custom.ewsghana.utils import get_supply_points, get_country_id

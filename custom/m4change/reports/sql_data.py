@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext as _
 from sqlagg import SumColumn
 from sqlagg.columns import SimpleColumn
-from corehq.apps.reports.sqlreport import SqlData, DatabaseColumn
+from commcarehq.apps.reports.sqlreport import SqlData, DatabaseColumn
 
 
 class AncHmisCaseSqlData(SqlData):

@@ -24,9 +24,9 @@ from casexml.apps.case.models import CommCareCase
 from casexml.apps.case.xml import V2
 from celery.schedules import crontab
 from celery.task import periodic_task
-from corehq.apps.es import CaseES, UserES
-from corehq.apps.hqcase.utils import submit_case_blocks, get_case_by_identifier
-from corehq.apps.users.models import CommCareUser
+from commcarehq.apps.es import CaseES, UserES
+from commcarehq.apps.hqcase.utils import submit_case_blocks, get_case_by_identifier
+from commcarehq.apps.users.models import CommCareUser
 from custom.dhis2.const import CCHQ_CASE_ID, NUTRITION_ASSESSMENT_PROGRAM_FIELDS, ORG_UNIT_FIXTURES, CASE_TYPE, \
     TRACKED_ENTITY, CASE_NAME
 from custom.dhis2.models import Dhis2Api, Dhis2OrgUnit, Dhis2Settings, FixtureManager, JsonApiError, \
