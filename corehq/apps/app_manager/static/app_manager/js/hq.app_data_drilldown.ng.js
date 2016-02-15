@@ -118,7 +118,7 @@
 
         $scope.resetForm = function () {
             util.setAppTypes();
-            util.setApps(self._apps_by_type.all || []);
+            //util.setApps(self._apps_by_type.all || []);
             util.setModules();
             util.setForms();
             util.setCaseTypes();
@@ -157,7 +157,18 @@
                             self._forms_by_app_by_module = data.forms_by_app_by_module || {};
                             self._case_types_by_app = data.case_types_by_app || {};
                             util.setAppTypes();
-                            util.setApps(data.apps_by_type[$scope.formData.app_type]);
+                            var allApps = [];
+                            _.each(self._app_types, function(type) {
+                                var apps = self._apps_by_type[type.id];
+                                if (type.id !== 'all') {
+                                    apps = _.map(apps, function(app) {
+                                        app.text += " (" + type.text + ")";
+                                        return app;
+                                    });
+                                }
+                                allApps = allApps.concat(apps);
+                            });
+                            util.setApps(allApps);
                             util.setModules();
                             util.setForms();
                             util.setCaseTypes();
@@ -172,8 +183,9 @@
         self._initializeForm();
 
         $scope.updateAppChoices = function () {
+            console.log("type=" + $scope.formData.app_type);
             var app_choices = self._apps_by_type[$scope.formData.app_type];
-            util.setApps(app_choices);
+            //util.setApps(app_choices);
             $scope.selectedAppData = {};
             $scope.selectedFormData = {};
             $scope.hasNoCaseTypes = false;
@@ -236,6 +248,7 @@
             } else {
                 var app_data = currentApps[0].data;
                 app_data.name = currentApps[0].text;
+                debugger;
                 $scope.selectedAppData = app_data;
             }
         });
