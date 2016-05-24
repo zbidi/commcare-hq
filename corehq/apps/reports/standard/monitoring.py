@@ -295,7 +295,7 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
             landmark = column_num // 4
             sub_col = column_num % 4
             if sub_col == 1:
-                column = ""
+                column = "" # this will sort by doc_count
             elif sub_col == 2:
                 column = "active"
             elif sub_col == 3:
@@ -378,7 +378,7 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
         )
 
         top_level_aggregation = (
-            TermsAggregation('users', 'user_id')
+            TermsAggregation('users', 'user_id', size=self.pagination.start + self.pagination.count)
             .aggregation(touched_total_aggregation)
             .aggregation(active_total_aggregation)
             .aggregation(inactive_total_aggregation)
