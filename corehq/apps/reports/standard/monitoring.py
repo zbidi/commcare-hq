@@ -304,11 +304,12 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
     @property
     def sort_column(self):
         column_num = self.request_params.get('iSortCol_0', 0)
+        num_columns = self.request_params.get('iColumns', 15)
         if column_num == 0:
             return None # user
-        elif column_num == 13:
+        elif column_num == (num_columns - 2):
             return "active_total"
-        elif column_num == 14:
+        elif column_num == (num_columns - 1):
             return "inactive_total"
         else:
             landmark = column_num // 4
