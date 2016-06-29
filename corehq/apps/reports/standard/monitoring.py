@@ -321,7 +321,7 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
             elif sub_col == 3:
                 column = "closed"
             else:
-                column = "" # todo move proportion to script to order by
+                return None # Can't actually select this in the UI
 
         if column:
             return "landmark_%d>%s" % (landmark, column)
