@@ -246,7 +246,9 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
 
         def make_column(title, help_text, num_days):
             return DataTablesColumn(title, sort_type=DTSortType.NUMERIC,
-                                    help_text=help_text.format(num_days))
+                                    help_text=help_text.format(num_days),
+                                    sortable=False if title=="Proportion" else True)
+
 
         columns = [DataTablesColumn(_("Users"))]
 
