@@ -283,6 +283,23 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
     @memoized
     def user_ids(self):
         return self.users_by_id.keys()
+    
+    @property
+    @memoized
+    def paginated_users(self):
+        if self.sort_column is None:
+            return sorted(self.all_users, key=lambda u: u.raw_username)[self.pagination.start:self.pagination.start + self.pagination.count]
+        return self.all_users
+
+    @property
+    @memoized
+    def paginated_users_by_id(self):
+        return {user.user_id: user for user in self.paginated_users}
+    
+    @property
+    @memoized
+    def paginated_user_ids(self):
+        return self.paginated_users_by_id.keys()
 
     @property
     def sort_column(self):
@@ -342,9 +359,10 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
         if self.missing_users:
             buckets[None] = es_results.aggregations.missing_users.bucket
         rows = []
-        for user_id, user in self.users_by_id.items():
+        for user_id, user in self.paginated_users_by_id.items():
             bucket = buckets.get(user_id, None)
-            rows.append(self.Row(self, user, bucket))
+            if self.sort_column is None or bucket:
+                rows.append(self.Row(self, user, bucket))
 
         self.total_row = self._total_row
         return map(self._format_row, rows)
@@ -414,7 +432,7 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
         query = (
             case_es.CaseES()
             .domain(self.domain)
-            .user_ids_handle_unknown(self.user_ids)
+            .user_ids_handle_unknown(self.paginated_user_ids)
             .size(0)
         )
         if self.case_type:
