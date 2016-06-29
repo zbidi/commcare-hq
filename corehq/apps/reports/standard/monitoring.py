@@ -388,38 +388,14 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
         return ServerTime(self.utc_now - self.milestone).phone_time(self.timezone).done()
 
     def es_queryset(self):
-        end_date = ServerTime(self.utc_now).phone_time(self.timezone).done()
-        milestone_start = ServerTime(self.utc_now - self.milestone).phone_time(self.timezone).done()
-
-        touched_total_aggregation = FilterAggregation(
-            'touched_total',
-            filters.AND(
-                filters.date_range('modified_on', gte=milestone_start, lt=end_date),
-            )
-        )
-
-        active_total_aggregation = FilterAggregation(
-            'active_total',
-            filters.AND(
-                filters.date_range('modified_on', gte=milestone_start, lt=end_date),
-                filters.term('closed', False))
-        )
-
-        inactive_total_aggregation = FilterAggregation(
-            'inactive_total',
-            filters.AND(
-                filters.date_range('modified_on', lt=milestone_start),
-                filters.term('closed', False))
-        )
-
         top_level_aggregation = (
             TermsAggregation('users', 'user_id', size=self.pagination.start + self.pagination.count)
-            .aggregation(touched_total_aggregation)
-            .aggregation(active_total_aggregation)
-            .aggregation(inactive_total_aggregation)
+            .aggregation(self._touched_total_aggregation)
+            .aggregation(self._active_total_aggregation)
+            .aggregation(self._inactive_total_aggregation)
         )
 
-        top_level_aggregation = self.add_landmark_aggregations(top_level_aggregation, end_date)
+        top_level_aggregation = self.add_landmark_aggregations(top_level_aggregation, self.end_date)
 
         if self.sort_column:
             top_level_aggregation = top_level_aggregation.order(self.sort_column)
@@ -440,11 +416,11 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
         if self.missing_users:
             missing_aggregation = (
                 MissingAggregation('missing_users', 'user_id')
-                .aggregation(touched_total_aggregation)
-                .aggregation(active_total_aggregation)
-                .aggregation(inactive_total_aggregation)
+                .aggregation(self._touched_total_aggregation)
+                .aggregation(self._active_total_aggregation)
+                .aggregation(self._inactive_total_aggregation)
             )
-            missing_aggregation = self.add_landmark_aggregations(missing_aggregation, end_date)
+            missing_aggregation = self.add_landmark_aggregations(missing_aggregation, self.end_date)
             query = query.aggregation(missing_aggregation)
 
         query = (
