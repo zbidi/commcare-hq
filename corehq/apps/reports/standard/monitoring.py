@@ -283,7 +283,7 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
     @memoized
     def user_ids(self):
         return self.users_by_id.keys()
-    
+
     @property
     @memoized
     def paginated_users(self):
@@ -294,12 +294,12 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
     @property
     @memoized
     def paginated_users_by_id(self):
-        return {user.user_id: user for user in self.paginated_users}
-    
+        return [(user.user_id, user) for user in self.paginated_users]
+
     @property
     @memoized
     def paginated_user_ids(self):
-        return self.paginated_users_by_id.keys()
+        return [user.user_id for user in self.paginated_users]
 
     @property
     def sort_column(self):
@@ -327,6 +327,31 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
             return "landmark_%d>%s" % (landmark, column)
         else:
             return "landmark_%d" % (landmark,)
+
+    @property
+    def sort_key(self):
+        def _sort(row):
+            column_num = self.request_params.get('iSortCol_0', 0)
+            num_columns = self.request_params.get('iColumns', 15)
+            if column_num == 0:
+                return row.user
+            elif column_num == (num_columns - 2):
+                return row.total_active()
+            elif column_num == (num_columns - 1):
+                return row.total_inactive()
+            else:
+                landmark = column_num // 4
+                sub_col = column_num % 4
+                if sub_col == 1:
+                    return row.modified_count('landmark_' + str(landmark))
+                elif sub_col == 2:
+                    return row.active_count('landmark_' + str(landmark))
+                elif sub_col == 3:
+                    return row.modified_count('landmark_' + str(landmark))
+                else:
+                    return None # Can't actually select this in the UI
+
+        return _sort
 
     def _format_row(self, row):
         cells = [row.header()]
@@ -356,17 +381,18 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
     @property
     def rows(self):
         es_results = self.es_queryset()
-        buckets = {user_id: bucket for user_id, bucket in es_results.aggregations.users.buckets_dict.items()}
+        buckets = es_results.aggregations.users.buckets_list
         if self.missing_users:
             buckets[None] = es_results.aggregations.missing_users.bucket
         rows = []
-        for user_id, user in self.paginated_users_by_id.items():
-            bucket = buckets.get(user_id, None)
-            if self.sort_column is None or bucket:
-                rows.append(self.Row(self, user, bucket))
+        for bucket in buckets:
+            user = self.users_by_id[bucket.key]
+            rows.append(self.Row(self, user, bucket))
+
+        rows.sort(key=self.sort_key)
 
         self.total_row = self._total_row
-        return map(self._format_row, rows)
+        return map(self._format_row, rows[self.pagination.start:self.pagination.start+self.pagination.count])
 
     @property
     def _touched_total_aggregation(self):
@@ -480,22 +506,58 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
             self.bucket = bucket
 
         def active_count(self, landmark_key):
-            return 0 if not self.bucket else getattr(self.bucket, landmark_key).result['active']['doc_count']
+            if not self.bucket:
+                return 0
+            else:
+                landmark = self.bucket.result.get(landmark_key, None)
+                if landmark:
+                    return landmark['active']['doc_count']
+                return 0
 
         def modified_count(self, landmark_key):
-            return 0 if not self.bucket else getattr(self.bucket, landmark_key).doc_count
+            if not self.bucket:
+                return 0
+            else:
+                landmark = self.bucket.result.get(landmark_key, None)
+                if landmark:
+                    return landmark['doc_count']
+                return 0
 
         def closed_count(self, landmark_key):
-            return 0 if not self.bucket else getattr(self.bucket, landmark_key).result['closed']['doc_count']
+            if not self.bucket:
+                return 0
+            else:
+                landmark = self.bucket.result.get(landmark_key, None)
+                if landmark:
+                    return landmark['closed']['doc_count']
+                return 0
 
         def total_touched_count(self):
-            return 0 if not self.bucket else self.bucket.touched_total.doc_count
+            if not self.bucket:
+                return 0
+            else:
+                landmark = self.bucket.result.get('touched_total', None)
+                if landmark:
+                    return landmark['doc_count']
+                return 0
 
         def total_inactive_count(self):
-            return 0 if not self.bucket else self.bucket.inactive_total.doc_count
+            if not self.bucket:
+                return 0
+            else:
+                landmark = self.bucket.result.get('inactive_total', None)
+                if landmark:
+                    return landmark['doc_count']
+                return 0
 
         def total_active_count(self):
-            return 0 if not self.bucket else self.bucket.active_total.doc_count
+            if not self.bucket:
+                return 0
+            else:
+                landmark = self.bucket.result.get('active_total', None)
+                if landmark:
+                    return landmark['doc_count']
+                return 0
 
         def header(self):
             return self.report.get_user_link(self.user)['html']
