@@ -105,7 +105,7 @@ def user_ids_handle_unknown(user_ids):
     return user_filter
 
 
-def touched_total_aggreation(gt=None, gte=None, lt=None, lte=None):
+def touched_total_aggregation(gt=None, gte=None, lt=None, lte=None):
     return aggregations.FilterAggregation(
         'touched_total',
         filters.AND(
@@ -114,7 +114,7 @@ def touched_total_aggreation(gt=None, gte=None, lt=None, lte=None):
     )
 
 
-def active_total_aggreation(gt=None, gte=None, lt=None, lte=None):
+def active_total_aggregation(gt=None, gte=None, lt=None, lte=None):
     return aggregations.FilterAggregation(
         'active_total',
         filters.AND(
@@ -124,7 +124,7 @@ def active_total_aggreation(gt=None, gte=None, lt=None, lte=None):
     )
 
 
-def inactive_total_aggreation(gt=None, gte=None, lt=None, lte=None):
+def inactive_total_aggregation(gt=None, gte=None, lt=None, lte=None):
     return aggregations.FilterAggregation(
         'inactive_total',
         filters.AND(
