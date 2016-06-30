@@ -336,9 +336,9 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
             if column_num == 0:
                 return row.user
             elif column_num == (num_columns - 2):
-                return row.total_active()
+                return row.total_active_count()
             elif column_num == (num_columns - 1):
-                return row.total_inactive()
+                return row.total_inactive_count()
             else:
                 landmark = column_num // 4
                 sub_col = column_num % 4
