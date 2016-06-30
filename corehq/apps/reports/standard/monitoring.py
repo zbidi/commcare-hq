@@ -288,7 +288,9 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
     @memoized
     def paginated_users(self):
         if self.sort_column is None:
-            return sorted(self.all_users, key=lambda u: u.raw_username)[self.pagination.start:self.pagination.start + self.pagination.count]
+            return sorted(
+                    self.all_users, key=lambda u: u.raw_username, reverse=self.pagination.desc
+            )[self.pagination.start:self.pagination.start + self.pagination.count]
         return self.all_users
 
     @property
@@ -454,7 +456,8 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
         top_level_aggregation = self.add_landmark_aggregations(top_level_aggregation, self.end_date)
 
         if self.sort_column:
-            top_level_aggregation = top_level_aggregation.order(self.sort_column)
+            order = "desc" if self.pagination.desc else "asc"
+            top_level_aggregation = top_level_aggregation.order(self.sort_column, order)
 
         query = (
             case_es.CaseES()
