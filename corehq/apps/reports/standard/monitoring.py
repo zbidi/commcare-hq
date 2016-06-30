@@ -164,6 +164,14 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
             dict(
                 name=CaseTypeFilter.slug,
                 value=CaseTypeFilter.get_value(self.request, self.domain)),
+            dict(
+                name='milestone',
+                value=self.request.GET.get('milestone')
+            ),
+            dict(
+                name='landmark',
+                value=self.request.GET.get('landmark')
+            )
         ]
         return params
 
