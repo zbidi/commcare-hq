@@ -470,7 +470,7 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
             .aggregation(self._inactive_total_aggregation)
         )
 
-        query = self.add_landmark_aggregations(top_level_aggregation, self.end_date)
+        top_level_aggregation = self.add_landmark_aggregations(top_level_aggregation, self.end_date)
 
         if size:
             top_level_aggregation.size(size)
