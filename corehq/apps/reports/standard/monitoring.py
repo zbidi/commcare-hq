@@ -382,7 +382,10 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
 
     @property
     def rows(self):
-        es_results = self.es_queryset()
+        es_results = self.es_queryset(
+            user_ids=self.paginated_user_ids,
+            size=self.pagination.start+self.pagination.count
+        )
         buckets = es_results.aggregations.users.buckets_list
         if self.missing_users:
             buckets[None] = es_results.aggregations.missing_users.bucket
@@ -395,6 +398,20 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
 
         self.total_row = self._total_row
         return map(self._format_row, rows[self.pagination.start:self.pagination.start+self.pagination.count])
+
+    @property
+    def get_all_rows(self):
+        es_results = self.es_queryset(user_ids=self.all_user_ids)
+        buckets = es_results.aggregations.users.buckets_list
+        if self.missing_users:
+            buckets[None] = es_results.aggregations.missing_users.bucket
+        rows = []
+        for bucket in buckets:
+            user = self.users_by_id[bucket.key]
+            rows.append(self.Row(self, user, bucket))
+
+        self.total_row = self._total_row
+        return map(self._format_row, rows)
 
     @property
     def _touched_total_aggregation(self):
@@ -445,15 +462,18 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
     def milestone_start(self):
         return ServerTime(self.utc_now - self.milestone).phone_time(self.timezone).done()
 
-    def es_queryset(self):
+    def es_queryset(self, user_ids, size=None):
         top_level_aggregation = (
-            TermsAggregation('users', 'user_id', size=self.pagination.start + self.pagination.count)
+            TermsAggregation('users', 'user_id')
             .aggregation(self._touched_total_aggregation)
             .aggregation(self._active_total_aggregation)
             .aggregation(self._inactive_total_aggregation)
         )
 
-        top_level_aggregation = self.add_landmark_aggregations(top_level_aggregation, self.end_date)
+        query = self.add_landmark_aggregations(top_level_aggregation, self.end_date)
+
+        if size:
+            top_level_aggregation.size(size)
 
         if self.sort_column:
             order = "desc" if self.pagination.desc else "asc"
@@ -462,7 +482,7 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
         query = (
             case_es.CaseES()
             .domain(self.domain)
-            .user_ids_handle_unknown(self.paginated_user_ids)
+            .user_ids_handle_unknown(user_ids)
             .size(0)
         )
         if self.case_type:
