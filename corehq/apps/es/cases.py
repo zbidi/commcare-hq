@@ -109,7 +109,7 @@ def touched_total_aggreation(gt=None, gte=None, lt=None, lte=None):
     return aggregations.FilterAggregation(
         'touched_total',
         filters.AND(
-            filters.date_range('modified_on', gt, gte, lt, lte),
+            modified_range(gt, gte, lt, lte),
         )
     )
 
@@ -118,8 +118,9 @@ def active_total_aggreation(gt=None, gte=None, lt=None, lte=None):
     return aggregations.FilterAggregation(
         'active_total',
         filters.AND(
-            filters.date_range('modified_on', gt, gte, lt, lte),
-            filters.term('closed', False))
+            modified_range(gt, gte, lt, lte),
+            is_closed(False)
+        )
     )
 
 
@@ -127,6 +128,7 @@ def inactive_total_aggreation(gt=None, gte=None, lt=None, lte=None):
     return aggregations.FilterAggregation(
         'inactive_total',
         filters.AND(
-            filters.date_range('modified_on', gt, gte, lt, lte),
-            filters.term('closed', False))
+            modified_range(gt, gte, lt, lte),
+            is_closed()
+        )
     )
