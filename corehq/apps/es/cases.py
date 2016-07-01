@@ -114,21 +114,11 @@ def touched_total_aggregation(gt=None, gte=None, lt=None, lte=None):
     )
 
 
-def active_total_aggregation(gt=None, gte=None, lt=None, lte=None):
+def open_case_aggregation(name='open_case', gt=None, gte=None, lt=None, lte=None):
     return aggregations.FilterAggregation(
-        'active_total',
+        name,
         filters.AND(
             modified_range(gt, gte, lt, lte),
             is_closed(False)
-        )
-    )
-
-
-def inactive_total_aggregation(gt=None, gte=None, lt=None, lte=None):
-    return aggregations.FilterAggregation(
-        'inactive_total',
-        filters.AND(
-            modified_range(gt, gte, lt, lte),
-            is_closed()
         )
     )
