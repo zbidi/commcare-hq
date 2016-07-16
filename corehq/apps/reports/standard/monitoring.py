@@ -152,7 +152,7 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
     display_data = ['percent']
     emailable = True
     description = ugettext_noop("Followup rates on active cases.")
-    is_cacheable = True
+    # is_cacheable = True
     ajax_pagination = True
 
     @property
@@ -405,7 +405,10 @@ class CaseActivityReport(WorkerMonitoringCaseReportTableBase):
         rows.sort(key=self.sort_key)
 
         self.total_row = self._total_row
-        return map(self._format_row, rows[self.pagination.start:self.pagination.start+self.pagination.count])
+        if len(rows) == self.pagination.count:
+            return map(self._format_row, rows)
+        else:
+            return map(self._format_row, rows[self.pagination.start:self.pagination.start+self.pagination.count])
 
     @property
     def get_all_rows(self):
