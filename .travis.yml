@@ -31,7 +31,7 @@ script:
   # workaround for env vars
   - export TRAVIS_HQ_USERNAME=$TRAVIS_HQ_USERNAME
   - export TRAVIS_HQ_PASSWORD=$TRAVIS_HQ_PASSWORD
-  - "scripts/docker test --noinput --stop --verbosity=2 --divide-depth=1"
+  - "scripts/docker test --noinput --verbosity=2 --divide-depth=1"
 after_success:
   # create symlink so coverage report can find source files
   - sudo ln -s $(pwd) /mnt/commcare-hq-ro
