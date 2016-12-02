@@ -4,6 +4,7 @@ from django.test.testcases import TestCase
 from django.conf import settings
 from corehq.apps.domain.shortcuts import create_domain
 from corehq.apps.locations.models import LocationType, make_location
+from corehq.apps.locations.tests.util import delete_all_locations
 from corehq.apps.products.models import Product
 from corehq.apps.sms.tests.update_location_keyword_test import create_mobile_worker
 from corehq.sql_db.connections import connection_manager
@@ -50,11 +51,6 @@ class IntraHealthTestCase(TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.engine.dispose()
-        cls.region.delete()
-        cls.district.delete()
-        cls.pps.delete()
-        cls.region_type.delete()
-        cls.district_type.delete()
-        cls.pps_type.delete()
+        delete_all_locations()
         cls.domain.delete()
         super(IntraHealthTestCase, cls).tearDownClass()
