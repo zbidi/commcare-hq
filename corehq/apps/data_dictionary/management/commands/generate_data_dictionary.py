@@ -75,7 +75,9 @@ class Command(BaseCommand):
 
             if force_full_generate or not already_generated or len(case_types) > len(db_case_types):
                 logger.info("generating data dictionary for %s", domain)
-                generate_data_dictionary(domain)
+                if not generate_data_dictionary(domain):
+                    logger.error("data dictionary requires access to new exports")
+                    continue
                 db_case_types = CaseType.objects.filter(domain=domain).all()
 
             if self.test:
