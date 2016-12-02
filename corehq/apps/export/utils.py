@@ -21,6 +21,7 @@ from corehq.apps.app_manager.dbaccessors import (
     get_app,
     get_brief_apps_in_domain,
 )
+from corehq.apps.data_dictionary.models import CaseProperty, CaseType
 from .dbaccessors import (
     get_form_export_instances,
     get_case_export_instances,
@@ -623,3 +624,27 @@ def migrate_domain(domain, dryrun=False, force_convert_columns=False):
             for column_meta in meta.skipped_columns:
                 column_meta.pretty_print()
     return metas
+
+
+def generate_inferred_schema_from_data_dictionary(domain, case_type):
+    try:
+        case_type_obj = CaseType.objects.get(domain=domain, name=case_type)
+    except CaseType.DoesNotExist:
+        return None
+
+    if not case_type_obj.fully_generated:
+        return None
+
+    from .models import InferredSchema, PathNode, MAIN_TABLE
+    schema = InferredSchema.wrap({
+        "domain": case_type_obj.domain,
+        "case_type": case_type_obj.name
+    })
+
+    properties = CaseProperty.objects.filter(case_type=case_type_obj)
+    group_schema = schema.put_group_schema(MAIN_TABLE)
+    props = []
+    for prop in properties:
+        group_schema.put_item([PathNode(name=prop.name)])
+
+    return schema
