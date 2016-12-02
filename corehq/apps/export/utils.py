@@ -654,3 +654,18 @@ def generate_inferred_schema_from_data_dictionary(domain, case_type):
         group_schema.put_item([PathNode(name=prop.name)])
 
     return schema
+
+
+def assert_couch_and_dd_inferred_schema_equal(domain, case_type):
+    dd_schema = generate_inferred_schema_from_data_dictionary(domain, case_type).to_json()
+    couch_schema = get_inferred_schema(domain, case_type)
+    if not couch_schema:
+        return False
+    couch_schema = couch_schema.to_json()
+    assert len(couch_schema['group_schemas']) == 1
+    assert len(dd_schema['group_schemas']) == 1
+    for item in couch_schema['group_schemas'][0]['items']:
+        dd_item = filter(lambda x: cmp(x, item), dd_schema['group_schemas'][0]['items'])
+        assert(dd_item)
+
+    return True
