@@ -3,7 +3,7 @@
 
 from corehq.apps.commtrack.tests.util import bootstrap_domain
 from django.test import TestCase
-from corehq.apps.locations.models import Location, LocationType
+from corehq.apps.locations.models import make_location, LocationType
 from corehq.apps.locations.tests.util import delete_all_locations
 
 
@@ -20,7 +20,7 @@ class SiteCodeTest(TestCase):
         delete_all_locations()
 
     def testSimpleName(self):
-        location = Location(
+        location = make_location(
             name="Some Location",
             domain=self.domain,
             location_type="type"
@@ -31,7 +31,7 @@ class SiteCodeTest(TestCase):
         self.assertEqual(location.site_code, 'some_location')
 
     def testOtherCharacters(self):
-        location = Location(
+        location = make_location(
             name=u"Somé$ #Location (Old)",
             domain=self.domain,
             location_type="type"
@@ -42,7 +42,7 @@ class SiteCodeTest(TestCase):
         self.assertEqual(location.site_code, 'some_location_old')
 
     def testDoesntDuplicate(self):
-        location = Location(
+        location = make_location(
             name="Location",
             domain=self.domain,
             location_type="type"
@@ -52,7 +52,7 @@ class SiteCodeTest(TestCase):
 
         self.assertEqual(location.site_code, 'location')
 
-        location = Location(
+        location = make_location(
             name="Location",
             domain=self.domain,
             location_type="type"

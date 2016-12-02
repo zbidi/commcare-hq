@@ -3,7 +3,7 @@ from django.test.testcases import TestCase
 
 from django.conf import settings
 from corehq.apps.domain.shortcuts import create_domain
-from corehq.apps.locations.models import LocationType, Location
+from corehq.apps.locations.models import LocationType, make_location
 from corehq.apps.products.models import Product
 from corehq.apps.sms.tests.update_location_keyword_test import create_mobile_worker
 from corehq.sql_db.connections import connection_manager
@@ -24,13 +24,13 @@ class IntraHealthTestCase(TestCase):
         cls.district_type = LocationType.objects.create(domain=TEST_DOMAIN, name=u'District')
         cls.pps_type = LocationType.objects.create(domain=TEST_DOMAIN, name=u'PPS')
 
-        cls.region = Location(domain=TEST_DOMAIN, name='Test region', location_type=u'Région')
+        cls.region = make_location(domain=TEST_DOMAIN, name='Test region', location_type=u'Région')
         cls.region.save()
-        cls.district = Location(
+        cls.district = make_location(
             domain=TEST_DOMAIN, name='Test district', location_type=u'District', parent=cls.region
         )
         cls.district.save()
-        cls.pps = Location(domain=TEST_DOMAIN, name='Test PPS', location_type=u'PPS', parent=cls.district)
+        cls.pps = make_location(domain=TEST_DOMAIN, name='Test PPS', location_type=u'PPS', parent=cls.district)
         cls.pps.save()
 
         cls.mobile_worker = create_mobile_worker(

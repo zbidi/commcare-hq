@@ -4,7 +4,7 @@ from django.test import TestCase
 from casexml.apps.stock.models import DocDomainMapping, StockReport, StockTransaction
 from corehq.apps.domain.models import Domain
 from corehq.apps.ivr.models import Call
-from corehq.apps.locations.models import Location, LocationType, SQLLocation
+from corehq.apps.locations.models import make_location, LocationType, SQLLocation
 from corehq.apps.products.models import Product, SQLProduct
 from corehq.apps.sms.models import (SMS, SQLLastReadMessage, ExpectedCallback,
     PhoneNumber, MessagingEvent, MessagingSubEvent, SelfRegistrationInvitation,
@@ -17,7 +17,7 @@ class TestDeleteDomain(TestCase):
         product = Product(domain=domain_name, name='test-{}'.format(i))
         product.save()
 
-        location = Location(
+        location = make_location(
             domain=domain_name,
             site_code='testcode-{}'.format(i),
             name='test-{}'.format(i),
