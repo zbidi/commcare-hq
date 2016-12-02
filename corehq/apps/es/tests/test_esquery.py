@@ -311,3 +311,36 @@ class TestESQuery(ElasticTestMixin, TestCase):
         }
         query = HQESQuery('forms').domain('test-exclude').exclude_source()
         self.checkQuery(query, json_output)
+
+    def test_randomize_results(self):
+        json_output = {
+            "query": {
+                "function_score": {
+                    "functions": [
+                        {"random_score": {}}
+                    ],
+                    "query": {
+                        "filtered": {
+                            "filter": {
+                                "and": [
+                                    {
+                                        "term": {
+                                            "domain.exact": "test-random"
+                                        }
+                                    },
+                                    {
+                                        "match_all": {}
+                                    }
+                                ]
+                            },
+                            "query": {
+                                "match_all": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "size": SIZE_LIMIT,
+        }
+        query = HQESQuery('forms').domain('test-random').randomize_results()
+        self.checkQuery(query, json_output)

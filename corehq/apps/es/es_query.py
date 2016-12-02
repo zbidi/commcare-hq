@@ -155,6 +155,7 @@ class ESQuery(object):
         self._facets = []
         self._aggregations = []
         self._source = None
+        self._randomize = False
         self.es_query = {"query": {
             "filtered": {
                 "filter": {"and": []},
@@ -312,6 +313,15 @@ class ESQuery(object):
                 agg.name: agg.assemble()
                 for agg in self._aggregations
             }
+        if self._randomize:
+            self.es_query['query'] = {
+                "function_score": {
+                    "functions": [
+                        {"random_score": {}}
+                    ],
+                    "query": self.es_query['query']
+                },
+            }
 
     def fields(self, fields):
         """
@@ -419,6 +429,11 @@ class ESQuery(object):
     def get_ids(self):
         """Performs a minimal query to get the ids of the matching documents"""
         return self.exclude_source().run().doc_ids
+
+    def randomize_results(self):
+        query = deepcopy(self)
+        query._randomize = True
+        return query
 
 
 class ESQuerySet(object):
