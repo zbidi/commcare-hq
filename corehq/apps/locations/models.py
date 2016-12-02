@@ -422,6 +422,7 @@ class SQLLocation(SyncSQLToCouchMixin, MPTTModel):
         from corehq.apps.commtrack.models import sync_supply_point
         from .document_store import publish_location_saved
         self.supply_point_id = sync_supply_point(self)
+        set_site_code_if_needed(self)
 
         sync_to_couch = kwargs.pop('sync_to_couch', True)
         kwargs['sync_to_couch'] = False  # call it here
@@ -727,7 +728,6 @@ class SQLLocation(SyncSQLToCouchMixin, MPTTModel):
     @property
     def sql_location(self):
         # For backwards compatability
-        notify_of_deprecation("'sql_location' was just called on a sql_location.  That's kinda silly.")
         return self
 
 
@@ -763,6 +763,18 @@ def make_location(**kwargs):
     parent = kwargs.pop('parent', None)
     kwargs['parent'] = parent.sql_location if parent else None
     return SQLLocation(**kwargs)
+
+
+def set_site_code_if_needed(location):
+    from corehq.apps.commtrack.util import generate_code
+    if not location.site_code:
+        all_codes = [
+            code.lower() for code in
+            (SQLLocation.objects.exclude(location_id=location.location_id)
+                                .filter(domain=location.domain)
+                                .values_list('site_code', flat=True))
+        ]
+        location.site_code = generate_code(location.name, all_codes)
 
 
 class Location(SyncCouchToSQLMixin, CachedCouchDocumentMixin, Document):
@@ -891,14 +903,7 @@ class Location(SyncCouchToSQLMixin, CachedCouchDocumentMixin, Document):
         self.last_modified = datetime.utcnow()
 
         # lazy migration for site_code
-        if not self.site_code:
-            from corehq.apps.commtrack.util import generate_code
-            all_codes = [
-                code.lower() for code in
-                (SQLLocation.objects.filter(domain=self.domain)
-                                    .values_list('site_code', flat=True))
-            ]
-            self.site_code = generate_code(self.name, all_codes)
+        set_site_code_if_needed(self)
 
         # Set the UUID here so we can save to SQL first (easier to rollback)
         if not self._id:
