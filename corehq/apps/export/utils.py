@@ -245,6 +245,12 @@ def convert_saved_export_to_export_instance(
                         )
                         if not dryrun:
                             inferred_schema.save()
+                            # mark the data dictionary as not fully generated
+                            # as there's probably something weird in these old exports
+                            CaseType.objects.update_or_create(
+                                domain=domain, name=instance.case_type,
+                                defaults={"fully_generated": False}
+                            )
                     else:
                         new_column = _create_user_defined_column(column, column_path, transform)
                     new_table.columns.append(new_column)
