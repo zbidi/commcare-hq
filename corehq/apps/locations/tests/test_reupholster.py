@@ -37,18 +37,16 @@ class TestPathLineageAndHierarchy(LocationTestBase):
         original_parent = self.all_locs[1]
         new_state = make_loc('New York', type='state')
         new_district = make_loc('NYC', type='block', parent=original_parent)
-        self.assertEqual(original_parent._id, new_district.sql_location.parent.location_id)
-        # this is ugly, but how it is done in the UI
-        new_district.lineage = get_lineage_from_location(new_state)
+        self.assertEqual(original_parent.location_id, new_district.sql_location.parent.location_id)
+        new_district.sql_location.parent = new_state
         new_district.save()
         self.assertEqual(new_state._id, new_district.sql_location.parent.location_id)
 
     def test_move_to_root(self):
         original_parent = self.all_locs[1]
         new_district = make_loc('NYC', type='block', parent=original_parent)
-        self.assertEqual(original_parent._id, new_district.sql_location.parent.location_id)
-        # this is ugly, but how it is done in the UI
-        new_district.lineage = []
+        self.assertEqual(original_parent.location_id, new_district.sql_location.parent.location_id)
+        new_district.sql_location.parent = None
         new_district.save()
         self.assertEqual(None, new_district.sql_location.parent)
 
