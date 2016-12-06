@@ -77,6 +77,9 @@ class Command(BaseCommand):
                     help='Run the reindex in place - assuming it is against a live index.'),
     )
 
+    def add_arguments(self, parser):
+        parser.add_argument('index')
+
     def handle(self, index, *args, **options):
         cleanup = options.pop('cleanup')
         noinput = options.pop('noinput')
