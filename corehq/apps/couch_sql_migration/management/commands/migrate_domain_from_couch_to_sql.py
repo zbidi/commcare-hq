@@ -22,7 +22,7 @@ from couchforms.models import doc_types, XFormInstance
 
 class Command(LabelCommand):
     args = "<domain>"
-    option_list = LabelCommand.option_list + (
+    option_list = (
         make_option('--MIGRATE', action='store_true', default=False),
         make_option('--COMMIT', action='store_true', default=False),
         make_option('--blow-away', action='store_true', default=False),
