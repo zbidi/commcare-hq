@@ -1,7 +1,7 @@
 from django.test import SimpleTestCase
 from corehq.apps.app_manager.const import AUTO_SELECT_USERCASE
 from corehq.apps.app_manager.models import Application, Module, OpenCaseAction, PreloadAction, \
-    WORKFLOW_MODULE, AdvancedModule, AdvancedOpenCaseAction, LoadUpdateAction, AutoSelectCase
+    WORKFLOW_MODULE, AdvancedModule, AdvancedOpenCaseAction, LoadUpdateAction, AutoSelectCase, WORKFLOW_PARENT_MODULE
 from corehq.apps.app_manager.tests.app_factory import AppFactory
 from corehq.apps.app_manager.tests.util import TestXmlMixin
 from mock import patch
@@ -81,6 +81,23 @@ class CaseListFormSuiteTests(SimpleTestCase, TestXmlMixin):
             'en': 'Register another Dugong'
         }
         self.assertXmlEqual(self.get_xml('case-list-form-advanced'), factory.app.create_suite())
+
+    def test_case_list_registration_form_advanced_return_to_parent(self):
+        factory = AppFactory(build_version='2.9')
+
+        case_module, update_form = factory.new_advanced_module('update_dugong', 'dugong')
+        factory.form_requires_case(update_form)
+
+        register_module, register_form = factory.new_advanced_module('register_dugong', 'dugong', parent_module=case_module)
+        factory.form_opens_case(register_form)
+
+        register_form.post_form_workflow = WORKFLOW_PARENT_MODULE
+
+        case_module.case_list_form.form_id = register_form.get_unique_id()
+        case_module.case_list_form.label = {
+            'en': 'Register another Dugong'
+        }
+        self.assertXmlEqual(self.get_xml('case-list-form-advanced-parent-module'), factory.app.create_suite())
 
     def test_case_list_registration_form_advanced_autoload(self):
         factory = AppFactory(build_version='2.9')
