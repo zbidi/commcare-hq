@@ -1,5 +1,4 @@
 from itertools import izip_longest
-from optparse import make_option
 
 from django.conf import settings
 from django.core.management.base import CommandError, LabelCommand
@@ -21,17 +20,17 @@ from couchforms.models import doc_types, XFormInstance
 
 
 class Command(LabelCommand):
-    args = "<domain>"
-    option_list = (
-        make_option('--MIGRATE', action='store_true', default=False),
-        make_option('--COMMIT', action='store_true', default=False),
-        make_option('--blow-away', action='store_true', default=False),
-        make_option('--stats-short', action='store_true', default=False),
-        make_option('--stats-long', action='store_true', default=False),
-        make_option('--show-diffs', action='store_true', default=False),
-        make_option('--no-input', action='store_true', default=False),
-        make_option('--debug', action='store_true', default=False),
-    )
+
+    def add_arguments(self, parser):
+        parser.add_argument('domain')
+        parser.add_argument('--MIGRATE', action='store_true', default=False)
+        parser.add_argument('--COMMIT', action='store_true', default=False)
+        parser.add_argument('--blow-away', action='store_true', default=False)
+        parser.add_argument('--stats-short', action='store_true', default=False)
+        parser.add_argument('--stats-long', action='store_true', default=False)
+        parser.add_argument('--show-diffs', action='store_true', default=False)
+        parser.add_argument('--no-input', action='store_true', default=False)
+        parser.add_argument('--debug', action='store_true', default=False)
 
     @staticmethod
     def require_only_option(sole_option, options):
