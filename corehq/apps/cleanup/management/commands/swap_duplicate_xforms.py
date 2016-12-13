@@ -18,7 +18,6 @@ BAD_FORM_PROBLEM_TEMPLATE = "Form was missing multimedia attachments. Replaced b
 
 class Command(BaseCommand):
     help = 'Replace xforms missing attachments with xfrom duplicates containing attachments.'
-    args = '<ids_file_path> <log_path>'
 
     option_list = (
         make_option(
@@ -37,7 +36,11 @@ class Command(BaseCommand):
         ),
     )
 
-    def handle(self, *args, **options):
+    def add_arguments(self, parser):
+        parser.add_argument('ids_file_path')
+        parser.add_argument('log_path')
+
+    def handle(self, ids_file_path, log_path, **options):
 
         self.dups_by_domain = {}
         # e.g.
@@ -59,8 +62,8 @@ class Command(BaseCommand):
                 print "\n\t\tSwap duplicates cancelled."
                 return
 
-        ids_file_path = args[0].strip()
-        log_path = args[1].strip()
+        ids_file_path = ids_file_path.strip()
+        log_path = log_path.strip()
 
         one_dup_counts = defaultdict(lambda: 0)
         multi_dups_counts = defaultdict(lambda: 0)
