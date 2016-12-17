@@ -156,6 +156,7 @@ class Command(BaseCommand):
             self.save_sql_copy(location_type, self.new_domain)
             previous_location_type = location_type
 
+        # TODO fix
         def copy_location_hierarchy(location, id_map):
             new_lineage = []
             for ancestor in location.lineage:

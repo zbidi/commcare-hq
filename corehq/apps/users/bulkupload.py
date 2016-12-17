@@ -209,6 +209,7 @@ class SiteCodeToSupplyPointCache(BulkCacheBase):
     """
 
     def lookup(self, site_code):
+        # TODO
         case_location = get_supply_point_and_location(
             self.domain,
             site_code
@@ -233,7 +234,7 @@ class SiteCodeToLocationCache(BulkCacheBase):
         return SQLLocation.objects.get(
             domain=self.domain,
             site_code=site_code
-        ).couch_location
+        )
 
 
 class LocationIdToSiteCodeCache(BulkCacheBase):
