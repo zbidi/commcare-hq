@@ -31,11 +31,14 @@ class ReindexEventHandler(PaginationEventHandler):
 
 
 class Command(BaseCommand):
-    args = '<pillow_name> <domain domain ...>'
     help = (
         'Reindex a fluff pillow. '
         'If no domains are specified all domains for the pillow will be re-indexed.'
     )
+
+    def add_arguments(self, parser):
+        parser.add_argument('pillow_name')
+        parser.add_argument('domain', nargs='*')  # TODO - check this
 
     def handle(self, *args, **options):
         if len(args) < 1:
