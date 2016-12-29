@@ -19,26 +19,23 @@ BAD_FORM_PROBLEM_TEMPLATE = "Form was missing multimedia attachments. Replaced b
 class Command(BaseCommand):
     help = 'Replace xforms missing attachments with xfrom duplicates containing attachments.'
 
-    option_list = (
-        make_option(
+    def add_arguments(self, parser):
+        parser.add_argument('ids_file_path')
+        parser.add_argument('log_path')
+        parser.add_argument(
             '--dry-run',
             action='store_true',
             dest='dry_run',
             default=False,
             help="Don't do the actual modifications, but still log what would be affected."
-        ),
-        make_option(
+        )
+        parser.add_argument(
             '--no-input',
             action='store_true',
             dest='no_input',
             default=False,
             help='Skip important confirmation warnings.'
-        ),
-    )
-
-    def add_arguments(self, parser):
-        parser.add_argument('ids_file_path')
-        parser.add_argument('log_path')
+        )
 
     def handle(self, ids_file_path, log_path, **options):
 
