@@ -72,7 +72,7 @@ class Command(BaseCommand):
         )
         parser.add_argument(
             '--chunksize',
-            type="int",
+            type=int,
             action='store',
             dest='chunksize',
             help='Number of docs to process at a time'
