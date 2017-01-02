@@ -7,6 +7,7 @@ define([
     "jquery",
     "knockout",
     "style/js/hq.helpers",
+    "jquery.form",
 ], function(
     location_types,
     $,
