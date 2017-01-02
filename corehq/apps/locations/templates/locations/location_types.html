@@ -7,11 +7,10 @@
     requirejs(["{% static 'locations/js/location-types.js' %}"]);
 {% endblock requirejs_entry %}
 
-{# TODO: this isn't going onto the page #}
-{% addtoblock initial_page_json %}
+{% block initial_page_json %}
     "loc_types": {{ location_types|JSON }},
-    "commtrack_enabled": {{ commtrack_enabled|JSON }},
-{% endaddtoblock %}
+    "commtrack_enabled": {{ commtrack_enabled|JSON }}
+{% endblock %}
 
 {% block page_content %}
     <div class="row">
