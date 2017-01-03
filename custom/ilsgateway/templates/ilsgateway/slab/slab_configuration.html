@@ -35,7 +35,7 @@
     };
 
     $(function() {
-        var model = new LocationTreeViewModel(hierarchy);
+        var model = new hqImport('locations/ko/location_tree.async.js').LocationTreeViewModel(hierarchy);
         $('#location_tree').koApplyBindings(model);
         model.load(locs);
     });

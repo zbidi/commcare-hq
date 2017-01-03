@@ -177,6 +177,7 @@ class LocationsListView(BaseLocationView):
     @method_decorator(require_can_edit_commcare_users)
     @method_decorator(check_pending_locations_import())
     def dispatch(self, request, *args, **kwargs):
+        request.use_requirejs = True
         return super(LocationsListView, self).dispatch(request, *args, **kwargs)
 
     @property
