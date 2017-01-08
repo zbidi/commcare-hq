@@ -42,7 +42,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if len(args) < 1:
-            raise CommandError('Usage is ptop_reindexer_fluff %s' % self.args)
+            raise CommandError('Usage is ptop_reindexer_fluff %s' % args)
 
         fluff_configs = {config.name: config for config in get_fluff_pillow_configs()}
 
