@@ -98,7 +98,7 @@ class Command(BaseCommand):
         reindexer = REINDEX_FNS[index]()
         reindexer_options = {
             key: value for key, value in options.items()
-            if value is not None and key in [option.dest for option in self.option_list]
+            if value is not None
         }
         unconsumed = reindexer.consume_options(reindexer_options)
         if unconsumed:
