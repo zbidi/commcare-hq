@@ -4,7 +4,7 @@ import random
 import string
 
 from django.test import TestCase
-from casexml.apps.case.tests.util import delete_all_xforms
+from casexml.apps.case.tests.util import delete_all_ledgers, delete_all_xforms
 from corehq.apps.commtrack.models import SQLProduct
 
 from casexml.apps.stock.const import REPORT_TYPE_BALANCE
@@ -94,6 +94,7 @@ class StockReportDomainTest(TestCase):
 
     def tearDown(self):
         delete_all_xforms()
+        delete_all_ledgers()
         StockReport.objects.all().delete()
         StockTransaction.objects.all().delete()
         super(StockReportDomainTest, self).tearDown()
